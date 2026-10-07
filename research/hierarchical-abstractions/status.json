@@ -1,8 +1,8 @@
 {
   "title": "Hierarchical abstractions as a basis for ontology graphs",
-  "step": 3,
-  "updated_at": "2026-10-07T22:52:26+00:00",
-  "summary": "Formalized contextual abstraction domains, task-relative sufficiency, typed polyhierarchies and claim admission. Added proofs of composition/separation and counterexamples for summary loss and inconsistent distributed merges.",
+  "step": 4,
+  "updated_at": "2026-10-07T22:54:22+00:00",
+  "summary": "Synthetic evaluation complete: 100, 300 and 1,000 logical workers, 20 seeds and overlap/coverage stress tests. Complete hierarchy matches flat indexing; omissions lose recall and coverage fallback raises cost. No LLM or patch-success claim.",
   "events": [
     {
       "at": "2026-10-07T22:43:40+00:00",
@@ -23,6 +23,14 @@
     {
       "at": "2026-10-07T22:52:05+00:00",
       "summary": "Formalized contextual abstraction domains, task-relative sufficiency, typed polyhierarchies and claim admission. Added proofs of composition/separation and counterexamples for summary loss and inconsistent distributed merges."
+    },
+    {
+      "at": "2026-10-07T22:53:42+00:00",
+      "summary": "Ran reproducible routing simulations for 100, 300 and 1,000 logical workers across 20 seeds. Complete hierarchy matches a strong flat index; missing cross-module memberships reduce recall and guarded fallback increases cost. These are synthetic structural results, not LLM performance claims."
+    },
+    {
+      "at": "2026-10-07T22:54:22+00:00",
+      "summary": "Synthetic evaluation complete: 100, 300 and 1,000 logical workers, 20 seeds and overlap/coverage stress tests. Complete hierarchy matches flat indexing; omissions lose recall and coverage fallback raises cost. No LLM or patch-success claim."
     }
   ],
   "running": true
