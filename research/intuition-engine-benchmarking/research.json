@@ -1,0 +1,50 @@
+{
+  "id": "intuition-engine-benchmarking",
+  "title": "Intuition engine: benchmarking methodology",
+  "subtitle": "A falsifiable experimental protocol for an evidence-grounded abstraction engine, exposed through MCP.",
+  "steps": [
+    "Scope and experimental process",
+    "Existing benchmark audit",
+    "Theses and fair comparisons",
+    "Engine contract and evaluation design",
+    "Executable methodology and sentinel review",
+    "Methodology publication and verification"
+  ],
+  "timezone": "America/Los_Angeles",
+  "ntfy_topic": "oodlabs",
+  "heartbeat_seconds": 120,
+  "remote": "origin",
+  "branch": "main",
+  "progress_url": "https://outofdistributionlabs.github.io/research/intuition-engine-benchmarking/progress.html",
+  "evidence_note": "Methodology only: engine implementation, agent trials and benchmark results are pending. Completing this planning project does not mean the experimental programme has been completed.",
+  "resources": [
+    {
+      "path": "research-plan.md",
+      "label": "Experimental protocol"
+    },
+    {
+      "path": "benchmarks.md",
+      "label": "Benchmark audit"
+    },
+    {
+      "path": "engine-contract.md",
+      "label": "Proposed MCP contract"
+    },
+    {
+      "path": "protocol.json",
+      "label": "Machine-readable protocol"
+    },
+    {
+      "path": "methodology.py",
+      "label": "Local Python methodology"
+    },
+    {
+      "path": "sentinel-review.md",
+      "label": "Planning review"
+    },
+    {
+      "path": "README.md",
+      "label": "Reproduction and next steps"
+    }
+  ]
+}
