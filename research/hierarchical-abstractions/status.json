@@ -1,12 +1,16 @@
 {
   "title": "Hierarchical abstractions as a basis for ontology graphs",
-  "step": 0,
-  "updated_at": "2026-10-07T22:43:40+00:00",
-  "summary": "Research protocol defined. Starting the primary-source literature review.",
+  "step": 1,
+  "updated_at": "2026-10-07T22:43:58+00:00",
+  "summary": "Scope, evidence criteria, public progress page and two-minute ntfy/publishing automation are established. Reviewing primary sources next.",
   "events": [
     {
       "at": "2026-10-07T22:43:40+00:00",
       "summary": "Research protocol defined. Starting the primary-source literature review."
+    },
+    {
+      "at": "2026-10-07T22:43:58+00:00",
+      "summary": "Scope, evidence criteria, public progress page and two-minute ntfy/publishing automation are established. Reviewing primary sources next."
     }
   ]
 }
