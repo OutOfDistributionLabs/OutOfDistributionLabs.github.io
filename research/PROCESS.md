@@ -38,4 +38,4 @@ Run `python tools/research/test_workflow.py` to exercise checkpoint isolation, s
 
 ## Branded manuscript template
 
-Copy `tools/research/white-paper-template.tex` to the project folder as `white-paper.tex`. Edit title, subtitle, short title, date, paper identifier and evidence status; then supply the reviewed content and verified bibliography. It uses the lab's sans-serif wordmark, dark blue-black cover, restrained amber accent and plain mathematical typesetting. Inspect the compiled cover when the title changes: layout is a design choice, not automatically fitted.
+Copy `tools/research/white-paper-template.tex` to the project folder as `white-paper.tex`. Edit title, subtitle, short title, date, paper identifier and evidence status; then supply the reviewed content and verified bibliography. It uses the lab's sans-serif wordmark, dark blue-black cover, restrained amber accent and plain mathematical typesetting. The two-line wordmark uses a shared left edge, and the particle graphic spans the full dark cover band. Inspect the compiled cover when the title changes: layout is a design choice, not automatically fitted.

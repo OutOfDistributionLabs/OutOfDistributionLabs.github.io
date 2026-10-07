@@ -24,8 +24,22 @@
 \newtheorem{definition}{Definition}\newtheorem{proposition}{Proposition}
 \begin{document}
 \begin{titlepage}
-\begin{tikzpicture}[remember picture,overlay]\fill[Ink] (current page.north west) rectangle ($(current page.north east)+(0,-10cm)$);\end{tikzpicture}
-{\color{white}\Large Out \textcolor{Champagne}{of} Distribution\\Labs\par}
+% Full-width ambient particle field, clipped to the cover band.
+\begin{tikzpicture}[remember picture,overlay]
+\fill[Ink] (current page.north west) rectangle ($(current page.north east)+(0,-10cm)$);
+\begin{scope}
+\clip (current page.north west) rectangle ($(current page.north east)+(0,-10cm)$);
+\foreach \x in {0,...,55}{\foreach \y in {0,...,25}{
+\pgfmathsetmacro{\xx}{.40*\x+.12*sin(\y*19+\x*11)}
+\pgfmathsetmacro{\yy}{.40*\y+.16*sin(\x*13+\y*17)}
+\pgfmathsetmacro{\fade}{.18+.24*(.5+.5*sin(\x*9-\y*14))}
+\fill[Blue,opacity=\fade] ($(current page.north west)+(\xx,-\yy)$) circle (.65pt);
+}}
+\foreach \x/\y in {1.1/8.4,3.8/9.3,6.7/7.9,9.4/8.8,11.8/1.1,13.7/3.2,15.9/6.7,17.3/1.8,19.5/4.4,20.8/8.9}{
+\fill[Champagne,opacity=.65] ($(current page.north west)+(\x,-\y)$) circle (1.1pt);}
+\end{scope}
+\end{tikzpicture}
+\noindent{\color{white}\Large\begin{tabular}{@{}l@{}}Out \textcolor{Champagne}{of} Distribution\\Labs\end{tabular}\par}
 \vspace{1cm}{\color{white}\fontsize{28}{34}\selectfont\papertitle\par}
 \vspace{.5cm}{\color{Champagne}\papersubtitle\par}
 \vspace{3cm}{\Large Out of Distribution Labs\par}\paperdate\par
