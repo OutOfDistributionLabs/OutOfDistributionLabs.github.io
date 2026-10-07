@@ -39,3 +39,7 @@ Run `python tools/research/test_workflow.py` to exercise checkpoint isolation, s
 ## Branded manuscript template
 
 Copy `tools/research/white-paper-template.tex` to the project folder as `white-paper.tex`. Edit title, subtitle, short title, date, paper identifier and evidence status; then supply the reviewed content and verified bibliography. It uses the lab's sans-serif wordmark, dark blue-black cover, restrained amber accent and plain mathematical typesetting. The two-line wordmark uses a shared left edge, and the particle graphic spans the full dark cover band. Inspect the compiled cover when the title changes: layout is a design choice, not automatically fitted.
+
+## Agent-engine benchmarking
+
+Use [benchmark-process.md](../tools/research/benchmark-process.md) for the reusable 12-stage experimental programme, workload depth, substeps and mandatory sentinel gates. The local Python planning and gate scaffold is [tools/benchmarking/methodology.py](../tools/benchmarking/methodology.py); the [intuition-engine methodology](intuition-engine-benchmarking/README.md) is the first worked protocol. Planning completion does not imply engine or benchmark completion.

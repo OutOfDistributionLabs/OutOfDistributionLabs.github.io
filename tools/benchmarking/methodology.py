@@ -31,6 +31,7 @@ def validate(c, freeze=False):
     if not c['seeds'] or len(set(c['seeds']))!=len(c['seeds']):raise ValueError('Nonempty unique seeds required')
     if freeze or c.get('frozen'):
         if not c.get('frozen'):raise ValueError('Protocol is not frozen')
+        if len(c['seeds'])!=c['primary']['attempts_per_instance']:raise ValueError('Seed count must match preregistered attempts per instance')
         if any(not isinstance(v,(int,float)) or isinstance(v,bool) or not math.isfinite(v) or v<=0 for v in c['budgets'].values()):
             raise ValueError('All resource ceilings must be positive finite numbers')
         if any(not v for v in c['locks'].values()):raise ValueError('All version and manifest locks required')
@@ -50,6 +51,7 @@ def schedule(c,manifest):
     ids=[x['instance_id'] for x in manifest]
     if len(set(ids))!=len(ids):raise ValueError('Duplicate instance IDs')
     if any(not x.get('repo') or not x.get('instance_id') for x in manifest):raise ValueError('Each task needs repo and instance_id')
+    if c['frozen'] and c['locks']['manifest_sha256']!=canonical_hash(manifest):raise ValueError('Manifest does not match frozen canonical checksum')
     rng=random.Random(c['seeds'][0]);rows=[]
     groups={repo:[] for repo in sorted({x['repo'] for x in manifest})}
     for x in manifest:groups[x['repo']].append(x)
