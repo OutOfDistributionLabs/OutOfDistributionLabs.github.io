@@ -1,8 +1,8 @@
 {
   "title": "Hierarchical abstractions as a basis for ontology graphs",
   "step": 1,
-  "updated_at": "2026-10-07T22:47:44+00:00",
-  "summary": "Scope, evidence criteria, public progress page and two-minute ntfy/publishing automation are established. Reviewing primary sources next.",
+  "updated_at": "2026-10-07T22:48:23+00:00",
+  "summary": "Direction confirmed: theoretical foundations for software-engineering micro-agents, authored by Out of Distribution Labs. Reusable project workflow extracted; primary-source review continues.",
   "events": [
     {
       "at": "2026-10-07T22:43:40+00:00",
@@ -11,6 +11,11 @@
     {
       "at": "2026-10-07T22:43:58+00:00",
       "summary": "Scope, evidence criteria, public progress page and two-minute ntfy/publishing automation are established. Reviewing primary sources next."
+    },
+    {
+      "at": "2026-10-07T22:48:23+00:00",
+      "summary": "Direction confirmed: theoretical foundations for software-engineering micro-agents, authored by Out of Distribution Labs. Reusable project workflow extracted; primary-source review continues."
     }
-  ]
+  ],
+  "running": true
 }

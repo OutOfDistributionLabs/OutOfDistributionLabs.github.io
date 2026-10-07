@@ -6,7 +6,7 @@
 Can explicit, hierarchical abstractions provide a shared ontology graph that lets hundreds of narrow agents retrieve the right knowledge, coordinate changes, and preserve provenance without conflating relatedness with logical entailment?
 
 ## Working scope
-Unless the project owner specifies otherwise, emphasize a formal architecture with implementable contracts; use research and knowledge synthesis as the running domain; author the white paper as Out of Distribution Labs. Micro-agents means bounded, specialized workers, not independently trained models. Do not assume that adding agents improves reasoning.
+Confirmed direction: emphasize theoretical foundations; use software engineering as the running domain; author the white paper as Out of Distribution Labs. Formal statements and counterexamples are primary; the architecture and synthetic simulation are supporting consequences. Micro-agents means bounded, specialized workers, not independently trained models. Do not assume that adding agents improves reasoning.
 
 ## Process and deliverables
 1. Protocol: define questions, inclusion criteria, evidence categories and publication automation.
@@ -16,7 +16,7 @@ Unless the project owner specifies otherwise, emphasize a formal architecture wi
 5. Manuscript: create branded LaTeX, verified bibliography, architecture figure, measured plots, limitations and an implementation/evaluation roadmap; compile the PDF and inspect it.
 6. Publication: add PDF/source links to Research and the progress page; verify links, mobile layout, repository push and Pages deployment.
 
-Every step updates `progress.html` and `status.json`, commits and pushes. `researchctl.py` also refreshes the progress timestamp and sends a notification every 120 seconds while active. Step notifications include the public progress URL. The heartbeat terminates after the final step. ntfy topic: `oodlabs` on ntfy.sh; messages contain only public research progress.
+Every step updates `progress.html` and `status.json`, commits and pushes. the shared `tools/research/run.py` also refreshes the progress timestamp and sends a notification every 120 seconds while active. Step notifications include the public progress URL. The heartbeat terminates after the final step. ntfy topic: `oodlabs` on ntfy.sh; messages contain only public research progress.
 
 ## Search and inclusion protocol
 Search primary publisher/author pages, arXiv, ACL Anthology, OpenReview, W3C and official distributed-systems papers. Query families: (i) abstract interpretation / state abstraction / formal concept analysis, (ii) ontology hierarchy / OntoClean / OWL profiles / SKOS / SHACL / provenance, (iii) hierarchical GraphRAG / graph memory, (iv) multi-agent blackboard / contract net / LLM coordination, (v) CRDT / distributed consistency / knowledge conflict.
@@ -34,4 +34,4 @@ Include works that explain a mechanism or evaluation directly relevant to one of
 For each cited source record title, authors, publication/year, URL, relevant mechanism and limitation. All manuscript claims must be tagged conceptually as prior work, proposal, derivation, or our synthetic result. Do not describe the simulation as a deployed 100–1,000-agent LLM experiment. Report random seeds, raw results, configuration and baseline assumptions. State that provenance records attribution, not truth, and that OWL's open-world semantics differs from application validation.
 
 ## Publication artifacts
-`progress.html`, `sources.md`, `design.md`, `evaluation/`, `white-paper.tex`, `references.bib`, `white-paper.pdf`, and the notification/publishing script. The homepage Research overlay links to this project without changing its visual composition.
+`progress.html`, `sources.md`, `design.md`, `evaluation/`, `white-paper.tex`, `references.bib`, `white-paper.pdf`, and the shared notification/publishing script in `tools/research/`. The homepage Research overlay links to this project without changing its visual composition.

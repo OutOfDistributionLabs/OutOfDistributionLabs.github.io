@@ -1,0 +1,50 @@
+{
+  "id": "hierarchical-abstractions",
+  "title": "Hierarchical abstractions as a basis for ontology graphs",
+  "subtitle": "Theoretical foundations for shared software-engineering knowledge across hundreds of micro-agents.",
+  "steps": [
+    "Scope and research protocol",
+    "Primary-source literature review",
+    "Formal model and architecture",
+    "Reproducible synthetic evaluation",
+    "LaTeX manuscript and review",
+    "Publication and verification"
+  ],
+  "timezone": "America/Los_Angeles",
+  "ntfy_topic": "oodlabs",
+  "heartbeat_seconds": 120,
+  "remote": "origin",
+  "branch": "main",
+  "progress_url": "https://outofdistributionlabs.github.io/research/hierarchical-abstractions/progress.html",
+  "evidence_note": "Theoretical foundations, a proposed software-engineering architecture, and explicitly synthetic evaluation. No deployment with hundreds of language-model agents is claimed. Heartbeats refresh status and notify while the runner is active; they do not independently measure research progress.",
+  "resources": [
+    {
+      "path": "research-plan.md",
+      "label": "Research protocol"
+    },
+    {
+      "path": "sources.md",
+      "label": "Literature map"
+    },
+    {
+      "path": "design.md",
+      "label": "Theory and architecture"
+    },
+    {
+      "path": "evaluation/report.md",
+      "label": "Evaluation"
+    },
+    {
+      "path": "white-paper.pdf",
+      "label": "Read the white paper"
+    },
+    {
+      "path": "white-paper.tex",
+      "label": "LaTeX source"
+    },
+    {
+      "path": "references.bib",
+      "label": "Bibliography"
+    }
+  ]
+}
