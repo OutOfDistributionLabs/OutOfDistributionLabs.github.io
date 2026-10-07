@@ -1,8 +1,8 @@
 {
   "title": "Hierarchical abstractions as a basis for ontology graphs",
-  "step": 1,
-  "updated_at": "2026-10-07T22:50:25+00:00",
-  "summary": "Direction confirmed: theoretical foundations for software-engineering micro-agents, authored by Out of Distribution Labs. Reusable project workflow extracted; primary-source review continues.",
+  "step": 2,
+  "updated_at": "2026-10-07T22:50:28+00:00",
+  "summary": "Reviewed 22 primary sources across abstraction, ontology semantics, software contracts, graph retrieval, coordination and distributed state; recorded access limits and pinned source versions. Beginning formal synthesis.",
   "events": [
     {
       "at": "2026-10-07T22:43:40+00:00",
@@ -15,6 +15,10 @@
     {
       "at": "2026-10-07T22:48:23+00:00",
       "summary": "Direction confirmed: theoretical foundations for software-engineering micro-agents, authored by Out of Distribution Labs. Reusable project workflow extracted; primary-source review continues."
+    },
+    {
+      "at": "2026-10-07T22:50:28+00:00",
+      "summary": "Reviewed 22 primary sources across abstraction, ontology semantics, software contracts, graph retrieval, coordination and distributed state; recorded access limits and pinned source versions. Beginning formal synthesis."
     }
   ],
   "running": true
