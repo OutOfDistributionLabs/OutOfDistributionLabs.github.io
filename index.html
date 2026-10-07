@@ -16,7 +16,7 @@ button{font:400 11px/19px var(--font-sans);letter-spacing:.04em;color:var(--fram
 .research-tab{z-index:2}.research-close{z-index:2}
 button:hover{color:#e4bd83;opacity:1}button:focus-visible,.research-list a:focus-visible{outline:2px solid #e4bd83;outline-offset:3px}
 body.research-open .brand,body.research-open main>nav{visibility:hidden}
-/* Research lives on this page; research/ is reserved for PDFs. */
+/* Research overlay links to publications and project materials. */
 .research-overlay{position:fixed;inset:0;width:100%;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;background:transparent;backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);color:var(--frame-ink);overflow:hidden;font-family:inherit}
 .research-overlay::backdrop{background:transparent}
 .research-overlay[open]{display:grid;grid-template-rows:calc(88px + env(safe-area-inset-top)) minmax(0,1fr);animation:research-enter .25s ease-out}
@@ -38,9 +38,7 @@ body.research-open .brand,body.research-open main>nav{visibility:hidden}
 <canvas role="img" aria-label="Silver particles transform between mathematical shapes, with sparse amber outliers"></canvas>
 </main>
 <dialog class="research-overlay" id="researchOverlay" aria-labelledby="researchOverlayTitle"><header class="research-overlay-header"><h2 id="researchOverlayTitle">Research</h2><button type="button" id="closeResearch" class="research-close" aria-label="Close research" autofocus>Close</button></header><div class="research-content"><ul class="research-list" aria-label="Research from Out of Distribution Labs">
-<!-- Add papers here, with PDFs stored in research/:
-<li><a href="./research/paper-filename.pdf" target="_blank" rel="noopener">Paper title</a></li>
--->
+<li><a href="./research/hierarchical-abstractions/progress.html">Hierarchical abstractions as a basis for ontology graphs <span style="display:block;margin-top:6px;font-size:12px;color:#9dafbb">Research in progress · View project</span></a></li>
 </ul><p class="research-empty" id="researchEmpty">Publications will appear here.</p></div></dialog>
 <noscript><style>canvas,nav{display:none}</style></noscript>
 <script>
