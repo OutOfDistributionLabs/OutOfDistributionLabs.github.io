@@ -1,8 +1,8 @@
 {
   "title": "Hierarchical abstractions as a basis for ontology graphs",
-  "step": 2,
-  "updated_at": "2026-10-07T22:50:28+00:00",
-  "summary": "Reviewed 22 primary sources across abstraction, ontology semantics, software contracts, graph retrieval, coordination and distributed state; recorded access limits and pinned source versions. Beginning formal synthesis.",
+  "step": 3,
+  "updated_at": "2026-10-07T22:52:05+00:00",
+  "summary": "Formalized contextual abstraction domains, task-relative sufficiency, typed polyhierarchies and claim admission. Added proofs of composition/separation and counterexamples for summary loss and inconsistent distributed merges.",
   "events": [
     {
       "at": "2026-10-07T22:43:40+00:00",
@@ -19,6 +19,10 @@
     {
       "at": "2026-10-07T22:50:28+00:00",
       "summary": "Reviewed 22 primary sources across abstraction, ontology semantics, software contracts, graph retrieval, coordination and distributed state; recorded access limits and pinned source versions. Beginning formal synthesis."
+    },
+    {
+      "at": "2026-10-07T22:52:05+00:00",
+      "summary": "Formalized contextual abstraction domains, task-relative sufficiency, typed polyhierarchies and claim admission. Added proofs of composition/separation and counterexamples for summary loss and inconsistent distributed merges."
     }
   ],
   "running": true
