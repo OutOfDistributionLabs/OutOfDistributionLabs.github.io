@@ -1,0 +1,207 @@
+{
+  "schema_version": 1,
+  "title": "Intuition engine benchmarking",
+  "status": "planning",
+  "frozen": false,
+  "primary": {
+    "benchmark": "SWE-bench Verified",
+    "endpoint": "official_resolved",
+    "contrast": [
+      "C",
+      "A"
+    ],
+    "target_absolute_effect": 0.05,
+    "alpha": 0.05,
+    "power": 0.8,
+    "attempts_per_instance": 1,
+    "analysis": "paired difference; repository-stratified instance bootstrap; exact McNemar",
+    "bootstrap_draws": 10000
+  },
+  "secondary": {
+    "mechanism_contrasts": [
+      "RepoQA C-B",
+      "Verified C-B"
+    ],
+    "multiplicity": "Holm",
+    "efficiency": "exploratory; separate powered non-inferiority study"
+  },
+  "arms": {
+    "A": "native",
+    "B": "flat BM25 plus symbol MCP",
+    "C": "full evidence-grounded graph MCP"
+  },
+  "seeds": [
+    20261007
+  ],
+  "budgets": {
+    "usd_per_instance": null,
+    "wall_seconds": null,
+    "max_model_tokens": null,
+    "cpu_seconds": null,
+    "ram_mb": null,
+    "response_tokens": 2000
+  },
+  "locks": {
+    "dataset_revision": null,
+    "manifest_sha256": null,
+    "model_id": null,
+    "harness_version": null,
+    "engine_commit": null,
+    "scorer_version": null,
+    "image_digests": null,
+    "prompt_sha256": null,
+    "pricing_version": null,
+    "analysis_commit": null
+  },
+  "stages": [
+    {
+      "id": 1,
+      "name": "Scope",
+      "depth": 3,
+      "criteria": [
+        "measurable_outcomes",
+        "bounded_claims",
+        "falsifiers",
+        "intervention_defined"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Benchmark qualification",
+      "depth": 4,
+      "criteria": [
+        "assets_pinned",
+        "official_scorer_checked",
+        "answer_boundary_checked",
+        "splits_audited",
+        "resources_feasible"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Experimental design",
+      "depth": 5,
+      "criteria": [
+        "primary_estimand",
+        "strong_baseline",
+        "equal_budgets",
+        "analysis_declared",
+        "power_assessed"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Engine specification",
+      "depth": 4,
+      "criteria": [
+        "common_api",
+        "no_oracle_inputs",
+        "source_evidence",
+        "revision_policy",
+        "costed_intervention"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Engine implementation",
+      "depth": 5,
+      "criteria": [
+        "mcp_round_trip",
+        "parser_coverage",
+        "stale_evidence_test",
+        "bounded_access",
+        "flat_baseline_test"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Harness and observability",
+      "depth": 5,
+      "criteria": [
+        "agent_mcp_call",
+        "fresh_arm_state",
+        "complete_accounting",
+        "isolated_evaluator",
+        "replay_checked"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Development pilot",
+      "depth": 5,
+      "criteria": [
+        "pilot_manifest",
+        "stable_execution",
+        "no_leakage",
+        "tuning_recorded",
+        "costs_measured"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Confirmatory freeze",
+      "depth": 4,
+      "criteria": [
+        "power_or_estimation_declared",
+        "untouched_manifest",
+        "numeric_budgets",
+        "all_versions_locked",
+        "analysis_tested",
+        "stopping_rule"
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Confirmatory execution",
+      "depth": 5,
+      "criteria": [
+        "all_units_accounted",
+        "symmetric_retry",
+        "valid_pairs",
+        "sealed_outputs",
+        "locked_analysis"
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Mechanism and robustness",
+      "depth": 4,
+      "criteria": [
+        "secondary_family_fixed",
+        "all_variants_reported",
+        "oracle_labels",
+        "independent_calibration_labels",
+        "costs_reported"
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Cross-harness and scale replication",
+      "depth": 5,
+      "criteria": [
+        "adapter_conformance",
+        "within_harness_pairs",
+        "versioned_models",
+        "actual_tool_calls",
+        "scale_claims_measured"
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Report and reproduce",
+      "depth": 4,
+      "criteria": [
+        "claim_evidence_audit",
+        "nulls_reported",
+        "sanitized_artifacts",
+        "reproduction_attempt",
+        "deviations_public"
+      ]
+    }
+  ],
+  "notes": [
+    "Numbers in hypotheses are design targets, not results.",
+    "No dataset acquisition, engine implementation or paired agent trials have occurred.",
+    "Planning completion is separate from programme sentinel advancement."
+  ]
+}

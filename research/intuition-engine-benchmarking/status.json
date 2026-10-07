@@ -1,8 +1,8 @@
 {
-  "step": 3,
+  "step": 4,
   "running": true,
-  "updated_at": "2026-10-07T23:43:22+00:00",
-  "summary": "Specified one primary patch-resolution thesis, strong flat-index controls, equal total budgets and paired analysis. Sentinel: power limits are explicit (500 tasks may not resolve a five-point effect); no oracle coverage or interactive-session carryover is allowed.",
+  "updated_at": "2026-10-07T23:43:27+00:00",
+  "summary": "Designed a minimal evidence-grounded adviser MCP with matched flat/full schemas, revision invalidation and measured coverage signals. Sentinel: intervention and accounting are explicit; implementation and actual MCP client/agent calls remain future acceptance gates.",
   "events": [
     {
       "at": "2026-10-07T23:37:17+00:00",
@@ -19,6 +19,10 @@
     {
       "at": "2026-10-07T23:41:36+00:00",
       "summary": "Specified one primary patch-resolution thesis, strong flat-index controls, equal total budgets and paired analysis. Sentinel: power limits are explicit (500 tasks may not resolve a five-point effect); no oracle coverage or interactive-session carryover is allowed."
+    },
+    {
+      "at": "2026-10-07T23:43:27+00:00",
+      "summary": "Designed a minimal evidence-grounded adviser MCP with matched flat/full schemas, revision invalidation and measured coverage signals. Sentinel: intervention and accounting are explicit; implementation and actual MCP client/agent calls remain future acceptance gates."
     }
   ]
 }
