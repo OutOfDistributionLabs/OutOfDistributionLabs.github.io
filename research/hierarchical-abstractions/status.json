@@ -1,7 +1,7 @@
 {
   "title": "Hierarchical abstractions as a basis for ontology graphs",
   "step": 4,
-  "updated_at": "2026-10-07T22:54:22+00:00",
+  "updated_at": "2026-10-07T22:54:28+00:00",
   "summary": "Synthetic evaluation complete: 100, 300 and 1,000 logical workers, 20 seeds and overlap/coverage stress tests. Complete hierarchy matches flat indexing; omissions lose recall and coverage fallback raises cost. No LLM or patch-success claim.",
   "events": [
     {
