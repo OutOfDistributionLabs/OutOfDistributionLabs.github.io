@@ -1,8 +1,8 @@
 {
   "title": "Hierarchical abstractions as a basis for ontology graphs",
-  "step": 5,
-  "updated_at": "2026-10-07T23:12:41+00:00",
-  "summary": "White paper and supporting materials published; homepage Research links added. Final live-link and mobile checks are underway.",
+  "step": 6,
+  "updated_at": "2026-10-07T23:14:23+00:00",
+  "summary": "Published and verified: branded 20-page PDF, LaTeX, 22-source literature map, reproducible supporting evidence and reusable workflow. Mobile layouts, Research and Close buttons, keyboard focus, reduced motion and live GitHub Pages artifacts passed final checks. Research complete; periodic heartbeat notifications stopped.",
   "events": [
     {
       "at": "2026-10-07T22:43:40+00:00",
@@ -39,7 +39,11 @@
     {
       "at": "2026-10-07T23:12:09+00:00",
       "summary": "White paper and supporting materials published; homepage Research links added. Final live-link and mobile checks are underway."
+    },
+    {
+      "at": "2026-10-07T23:14:23+00:00",
+      "summary": "Published and verified: branded 20-page PDF, LaTeX, 22-source literature map, reproducible supporting evidence and reusable workflow. Mobile layouts, Research and Close buttons, keyboard focus, reduced motion and live GitHub Pages artifacts passed final checks. Research complete; periodic heartbeat notifications stopped."
     }
   ],
-  "running": true
+  "running": false
 }
