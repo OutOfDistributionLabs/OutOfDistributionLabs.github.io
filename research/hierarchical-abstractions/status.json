@@ -1,8 +1,8 @@
 {
   "title": "Hierarchical abstractions as a basis for ontology graphs",
-  "step": 4,
-  "updated_at": "2026-10-07T23:10:40+00:00",
-  "summary": "Synthetic evaluation complete: 100, 300 and 1,000 logical workers, 20 seeds and overlap/coverage stress tests. Complete hierarchy matches flat indexing; omissions lose recall and coverage fallback raises cost. No LLM or patch-success claim.",
+  "step": 5,
+  "updated_at": "2026-10-07T23:11:36+00:00",
+  "summary": "Compiled and reviewed the branded 20-page LaTeX white paper: 22 cited sources, three propositions, software counterexamples, reproducible finite checks and synthetic results. Citation/build/layout checks pass; reusable workflow isolation and rollback tests pass.",
   "events": [
     {
       "at": "2026-10-07T22:43:40+00:00",
@@ -31,6 +31,10 @@
     {
       "at": "2026-10-07T22:54:22+00:00",
       "summary": "Synthetic evaluation complete: 100, 300 and 1,000 logical workers, 20 seeds and overlap/coverage stress tests. Complete hierarchy matches flat indexing; omissions lose recall and coverage fallback raises cost. No LLM or patch-success claim."
+    },
+    {
+      "at": "2026-10-07T23:11:36+00:00",
+      "summary": "Compiled and reviewed the branded 20-page LaTeX white paper: 22 cited sources, three propositions, software counterexamples, reproducible finite checks and synthetic results. Citation/build/layout checks pass; reusable workflow isolation and rollback tests pass."
     }
   ],
   "running": true

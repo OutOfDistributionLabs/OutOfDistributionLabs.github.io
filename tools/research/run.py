@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """Config-driven OOD Labs research publishing. Python standard library only."""
-import argparse, datetime as dt, fcntl, html, json, os, signal, subprocess, sys, time, urllib.request
+import argparse, datetime as dt, fcntl, html, json, os, re, signal, subprocess, sys, time, urllib.request
 from pathlib import Path
 from zoneinfo import ZoneInfo
 ROOT=Path(__file__).resolve().parents[2]
 DEFAULT_STEPS=['Scope and research protocol','Primary-source literature review','Formal model and architecture','Reproducible evaluation','Manuscript and review','Publication and verification']
 def now():return dt.datetime.now(dt.timezone.utc).isoformat(timespec='seconds')
 def project_path(name):
+    if not re.fullmatch(r'[a-z0-9][a-z0-9-]*',name):raise ValueError('Use a lowercase project slug containing letters, digits and hyphens')
     path=(ROOT/'research'/name).resolve()
     if not path.is_relative_to(ROOT/'research') or path==ROOT/'research':raise ValueError('Project must be inside research/')
     return path
@@ -22,7 +23,7 @@ def notify(config,title,message):
         return True
     except Exception as exc:print(f'Notification failed: {exc}',file=sys.stderr,flush=True);return False
 
-def render(project,c,s):
+def render(project,c,s,published_only=False):
     e=html.escape;steps=c['steps'];done=s['step']==len(steps)
     stamp=dt.datetime.fromisoformat(s['updated_at']).astimezone(ZoneInfo(c.get('timezone','America/Los_Angeles'))).strftime('%b %d, %Y · %H:%M %Z')
     items=[]
@@ -30,15 +31,15 @@ def render(project,c,s):
         state='Complete' if i<s['step'] else ('In progress' if i==s['step'] and s['running'] else 'Planned')
         items.append(f'<li><span class="number">{i+1:02}</span><span>{e(label)}</span><small>{state}</small></li>')
     events=''.join(f'<li><time>{e(event["at"])}</time><p>{e(event["summary"])}</p></li>' for event in reversed(s['events']))
-    resources=''.join(f'<a href="{e(item["path"],quote=True)}">{e(item["label"])}</a>' for item in c['resources'] if (project/item['path']).is_file())
+    resources=''.join(f'<a href="{e(item["path"],quote=True)}">{e(item["label"])}</a>' for item in c['resources'] if (project/item['path']).is_file() and (not published_only or subprocess.run(['git','cat-file','-e','HEAD:'+str((project/item['path']).relative_to(ROOT))],cwd=ROOT,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL).returncode==0))
     page='''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#080b0d"><title>Research progress · Out of Distribution Labs</title><style>
 :root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#080b0d;color:#b4c0cc;font:15px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,Helvetica,sans-serif}main{max-width:1050px;padding:48px 32px 80px;margin:auto}a{color:inherit;text-decoration:none}a:hover{color:#e4bd83}a:focus-visible{outline:2px solid #e4bd83;outline-offset:4px}.brand{font-size:22px;line-height:1.3;letter-spacing:.04em;opacity:.7}.amber{color:#e4bd83}.labs{display:block}nav{display:flex;justify-content:space-between;gap:24px;align-items:start}.back{font-size:12px;min-height:44px;padding:8px 0}h1{font-size:clamp(28px,5vw,48px);line-height:1.2;font-weight:400;max-width:800px;margin:64px 0 24px}h2{font-size:18px;font-weight:400;margin:40px 0 16px}.meta{color:#8d9eaa;font-size:12px}.lead{max-width:720px}.progress{height:2px;background:#23303a;margin:32px 0}.progress span{display:block;height:100%;background:#e4bd83}ol{list-style:none;padding:0;margin:0}.steps li{display:grid;grid-template-columns:32px 1fr auto;gap:16px;padding:18px 0;border-top:1px solid #b1c6d51c}.number,small{font-size:12px;color:#8d9eaa}.resources{display:flex;flex-wrap:wrap;gap:16px 28px}.resources a{min-height:44px;padding:8px 0;color:#e4bd83}.events li{border-top:1px solid #b1c6d51c;padding:16px 0}.events time{font-size:11px;color:#8d9eaa}.events p{margin:6px 0}.note{font-size:12px;color:#8d9eaa;max-width:760px}@media(max-width:600px){main{padding:24px 24px 56px}h1{margin-top:48px}.steps li{grid-template-columns:24px 1fr}.steps small{grid-column:2}.brand{font-size:18px}}
 </style></head><body><main><nav><a class="brand" href="../../">Out <span class="amber">of</span> Distribution<span class="labs">Labs</span></a><a class="back" href="../../">Home ↗</a></nav>'''
     phase='Published · research complete' if done else ('Research in progress' if s['running'] else 'Paused')
     page+=f'<h1>{e(c["title"])}</h1><p class="lead">{e(c["subtitle"])}</p><p class="meta">{phase} · {s["step"]}/{len(steps)} steps complete · Updated {stamp}</p><div class="progress"><span style="width:{s["step"]/len(steps)*100:.1f}%"></span></div><p>{e(s["summary"])}</p><h2>Research process</h2><ol class="steps">'+''.join(items)+'</ol><h2>Research materials</h2><div class="resources">'+resources+'</div><h2>Checkpoint log</h2><ol class="events">'+events+f'</ol><p class="note">{e(c["evidence_note"])}</p><p class="note"><a href="../PROCESS.md">Reusable research process</a></p></main></body></html>'
     (project/'progress.html').write_text(page)
-def save(project,c,s):
-    target=project/'status.json';temporary=project/'status.json.tmp';temporary.write_text(json.dumps(s,indent=2)+'\n');temporary.replace(target);render(project,c,s)
+def save(project,c,s,published_only=False):
+    target=project/'status.json';temporary=project/'status.json.tmp';temporary.write_text(json.dumps(s,indent=2)+'\n');temporary.replace(target);render(project,c,s,published_only)
 def git(*args,check=True):return subprocess.run(['git',*args],cwd=ROOT,check=check)
 def publish(c,paths,message):
     git('add','--',*paths)
@@ -53,16 +54,20 @@ def lock():
 def update(project,kind,summary=None,step=None,extra=()):
     with lock():
         c,s=load(project)
+        previous=json.loads(json.dumps(s))
+        head_before=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
         if kind=='heartbeat' and (not s['running'] or s['step']>=len(c['steps'])):return False
         if step is not None:
             if step!=s['step']+1 or step>len(c['steps']):raise ValueError('Complete steps in sequence')
             s['step']=step
         if kind=='pause':s['running']=False
-        if kind=='resume':s['running']=True
+        if kind=='resume':
+            if s['step']==len(c['steps']):raise ValueError('Research is already complete; initialize another project')
+            s['running']=True
         if s['step']==len(c['steps']):s['running']=False
         s['updated_at']=now()
         if summary:s['summary']=summary;s['events'].append({'at':s['updated_at'],'summary':summary})
-        save(project,c,s)
+        save(project,c,s,published_only=kind=='heartbeat')
         relative=str(project.relative_to(ROOT))
         paths=[relative+'/status.json',relative+'/progress.html'] if kind=='heartbeat' else [relative]
         for value in extra:
@@ -70,7 +75,16 @@ def update(project,kind,summary=None,step=None,extra=()):
             if not resolved.is_relative_to(ROOT):raise ValueError('Extra files must be in repository')
             paths.append(str(resolved.relative_to(ROOT)))
         message=f'Research heartbeat: {c["id"]}' if kind=='heartbeat' else f'Research {c["id"]} step {s["step"]}: {s["summary"][:72]}'
-        publish(c,paths,message)
+        try:
+            publish(c,paths,message)
+        except Exception as exc:
+            head_after=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
+            if head_after==head_before:
+                # Failed validation/commit: do not advance a checkpoint just in local state.
+                save(project,c,previous,published_only=True)
+                git('add','--',relative+'/status.json',relative+'/progress.html')
+            notify(c,'OOD Labs · publishing error',str(exc)+'\n'+c['progress_url'])
+            raise
         label='Research complete' if s['step']==len(c['steps']) else f'Research {s["step"]}/{len(c["steps"])}'
         if not notify(c,'OOD Labs · '+label,('Heartbeat: ' if kind=='heartbeat' else 'Checkpoint: ')+s['summary']+'\n'+c['progress_url']):raise RuntimeError('Published, but ntfy delivery failed')
         return True
@@ -91,6 +105,12 @@ def spawn(project):
     c,_=load(project);log=open('/tmp/oodlabs-research-'+project.name+'.log','a')
     process=subprocess.Popen([sys.executable,__file__,'--project',project.name,'heartbeat','--interval',str(c.get('heartbeat_seconds',120))],stdout=log,stderr=log,start_new_session=True)
     pidpath.write_text(str(process.pid));print(f'Heartbeat PID {process.pid}',flush=True)
+def stop(project):
+    pidpath=Path('/tmp')/('oodlabs-research-'+project.name+'.pid')
+    if pidpath.exists():
+        try:os.kill(int(pidpath.read_text()),signal.SIGTERM)
+        except (ProcessLookupError,ValueError):pass
+        pidpath.unlink(missing_ok=True)
 def initialize(project,title,topic):
     if (project/'research.json').exists():raise ValueError('Project already configured')
     project.mkdir(parents=True,exist_ok=True)
@@ -109,7 +129,10 @@ def main():
     elif args.command=='step':
         if args.step is None or not args.summary:parser.error('step requires --step and --summary')
         update(project,'checkpoint',args.summary,args.step,args.extra)
-    elif args.command=='pause':update(project,'pause',args.summary or 'Research paused.',extra=args.extra)
+        c,s=load(project)
+        if s['step']==len(c['steps']):stop(project)
+    elif args.command=='pause':
+        update(project,'pause',args.summary or 'Research paused.',extra=args.extra);stop(project)
     elif args.command=='render':
         c,s=load(project);render(project,c,s)
     else:

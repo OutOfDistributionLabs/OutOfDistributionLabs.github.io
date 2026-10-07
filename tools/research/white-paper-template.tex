@@ -1,0 +1,45 @@
+% Copy to research/PROJECT/white-paper.tex; fill scope, evidence and references.
+\documentclass[11pt]{article}
+\usepackage[margin=1in,headheight=15pt]{geometry}
+\usepackage[T1]{fontenc}\usepackage[utf8]{inputenc}\usepackage{lmodern}
+\usepackage[scaled=.95]{helvet}\renewcommand{\familydefault}{\sfdefault}
+\usepackage[expansion=false]{microtype}
+\usepackage{amsmath,amssymb,amsthm,booktabs,tabularx,graphicx,enumitem,titlesec,fancyhdr,xcolor,tikz,xurl}
+\usetikzlibrary{calc,arrows.meta,positioning}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[colorlinks=true,linkcolor=Ink,citecolor=Blue,urlcolor=Blue]{hyperref}
+\definecolor{Ink}{HTML}{101B23}\definecolor{Blue}{HTML}{4E758E}\definecolor{Amber}{HTML}{B18A50}\definecolor{Champagne}{HTML}{E4BD83}
+\newcommand{\papertitle}{Research title}
+\newcommand{\papersubtitle}{A precise statement of scope}
+\newcommand{\papershorttitle}{Short title}
+\newcommand{\paperdate}{\today}
+\newcommand{\paperid}{Research / 02}
+\newcommand{\paperstatus}{Draft: distinguish prior work, proposals and observations.}
+\hypersetup{pdftitle={\papertitle},pdfauthor={Out of Distribution Labs}}
+\urlstyle{same}\color{Ink}
+\setlength{\parindent}{0pt}\setlength{\parskip}{7pt}\setlength{\emergencystretch}{2em}
+\setlist{leftmargin=*,itemsep=3pt}
+\titleformat{\section}{\Large\bfseries}{\textcolor{Amber}{\thesection}}{.7em}{}
+\pagestyle{fancy}\fancyhf{}\fancyhead[L]{\small Out \textcolor{Amber}{of} Distribution Labs}\fancyhead[R]{\small\paperid}\fancyfoot[L]{\scriptsize\papershorttitle}\fancyfoot[R]{\thepage}
+\newtheorem{definition}{Definition}\newtheorem{proposition}{Proposition}
+\begin{document}
+\begin{titlepage}
+\begin{tikzpicture}[remember picture,overlay]\fill[Ink] (current page.north west) rectangle ($(current page.north east)+(0,-10cm)$);\end{tikzpicture}
+{\color{white}\Large Out \textcolor{Champagne}{of} Distribution\\Labs\par}
+\vspace{1cm}{\color{white}\fontsize{28}{34}\selectfont\papertitle\par}
+\vspace{.5cm}{\color{Champagne}\papersubtitle\par}
+\vspace{3cm}{\Large Out of Distribution Labs\par}\paperdate\par
+\vspace{1cm}\paperstatus\par
+\vfill\url{https://outofdistributionlabs.github.io/}
+\end{titlepage}
+\begin{abstract}State the question, method, contribution, evidence and principal limitation.\end{abstract}
+\tableofcontents
+\section{Question and scope}Define the audience and what the paper establishes.
+\section{Research method and prior work}Record inclusion criteria, source versions and access depth.
+\section{Definitions and development}Give explicit assumptions, arguments and counterexamples.
+\section{Evaluation}Use proofs or reproducible experiments appropriate to the claim.
+\section{Limitations and research agenda}State alternatives, untested assumptions and next experiments.
+\section{Conclusion}State the supported result without overstating novelty or scope.
+% Add verified references.bib, cite its keys, then uncomment:
+% \bibliographystyle{plainnat}\bibliography{references}
+\end{document}

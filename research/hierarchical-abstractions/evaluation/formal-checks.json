@@ -1,0 +1,7 @@
+{
+  "concrete_interval_adjunctions": 512,
+  "interval_coarse_adjunctions": 112,
+  "composed_adjunctions": 224,
+  "summary_counterexample_checked": true,
+  "merge_counterexample_checked": true
+}

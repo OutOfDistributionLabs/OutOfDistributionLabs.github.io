@@ -59,6 +59,10 @@ Use append-only candidate claim records and provenance as replicated sets; use a
 
 If workers read overlapping sets and write shared symbols, snapshot validation must include relevant read dependencies, not only identical file writes. Schema extensions can change entailments outside an edited region. Conservative extension over signature Sigma would preserve all old Sigma entailments, but a full test may be undecidable in expressive logics. Use restricted fragments, locality modules, bounded regression query suites and explicit scope limits.
 
+### Restricted safe parallel extension
+
+If T1=T∪Delta1 and T2=T∪Delta2 are each model-conservative extensions of T on the same domains, their private signatures are disjoint, and each delta mentions only its own private vocabulary plus T's signature, then their union is model-conservative over T. Every base model has two expansions; combine their disjoint private interpretations while leaving the shared base interpretation fixed. Each delta still sees its original expansion, so both hold. This elementary proposition is a sufficient condition, not a claim that ordinary agent edits satisfy it. Overlapping identities, contract updates and arbitrary instance assertions require stronger governance.
+
 ## 7. Scaling and routing claims
 
 A complete directed all-to-all notification graph contains N(N−1) edges. If a declared routing policy sends each update to at most k workers, directed deliveries per update are ≤k. This is an arithmetic bound on a policy, not a general theorem that ontology use turns coordination into O(Nk), since indexing, selection, validation, graph maintenance and data replication have their own costs.

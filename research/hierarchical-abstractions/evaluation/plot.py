@@ -3,6 +3,7 @@ from pathlib import Path
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+plt.rcParams.update({'pdf.fonttype':42,'ps.fonttype':42,'font.family':'DejaVu Sans'})
 p=Path(__file__).resolve().parent;s=json.loads((p/'results.json').read_text())['summary'];fig,axes=plt.subplots(1,3,figsize=(11.5,3.4))
 colors={'broadcast':'#9aa5b1','flat-index':'#4e758e','primary-hierarchy':'#b98b48','guarded-multiview':'#162a3b'}
 for ax,scenario in zip(axes,['local','cross-cutting','coverage-gap']):
