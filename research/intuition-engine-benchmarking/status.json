@@ -1,8 +1,8 @@
 {
-  "step": 2,
+  "step": 3,
   "running": true,
-  "updated_at": "2026-10-07T23:41:21+00:00",
-  "summary": "Audited four existing benchmarks and MCP primary documentation. Sentinel: selected Verified for patch outcomes and RepoQA for mechanism testing; pinned source references, documented scorer rules and corpus/version traps. Dataset execution is pending.",
+  "updated_at": "2026-10-07T23:41:36+00:00",
+  "summary": "Specified one primary patch-resolution thesis, strong flat-index controls, equal total budgets and paired analysis. Sentinel: power limits are explicit (500 tasks may not resolve a five-point effect); no oracle coverage or interactive-session carryover is allowed.",
   "events": [
     {
       "at": "2026-10-07T23:37:17+00:00",
@@ -15,6 +15,10 @@
     {
       "at": "2026-10-07T23:39:42+00:00",
       "summary": "Audited four existing benchmarks and MCP primary documentation. Sentinel: selected Verified for patch outcomes and RepoQA for mechanism testing; pinned source references, documented scorer rules and corpus/version traps. Dataset execution is pending."
+    },
+    {
+      "at": "2026-10-07T23:41:36+00:00",
+      "summary": "Specified one primary patch-resolution thesis, strong flat-index controls, equal total budgets and paired analysis. Sentinel: power limits are explicit (500 tasks may not resolve a five-point effect); no oracle coverage or interactive-session carryover is allowed."
     }
   ]
 }
