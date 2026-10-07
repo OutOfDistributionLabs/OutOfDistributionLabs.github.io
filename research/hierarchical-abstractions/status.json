@@ -1,7 +1,7 @@
 {
   "title": "Hierarchical abstractions as a basis for ontology graphs",
   "step": 3,
-  "updated_at": "2026-10-07T22:52:05+00:00",
+  "updated_at": "2026-10-07T22:52:26+00:00",
   "summary": "Formalized contextual abstraction domains, task-relative sufficiency, typed polyhierarchies and claim admission. Added proofs of composition/separation and counterexamples for summary loss and inconsistent distributed merges.",
   "events": [
     {
