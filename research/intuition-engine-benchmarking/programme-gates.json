@@ -1,0 +1,107 @@
+[
+  {
+    "stage": 1,
+    "disposition": "advance",
+    "reviewer": "Codex, methodology author",
+    "review_role": "author self-review",
+    "independent": false,
+    "artifacts": [
+      "research-plan.md"
+    ],
+    "checks": {
+      "measurable_outcomes": {
+        "pass": true,
+        "reason": "Official resolved fraction and cost are measurable.",
+        "evidence": [
+          "research-plan.md"
+        ]
+      },
+      "bounded_claims": {
+        "pass": true,
+        "reason": "Claims are bounded to a fixed model/harness and benchmark.",
+        "evidence": [
+          "research-plan.md"
+        ]
+      },
+      "falsifiers": {
+        "pass": true,
+        "reason": "Null, harmful and excessive-overhead outcomes are explicit.",
+        "evidence": [
+          "research-plan.md"
+        ]
+      },
+      "intervention_defined": {
+        "pass": true,
+        "reason": "Repository evidence and next-inspection support are the intervention.",
+        "evidence": [
+          "research-plan.md"
+        ]
+      }
+    },
+    "limitations": "Scope review only; no independent reviewer or measured effectiveness.",
+    "next_allowed_action": "Qualify benchmark assets, scorer, task splits and resource envelope.",
+    "recorded_at": "2026-10-07T23:44:17+00:00",
+    "protocol_sha256": "1f70d9856cb7d177676ea68fe9de606748562adca4bdaae157e527fbd998127e",
+    "artifact_sha256": {
+      "research-plan.md": "595713d49c1fbafddc2aec4a74e35acd94af44102d955d2cc9bb6a814eed3d11"
+    },
+    "parent_record_sha256": null,
+    "machine_check_scope": "Sequence, attestations and artifact integrity only; scientific judgments are reviewer attestations."
+  },
+  {
+    "stage": 2,
+    "disposition": "redo",
+    "reviewer": "Codex, methodology author",
+    "review_role": "author self-review",
+    "independent": false,
+    "artifacts": [
+      "benchmarks.md"
+    ],
+    "checks": {
+      "assets_pinned": {
+        "pass": false,
+        "reason": "Documentation references are pinned, but actual datasets and images are not acquired.",
+        "evidence": [
+          "benchmarks.md"
+        ]
+      },
+      "official_scorer_checked": {
+        "pass": false,
+        "reason": "Official scorer inspected; evaluator smoke tests not run.",
+        "evidence": [
+          "benchmarks.md"
+        ]
+      },
+      "answer_boundary_checked": {
+        "pass": false,
+        "reason": "Isolation specified; leakage probes not executed.",
+        "evidence": [
+          "benchmarks.md"
+        ]
+      },
+      "splits_audited": {
+        "pass": false,
+        "reason": "Repository/task overlap audit needs actual manifests.",
+        "evidence": [
+          "benchmarks.md"
+        ]
+      },
+      "resources_feasible": {
+        "pass": false,
+        "reason": "Local tools exist; actual images, resource measurements and pricing are pending.",
+        "evidence": [
+          "benchmarks.md"
+        ]
+      }
+    },
+    "remediation": "Acquire and pin eligible benchmark assets, audit splits and licenses, run isolated scorer/leakage probes, and measure resources before any benchmark trial.",
+    "next_allowed_action": "Benchmark qualification; design refinement may continue but no trial readiness claim.",
+    "recorded_at": "2026-10-07T23:44:17+00:00",
+    "protocol_sha256": "1f70d9856cb7d177676ea68fe9de606748562adca4bdaae157e527fbd998127e",
+    "artifact_sha256": {
+      "benchmarks.md": "d18115a386cea6b9e9237685e3158a00c70bc864f3c8725d67d696c284e61bbf"
+    },
+    "parent_record_sha256": "78c0b7d0d60a6bf86123dbc098f6dd07486edf235b80d7c0579d8df4e3347e7d",
+    "machine_check_scope": "Sequence, attestations and artifact integrity only; scientific judgments are reviewer attestations."
+  }
+]

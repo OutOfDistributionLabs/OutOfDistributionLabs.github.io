@@ -1,0 +1,42 @@
+{
+  "stage": 1,
+  "disposition": "advance",
+  "reviewer": "Codex, methodology author",
+  "review_role": "author self-review",
+  "independent": false,
+  "artifacts": [
+    "research-plan.md"
+  ],
+  "checks": {
+    "measurable_outcomes": {
+      "pass": true,
+      "reason": "Official resolved fraction and cost are measurable.",
+      "evidence": [
+        "research-plan.md"
+      ]
+    },
+    "bounded_claims": {
+      "pass": true,
+      "reason": "Claims are bounded to a fixed model/harness and benchmark.",
+      "evidence": [
+        "research-plan.md"
+      ]
+    },
+    "falsifiers": {
+      "pass": true,
+      "reason": "Null, harmful and excessive-overhead outcomes are explicit.",
+      "evidence": [
+        "research-plan.md"
+      ]
+    },
+    "intervention_defined": {
+      "pass": true,
+      "reason": "Repository evidence and next-inspection support are the intervention.",
+      "evidence": [
+        "research-plan.md"
+      ]
+    }
+  },
+  "limitations": "Scope review only; no independent reviewer or measured effectiveness.",
+  "next_allowed_action": "Qualify benchmark assets, scorer, task splits and resource envelope."
+}

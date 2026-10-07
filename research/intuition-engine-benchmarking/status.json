@@ -1,8 +1,8 @@
 {
-  "step": 4,
+  "step": 5,
   "running": true,
-  "updated_at": "2026-10-07T23:43:27+00:00",
-  "summary": "Designed a minimal evidence-grounded adviser MCP with matched flat/full schemas, revision invalidation and measured coverage signals. Sentinel: intervention and accounting are explicit; implementation and actual MCP client/agent calls remain future acceptance gates.",
+  "updated_at": "2026-10-07T23:45:04+00:00",
+  "summary": "Built and tested the reusable local methodology CLI: protocol validation, rough power, paired schedules and integrity-checked sequential sentinel records. Six tests pass. Sentinel holds actual experiments at benchmark qualification; unfrozen confirmatory validation correctly fails.",
   "events": [
     {
       "at": "2026-10-07T23:37:17+00:00",
@@ -23,6 +23,10 @@
     {
       "at": "2026-10-07T23:43:27+00:00",
       "summary": "Designed a minimal evidence-grounded adviser MCP with matched flat/full schemas, revision invalidation and measured coverage signals. Sentinel: intervention and accounting are explicit; implementation and actual MCP client/agent calls remain future acceptance gates."
+    },
+    {
+      "at": "2026-10-07T23:45:04+00:00",
+      "summary": "Built and tested the reusable local methodology CLI: protocol validation, rough power, paired schedules and integrity-checked sequential sentinel records. Six tests pass. Sentinel holds actual experiments at benchmark qualification; unfrozen confirmatory validation correctly fails."
     }
   ]
 }
