@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#080b0d"><title>Out of Distribution Labs</title><meta name="description" content="Out of Distribution Labs."><link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23080b0d'/%3E%3Cg fill='%23ced9ec'%3E%3Ccircle cx='10' cy='12' r='2'/%3E%3Ccircle cx='21' cy='18' r='2'/%3E%3C/g%3E%3Ccircle cx='17' cy='8' r='2' fill='%23e4bd83'/%3E%3C/svg%3E">
+<style>
+:root{--font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,Helvetica,sans-serif;--frame-inset:32px;--frame-ink:#b4c0cc}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;overflow:hidden;background:#080b0d;color:var(--frame-ink);font-family:var(--font-sans)}
+main{position:relative;height:100dvh;isolation:isolate;background:radial-gradient(ellipse at 50% 46%,#141e23,#0c1115 42%,#080b0d 74%)}
+canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.brand{position:absolute;z-index:1;left:calc(var(--frame-inset) + env(safe-area-inset-left));top:calc(var(--frame-inset) + env(safe-area-inset-top));pointer-events:none}
+h1{margin:0;font-size:22px;font-weight:400;line-height:1.3;letter-spacing:.04em;opacity:.6}
+.brand .labs{display:block}.title-accent{color:#e4bd83}
+button{font:400 11px/19px var(--font-sans);letter-spacing:.04em;color:var(--frame-ink);border:0;background:transparent;min-height:44px;cursor:pointer;touch-action:manipulation}
+.research-tab,.research-close{position:absolute;top:calc(var(--frame-inset) + env(safe-area-inset-top) - 12px);right:calc(var(--frame-inset) + env(safe-area-inset-right) - 12px);height:44px;padding:0 12px;display:flex;align-items:center;opacity:.6}
+.research-tab{z-index:2}.research-close{z-index:2}
+button:hover{color:#e4bd83;opacity:1}button:focus-visible,.research-list a:focus-visible{outline:2px solid #e4bd83;outline-offset:3px}
+body.research-open .brand,body.research-open main>nav{visibility:hidden}
+/* Research lives on this page; research/ is reserved for PDFs. */
+.research-overlay{position:fixed;inset:0;width:100%;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;background:transparent;backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);color:var(--frame-ink);overflow:hidden;font-family:inherit}
+.research-overlay::backdrop{background:transparent}
+.research-overlay[open]{display:grid;grid-template-rows:calc(88px + env(safe-area-inset-top)) minmax(0,1fr);animation:research-enter .25s ease-out}
+.research-overlay-header{position:relative}
+.research-overlay h2{position:absolute;left:calc(var(--frame-inset) + env(safe-area-inset-left));top:calc(var(--frame-inset) + env(safe-area-inset-top));margin:0;font-size:22px;font-weight:400;line-height:1.3;letter-spacing:.04em;opacity:.85}
+.research-content{overflow:auto;overscroll-behavior:contain;padding:0 calc(var(--frame-inset) + env(safe-area-inset-right)) calc(var(--frame-inset) + env(safe-area-inset-bottom)) calc(var(--frame-inset) + env(safe-area-inset-left))}
+.research-list{list-style:none;margin:0;padding:0}.research-list li{border-top:1px solid #b1c6d51c}.research-list a{display:block;padding:24px 0;min-height:44px;font-size:16px;line-height:1.6;text-decoration:none;color:#c7d3dc}.research-list a:hover{color:#e4bd83}
+.research-empty{margin:16px 0 0;font-size:14px;line-height:1.7;color:#9dafbb}.research-empty[hidden]{display:none}
+@keyframes research-enter{from{opacity:0}to{opacity:1}}
+@media(max-width:600px),(max-height:500px){:root{--frame-inset:24px}}
+@media(max-width:420px){.brand{max-width:calc(100% - 128px)}}
+@media(prefers-reduced-motion:reduce){.research-overlay[open]{animation:none}}
+</style>
+</head>
+<body>
+<main>
+<header class="brand" data-style="quiet"><h1><span>Out <span class="title-accent">of</span> Distribution</span> <span class="labs">Labs</span></h1></header>
+<nav aria-label="Main navigation"><button type="button" class="research-tab" id="research" aria-haspopup="dialog">Research</button></nav>
+<canvas role="img" aria-label="Silver particles transform between mathematical shapes, with sparse amber outliers"></canvas>
+</main>
+<dialog class="research-overlay" id="researchOverlay" aria-labelledby="researchOverlayTitle"><header class="research-overlay-header"><h2 id="researchOverlayTitle">Research</h2><button type="button" id="closeResearch" class="research-close" aria-label="Close research" autofocus>Close</button></header><div class="research-content"><ul class="research-list" aria-label="Research from Out of Distribution Labs">
+<!-- Add papers here, with PDFs stored in research/:
+<li><a href="./research/paper-filename.pdf" target="_blank" rel="noopener">Paper title</a></li>
+-->
+</ul><p class="research-empty" id="researchEmpty">Publications will appear here.</p></div></dialog>
+<noscript><style>canvas,nav{display:none}</style></noscript>
+<script>
+(()=>{
+'use strict';
+const researchLink=document.getElementById('research'),researchOverlay=document.getElementById('researchOverlay');
+researchLink.addEventListener('click',()=>{document.body.classList.add('research-open');researchOverlay.showModal();});
+function closeResearch(){document.body.classList.remove('research-open');researchOverlay.close();researchLink.focus();}
+document.getElementById('closeResearch').addEventListener('click',closeResearch);
+researchOverlay.addEventListener('cancel',event=>{event.preventDefault();closeResearch();});
+researchOverlay.addEventListener('close',()=>{document.body.classList.remove('research-open');researchLink.focus();});
+document.getElementById('researchEmpty').hidden=document.querySelector('.research-list').children.length>0;
+const fixed={deformationAmount:64,deformationSpeed:3,rotationSpeed:.2,particleCount:2700,pointSize:.65,outlierCount:45,outlierBrightness:.75};
+const canvas=document.querySelector('canvas'),ctx=canvas.getContext('2d');if(!ctx)return;
+
+const hash=n=>{const v=Math.sin(n*127.1+311.7)*43758.5453;return v-Math.floor(v);},TAU=Math.PI*2;
+const gyroid=(x,y,z)=>Math.sin(x*3)*Math.cos(y*3)+Math.sin(y*3)*Math.cos(z*3)+Math.sin(z*3)*Math.cos(x*3);
+const points=[],outliers=[];
+for(let i=0;points.length<fixed.particleCount&&i<200000;i++){const x=(hash(i+29)*2-1)*1.05,y=(hash(i+7)*2-1)*1.05,z=(hash(i+17)*2-1)*1.05;if(Math.abs(gyroid(x,y,z))<.14)points.push({x,y,z,seed:hash(i+22)});}
+for(let i=0;outliers.length<fixed.outlierCount&&i<10000;i++){const x=(hash(i+1301)*2-1)*1.2,y=(hash(i+2711)*2-1)*1.2,z=(hash(i+4937)*2-1)*1.2;if(Math.abs(gyroid(x,y,z))>1.08&&outliers.every(p=>Math.hypot(p.x-x,p.y-y,p.z-z)>.25))outliers.push({x,y,z});}
+// Stable identities attach amber outliers to nearby blue samples.
+for(const outlier of outliers){let nearest=0,distance=Infinity;points.forEach((p,i)=>{const d=Math.hypot(p.x-outlier.x,p.y-outlier.y,p.z-outlier.z);if(d<distance){distance=d;nearest=i;}});outlier.anchor=nearest;outlier.offset=Math.max(.16,Math.min(.32,distance));const p=points[nearest],dot=(outlier.x-p.x)*Math.cos(p.x*3)+(outlier.y-p.y)*Math.cos(p.y*3)+(outlier.z-p.z)*Math.cos(p.z*3);outlier.side=dot<0?-1:1;}
+function createGeometry(){
+ let lx=.1,ly=.1,lz=.1;const attractor=[];
+ for(let k=0;k<1900+points.length*5;k++){const dx=10*(ly-lx),dy=lx*(28-lz)-ly,dz=lx*ly-8*lz/3;lx+=dx*.005;ly+=dy*.005;lz+=dz*.005;if(k>=1900&&(k-1900)%5===0)attractor.push([lx/22,(lz-25)/24,ly/24]);}
+ return [points.map(p=>[p.x,p.y,p.z]),attractor];
+}
+let geometry=createGeometry();
+let w=0,h=0,morphTime=20,rotationTime=0,clock=0,last=0,frame,progress=0;
+const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+function phase(){const half=120,c=clock%(half*2),back=c>=half;return back?1-(c-half)/half:c/half;}
+function surface(type,i){let [x,y,z]=geometry[type][i];const t=morphTime,a=fixed.deformationAmount/100;
+ if(type===0){const fx=3+a*.42*Math.sin(t*.047),fy=3+a*.36*Math.sin(t*.037),fz=3+a*.4*Math.sin(t*.041),phase=a*.52*Math.sin(t*.043),level=a*.25*Math.sin(t*.051);
+ for(let j=0;j<4;j++){const X=x*fx+phase,Y=y*fy-phase*.6,Z=z*fz+phase*.35,sx=Math.sin(X),sy=Math.sin(Y),sz=Math.sin(Z),cx=Math.cos(X),cy=Math.cos(Y),cz=Math.cos(Z);const f=sx*cy+sy*cz+sz*cx-level,gx=fx*(cx*cy-sz*sx),gy=fy*(-sx*sy+cy*cz),gz=fz*(-sy*sz+cz*cx),step=Math.max(-.12,Math.min(.12,f/Math.max(.08,gx*gx+gy*gy+gz*gz)));x-=step*gx;y-=step*gy;z-=step*gz;}
+ }else{const breath=1+.025*Math.sin(t*.033+y*2);x*=breath;z*=breath;y+=.025*Math.sin(t*.037+x*3);}
+ return [x,y,z];
+}
+function resize(){const box=document.querySelector('main').getBoundingClientRect();w=box.width;h=box.height;const dpr=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);draw();}
+function draw(){ctx.clearRect(0,0,w,h);progress=phase();const from=0,to=1;
+ const scale=Math.max(w,h)*.29,cy=h*.5;
+ const ax=.68,ay=.25+rotationTime*.018,az=-.42,ca=Math.cos(ax),sa=Math.sin(ax),cb=Math.cos(ay),sb=Math.sin(ay),cc=Math.cos(az),sc=Math.sin(az);
+ function project(x,y,z,seed,amber){let yy=y*ca-z*sa;z=y*sa+z*ca;y=yy;let xx=x*cb+z*sb;z=-x*sb+z*cb;x=xx;xx=x*cc-y*sc;y=x*sc+y*cc;x=xx;const f=8/(8-z);return {x:w*.5+x*scale*f,y:cy+y*scale*f,z,depth:Math.max(0,Math.min(1,(z+1.6)/3.2)),seed,amber};}
+ function blendFor(){return progress;}
+ const fromPositions=points.map((_,i)=>surface(from,i)),toPositions=from===to?fromPositions:points.map((_,i)=>surface(to,i));
+ const mixPosition=(a,b,t)=>a.map((v,k)=>v+(b[k]-v)*t);
+ // Extend the periodic geometry through space instead of magnifying a single cell.
+ const amplitude=fixed.deformationAmount/100;
+ function periods(type){return type===0?[TAU/(3+amplitude*.42*Math.sin(morphTime*.047)),TAU/(3+amplitude*.36*Math.sin(morphTime*.037))]:[2.15,2.15];}
+ const periodA=periods(from),periodB=periods(to);
+ const cells=[];for(let x=-1;x<=1;x++)for(let y=-1;y<=1;y++)cells.push([x,y]);
+ function cellOffset(cell,blend){return [cell[0]*(periodA[0]+(periodB[0]-periodA[0])*blend),cell[1]*(periodA[1]+(periodB[1]-periodA[1])*blend),0];}
+ const positions=points.map((p,i)=>({position:mixPosition(fromPositions[i],toPositions[i],blendFor(i)),blend:blendFor(i),seed:p.seed}));
+ const cloud=[];
+ for(const cell of cells)for(const sample of positions){const offset=cellOffset(cell,sample.blend),p=project(sample.position[0]+offset[0],sample.position[1]+offset[1],sample.position[2],sample.seed,false);if(p.x>-8&&p.x<w+8&&p.y>-8&&p.y<h+8)cloud.push(p);}
+ function normal(type,i,p){const [x,y,z]=p;let n;
+  if(type===0){const a=fixed.deformationAmount/100,t=morphTime,fx=3+a*.42*Math.sin(t*.047),fy=3+a*.36*Math.sin(t*.037),fz=3+a*.4*Math.sin(t*.041),phase=a*.52*Math.sin(t*.043),X=x*fx+phase,Y=y*fy-phase*.6,Z=z*fz+phase*.35;n=[fx*(Math.cos(X)*Math.cos(Y)-Math.sin(Z)*Math.sin(X)),fy*(-Math.sin(X)*Math.sin(Y)+Math.cos(Y)*Math.cos(Z)),fz*(-Math.sin(Y)*Math.sin(Z)+Math.cos(Z)*Math.cos(X))];}
+  else n=[x,y,z];
+  const length=Math.hypot(...n)||1;return n.map(v=>v/length);
+ }
+ const amber=outliers.map((p,index)=>{const i=p.anchor,a=fromPositions[i],b=toPositions[i],na=normal(from,i,a),nb=normal(to,i,b),offset=p.side*p.offset*(1+.04*Math.sin(morphTime*.037+i));const start=a.map((v,k)=>v+na[k]*offset),end=b.map((v,k)=>v+nb[k]*offset);const blend=blendFor(i),position=mixPosition(start,end,blend),cell=cells[index%cells.length],shift=cellOffset(cell,blend);return project(position[0]+shift[0],position[1]+shift[1],position[2],.8,true);});
+ for(const p of cloud.concat(amber).sort((a,b)=>a.z-b.z)){ctx.fillStyle=p.amber?'#e4bd83':'#ced9ec';ctx.globalAlpha=p.amber?(.64+.23*p.depth)*fixed.outlierBrightness:(.1+.52*p.depth)*(.45+.55*p.seed);const r=p.amber?1.45+.4*p.depth:(.72+.65*p.depth)*fixed.pointSize;ctx.beginPath();ctx.arc(p.x,p.y,r,0,TAU);ctx.fill();}
+ ctx.globalCompositeOperation='screen';for(const p of amber){const g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,8);g.addColorStop(0,'rgba(228,189,131,.08)');g.addColorStop(1,'rgba(228,189,131,0)');ctx.globalAlpha=1;ctx.fillStyle=g;ctx.fillRect(p.x-8,p.y-8,16,16);}ctx.globalCompositeOperation='source-over';ctx.globalAlpha=1;
+}
+function animate(now){if(last&&now-last<1000/30){frame=requestAnimationFrame(animate);return;}const dt=last?Math.min((now-last)/1000,.05):0;last=now;if(!reduced.matches){morphTime+=dt*fixed.deformationSpeed;rotationTime+=dt*fixed.rotationSpeed;clock+=dt;}draw();if(!reduced.matches)frame=requestAnimationFrame(animate);}
+function start(){cancelAnimationFrame(frame);last=0;if(!document.hidden){draw();if(!reduced.matches)frame=requestAnimationFrame(animate);}}
+window.addEventListener('resize',resize);document.addEventListener('visibilitychange',start);reduced.addEventListener('change',start);if(window.visualViewport)window.visualViewport.addEventListener('resize',resize);new ResizeObserver(resize).observe(document.querySelector('main'));resize();start();
+})();
+</script>
+</body>
+</html>
