@@ -1,0 +1,46 @@
+[
+  {
+    "control": "gold",
+    "task_id": "pydicom__pydicom-1720_Sequence",
+    "resolved": true,
+    "passed": 13,
+    "required": 13,
+    "missing_or_failed": 0,
+    "pytest_exit_code": 0,
+    "wall_seconds": 6.599603960989043,
+    "grading_rule": "All official expected test IDs must appear as passed; missing/skipped/error count as failure. Adapted runtime, no linter feedback."
+  },
+  {
+    "control": "empty",
+    "task_id": "pydicom__pydicom-1720_Sequence",
+    "resolved": false,
+    "passed": 1,
+    "required": 13,
+    "missing_or_failed": 12,
+    "pytest_exit_code": 1,
+    "wall_seconds": 6.851307006989373,
+    "grading_rule": "All official expected test IDs must appear as passed; missing/skipped/error count as failure. Adapted runtime, no linter feedback."
+  },
+  {
+    "control": "gold",
+    "task_id": "psf__requests-6028_rEQueSt",
+    "resolved": true,
+    "passed": 44,
+    "required": 44,
+    "missing_or_failed": 0,
+    "pytest_exit_code": 0,
+    "wall_seconds": 3.2961791769776028,
+    "grading_rule": "All official expected test IDs must appear as passed; missing/skipped/error count as failure. Adapted runtime, no linter feedback."
+  },
+  {
+    "control": "empty",
+    "task_id": "psf__requests-6028_rEQueSt",
+    "resolved": false,
+    "passed": 0,
+    "required": 44,
+    "missing_or_failed": 44,
+    "pytest_exit_code": 1,
+    "wall_seconds": 5.522688057011692,
+    "grading_rule": "All official expected test IDs must appear as passed; missing/skipped/error count as failure. Adapted runtime, no linter feedback."
+  }
+]

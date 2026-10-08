@@ -5,6 +5,11 @@
       "step": 1,
       "decision": "advance_runtime_qualification",
       "evidence": "Public-spec selection frozen; archive and dataset pinned; functional dependencies and Docker size still require qualification."
+    },
+    {
+      "step": 2,
+      "decision": "advance_isolation_checks",
+      "evidence": "Both gold classes pass all expected tests; both empty classes fail whole-task resolution. qualification.json, runtime.json, fixtures.json."
     }
   ]
 }

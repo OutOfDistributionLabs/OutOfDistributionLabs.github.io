@@ -51,6 +51,17 @@ def prepare_runtime(base,output):
   rc,freeze=execute(c,['python','-m','pip','freeze'])
   if rc:raise RuntimeError('Runtime inventory failed')
   image=c.commit(repository='ood-small-repository-runtime',tag='v1',conf={'Env':['PATH=/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin','PYTHONPATH=/engine'],'Cmd':['tail','-f','/dev/null'],'WorkingDir':'/work'})
+  # Docker commit inherits bind-mount volume declarations and proxy variables.
+  # Sanitize the saved image config before reloading; no credentials are present.
+  saved=io.BytesIO(b''.join(client.api.get_image(image.id)));clean=io.BytesIO()
+  with tarfile.open(fileobj=saved) as archive:
+   manifest=json.load(archive.extractfile('manifest.json'));name=manifest[0]['Config'];config=json.load(archive.extractfile(name));config['config']['Volumes']=None;config['config']['Env']=['PATH=/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin','PYTHONPATH=/engine'];manifest[0]['RepoTags']=['ood-small-repository-runtime:v2']
+   with tarfile.open(fileobj=clean,mode='w') as target:
+    for member in archive:
+     data=json.dumps(config).encode() if member.name==name else json.dumps(manifest).encode() if member.name=='manifest.json' else None
+     if data is not None:member.size=len(data);target.addfile(member,io.BytesIO(data))
+     else:target.addfile(member,archive.extractfile(member) if member.isfile() else None)
+  client.images.load(clean.getvalue());image=client.images.get('ood-small-repository-runtime:v2')
   record={'base':base,'image_id':image.id,'image_bytes':image.attrs['Size'],'requirements':REQUIREMENTS,'installed_inventory':freeze.decode(),'auth_or_evaluator_files_in_image':False}
   Path(output).write_text(json.dumps(record,indent=2)+'\n');return record
  finally:
@@ -85,6 +96,7 @@ def grade(row,originals,answer,image,output):
  for p in list(work.rglob('__pycache__')):
   if p.is_dir():shutil.rmtree(p)
  for p in list(work.rglob('*.pyc')):p.unlink()
+ for item in [work,*work.rglob('*')]:item.chmod(0o755 if item.is_dir() else 0o644)
  relative=Path(row['file']).relative_to(row['repo_metadata']['issue_id']);target=work/relative;text=target.read_text();body=row['ground_truth_class_body']
  if text.count(body)!=1:raise ValueError('Reference class mismatch in evaluator')
  target.write_text(text.replace(body,answer));client=docker_client();c=None;begin=time.perf_counter()
@@ -103,14 +115,14 @@ def grade(row,originals,answer,image,output):
  finally:
   if c:c.remove(force=True)
 
-def infer(row,view,image,arm,output,wall_seconds=300):
+def infer(row,view,image,arm,output,wall_seconds=300,probe_only=False):
  from featurebench.infer.network import AgentNetworkIsolation,ApiEndpoint
  from featurebench.infer.container import ContainerManager
  out=Path(output);out.mkdir(parents=True,exist_ok=False);client=docker_client();net=AgentNetworkIsolation('codex',MODEL,{'OPENAI_BASE_URL':'https://chatgpt.com'});net.endpoints=(ApiEndpoint('chatgpt.com',443),ApiEndpoint('auth.openai.com',443));net.start();up=urlsplit(os.environ.get('HTTPS_PROXY') or os.environ['HTTP_PROXY']);net.proxy.upstream_proxy=(up.hostname,up.port or 8080);c=None
  home=Path(os.environ.get('CODEX_HOME',str(Path.home()/'.codex')));volumes=net.docker_volume()|{str(Path(view).resolve()):{'bind':'/work','mode':'ro'},'/opt/codex/bin/codex':{'bind':'/usr/local/bin/codex','mode':'ro'},str(home/'auth.json'):{'bind':'/tmp/codex-home/auth.json','mode':'rw'},'/etc/ssl/certs/ca-certificates.crt':{'bind':'/etc/ssl/certs/ca-certificates.crt','mode':'ro'}}
  begin=time.perf_counter()
  try:
-  c=client.containers.run(image,detach=True,working_dir='/work',volumes=volumes,environment={'CODEX_HOME':'/tmp/codex-home','SSL_CERT_FILE':'/etc/ssl/certs/ca-certificates.crt','PYTHONPATH':'/engine'},cap_drop=['ALL'],security_opt=['no-new-privileges:true'],labels={'oodlabs.study':'repoclassbench-small-pilot','oodlabs.arm':arm})
+  c=client.containers.run(image,detach=True,working_dir='/work',volumes=volumes,cap_add=['DAC_OVERRIDE'],environment={'CODEX_HOME':'/tmp/codex-home','SSL_CERT_FILE':'/etc/ssl/certs/ca-certificates.crt','PYTHONPATH':'/engine'},cap_drop=['ALL'],security_opt=['no-new-privileges:true'],labels={'oodlabs.study':'repoclassbench-small-pilot','oodlabs.arm':arm})
   put(c,'/installed-agent/setup-env.sh',b'');c.exec_run(['mkdir','-p','/agent-logs','/answer'])
   if not net.isolate(c,ContainerManager(),out/'isolation-setup.log'):raise RuntimeError('API-only network setup failed')
   rc,probe=execute(c,['bash','-lc',"source /installed-agent/setup-env.sh; python -c \"import urllib.request,urllib.error; urllib.request.urlopen('https://huggingface.co',timeout=5)\""],seconds=10)
@@ -120,6 +132,7 @@ def infer(row,view,image,arm,output,wall_seconds=300):
   (out/'isolation.json').write_text(json.dumps(receipt,indent=2)+'\n')
   relative=Path(row['file']).relative_to(row['repo_metadata']['issue_id']).as_posix()
   prompt=f"Implement the class {row['class_name']} for {relative}. The repository under /work is read-only and the target class is missing. Inspect dependencies with repository tools and, if available, intuition tools. Write only the Python class definition (and imports it needs) to /answer/class.py; this file replaces the class placeholder. Do not edit repository files. Do not seek external reference solutions.\n\n"+row['detailed_description']
+  if probe_only:prompt='This is a readiness check, not a benchmark attempt. Do not implement the missing class. If intuition MCP tools are available, call intuition_status once. Write READY to /answer/class.py and reply READY.'
   args=['codex','exec','--ignore-user-config','--ephemeral','--skip-git-repo-check','--json','--sandbox','danger-full-access','--model',MODEL,'-c','model_reasoning_effort="medium"','-C','/work']
   if arm!='A':args+=['-c','mcp_servers.intuition.command="/usr/local/bin/python"','-c','mcp_servers.intuition.args='+json.dumps(['-m','intuition_engine.server','--root','/work','--mode','flat' if arm=='B' else 'graph'])]
   cmd='source /installed-agent/setup-env.sh; timeout -k 10 '+str(wall_seconds)+'s '+shlex.join(args+[prompt])+' > /agent-logs/events.jsonl 2>/agent-logs/stderr.log'

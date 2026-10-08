@@ -1,0 +1,28 @@
+{
+  "base": "python:3.11-slim-bookworm@sha256:8a00ecb83ed9d0864dfd102a1bdb2067fda907ceb30bb86d09da9ee558b19590",
+  "image_id": "sha256:c9aced58b274a11038546961f3a6f8f81b626cc220c6ad01035798a56da73871",
+  "image_bytes": 516035449,
+  "requirements": [
+    "mcp==1.29.0",
+    "tree-sitter==0.21.3",
+    "tree-sitter-languages==1.10.2",
+    "nltk==3.9.1",
+    "pytest==7.4.4",
+    "pytest-json-report==1.5.0",
+    "numpy==1.26.4",
+    "urllib3==1.26.20",
+    "chardet==5.2.0",
+    "charset-normalizer==3.4.2",
+    "idna==3.10",
+    "certifi==2025.1.31",
+    "pytest-httpbin==2.1.0",
+    "httpbin==0.10.2",
+    "Flask==2.2.5",
+    "Werkzeug==2.2.3",
+    "pytest-mock==3.14.0",
+    "six==1.17.0"
+  ],
+  "installed_inventory": "annotated-types==0.8.0\nanyio==4.15.1\nattrs==26.1.0\nbrotlicffi==1.2.0.2\ncertifi==2025.1.31\ncffi==2.1.1\nchardet==5.2.0\ncharset-normalizer==3.4.2\nclick==8.5.0\ncloudpickle==3.1.2\ncryptography==50.0.2\ndecorator==5.3.1\nflasgger==0.9.7.1\nFlask==2.2.5\ngreenlet==2.0.2\nh11==0.16.0\nhttpbin==0.10.2\nhttpcore==1.0.9\nhttpx==0.28.1\nhttpx-sse==0.4.3\nidna==3.10\niniconfig==2.3.1\nitsdangerous==2.2.0\nJinja2==3.1.6\njoblib==1.6.0\njsonschema==4.26.0\njsonschema-specifications==2025.9.1\nMarkupSafe==3.0.4\nmcp==1.29.0\nmistune==3.3.4\nnltk==3.9.1\nnumpy==1.26.4\npackaging==26.3\npluggy==1.6.0\npycparser==3.0\npydantic==2.13.5\npydantic-settings==2.15.0\npydantic_core==2.46.5\nPyJWT==2.15.1\npytest==7.4.4\npytest-httpbin==2.1.0\npytest-json-report==1.5.0\npytest-metadata==3.1.1\npytest-mock==3.14.0\npython-dotenv==1.2.4\npython-multipart==0.0.32\nPyYAML==6.0.3\nreferencing==0.37.0\nregex==2026.9.29\nrpds-py==2026.9.1\nsix==1.17.0\nsse-starlette==3.5.0\nstarlette==1.7.0\ntqdm==4.70.1\ntree-sitter==0.21.3\ntree-sitter-languages==1.10.2\ntyping-inspection==0.4.4\ntyping_extensions==4.16.0\nurllib3==1.26.20\nuvicorn==0.54.0\nWerkzeug==2.2.3\n",
+  "auth_or_evaluator_files_in_image": false,
+  "sanitized_image_config": true
+}
