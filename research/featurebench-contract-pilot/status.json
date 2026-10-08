@@ -1,7 +1,7 @@
 {
   "step": 1,
   "running": true,
-  "updated_at": "2026-10-08T01:18:45+00:00",
+  "updated_at": "2026-10-08T01:20:48+00:00",
   "summary": "Serial preparation with a VFS disk preflight; cache-stripped image import underway. Native/flat/graph isolated adapter implemented, but agents remain gated on official reference scoring.",
   "events": [
     {
