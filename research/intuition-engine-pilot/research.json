@@ -8,11 +8,11 @@
     "Harness isolation and accounting",
     "Paired development pilot",
     "Analysis and sentinel review",
-    "Publication and reproducibility"
+    "Results white paper and publication"
   ],
   "timezone": "America/Los_Angeles",
   "ntfy_topic": "oodlabs",
-  "heartbeat_seconds": 120,
+  "heartbeat_seconds": 60,
   "remote": "origin",
   "branch": "main",
   "progress_url": "https://outofdistributionlabs.github.io/research/intuition-engine-pilot/progress.html",
@@ -33,6 +33,17 @@
     {
       "path": "README.md",
       "label": "Run the engine and benchmark"
+    },
+    {
+      "path": "white-paper.pdf",
+      "label": "White paper with results"
+    },
+    {
+      "path": "white-paper.tex",
+      "label": "LaTeX source"
     }
-  ]
+  ],
+  "notification_seconds": 300,
+  "notify_on_checkpoint": false,
+  "notify_on_complete": true
 }

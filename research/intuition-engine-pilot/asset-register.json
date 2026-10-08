@@ -1,0 +1,72 @@
+{
+  "dataset_version": "2024-06-23",
+  "dataset_url": "https://github.com/evalplus/repoqa_release/releases/download/2024-06-23/repoqa-2024-06-23.json.gz",
+  "dataset_sha256": "bd3f7cab47283cdeccee20daea31af587b680cf8f9db192ab4da1037730cd6e2",
+  "dataset_bytes": 71510991,
+  "scorer_commit": "ae876deb1365dbf5a15b0533723c8ed123eee586",
+  "scorer_files": {
+    "repoqa_compute_score.py": "f4e9edaec292105272fb8d2f85f1f5b1b02f5caa4bd61a0c1f463a5f612664d8",
+    "repoqa_metric.py": "e477e85ed621aa540b9fdfe4f3e022f4077447f942d54fbec53b49e990cbbc38",
+    "repoqa_utility.py": "a8494598171769033bbff34fde155bae75f3cfb34cad62ef43cd0f73c0284e46"
+  },
+  "release_license": "Apache-2.0",
+  "license_commit": "e3a571033de99d0b9dcaccd25577a75d4b1c70b1",
+  "license_sha256": "fcc1f77fe5443b21bfc4dfcc3d66f7654f599b91582df771850e5e876986a103",
+  "corpus_redistributed": false,
+  "language_counts": {
+    "python": 100,
+    "cpp": 100,
+    "java": 100,
+    "typescript": 100,
+    "rust": 100,
+    "go": 100
+  },
+  "repositories": 60,
+  "scorer_sanity_checks": [
+    {
+      "language": "python",
+      "gold_passes": true,
+      "empty_fails": true,
+      "gold_similarity": 1.0
+    },
+    {
+      "language": "cpp",
+      "gold_passes": true,
+      "empty_fails": true,
+      "gold_similarity": 1.0
+    },
+    {
+      "language": "java",
+      "gold_passes": true,
+      "empty_fails": true,
+      "gold_similarity": 1.0
+    },
+    {
+      "language": "typescript",
+      "gold_passes": true,
+      "empty_fails": true,
+      "gold_similarity": 1.0
+    },
+    {
+      "language": "rust",
+      "gold_passes": true,
+      "empty_fails": true,
+      "gold_similarity": 1.0
+    },
+    {
+      "language": "go",
+      "gold_passes": true,
+      "empty_fails": true,
+      "gold_similarity": 1.0
+    }
+  ],
+  "agent_index_fields": [
+    "content only"
+  ],
+  "label_fields_not_passed_to_engine": [
+    "needles",
+    "functions",
+    "dependency",
+    "topic"
+  ]
+}

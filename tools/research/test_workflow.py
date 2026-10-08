@@ -1,6 +1,7 @@
 """Exercise publishing isolation and rollback against a temporary local git remote."""
 import importlib.util,json,subprocess,tempfile,unittest
 from pathlib import Path
+from unittest.mock import patch
 spec=importlib.util.spec_from_file_location('runner',Path(__file__).with_name('run.py'));runner=importlib.util.module_from_spec(spec);spec.loader.exec_module(runner)
 class Workflow(unittest.TestCase):
  def setUp(self):
@@ -28,6 +29,21 @@ class Workflow(unittest.TestCase):
    with self.assertRaises(RuntimeError):runner.update(self.project,'checkpoint','Not published',1)
    self.assertEqual(runner.load(self.project)[1]['step'],0)
   finally:runner.publish=original
+ def test_independent_notification_cadence(self):
+  c,_=runner.load(self.project);c.update(notification_seconds=300,notify_on_checkpoint=False,notify_on_complete=True)
+  calls=[];runner.notify=lambda *args:calls.append(args) or True
+  clock=runner.Path('/tmp')/('oodlabs-research-'+self.project.name+'-notification.json');clock.unlink(missing_ok=True)
+  try:
+   with patch.object(runner.time,'time',return_value=1000):runner.notify_scheduled(self.project,c,'t','m','resume')
+   with patch.object(runner.time,'time',return_value=1060):runner.notify_scheduled(self.project,c,'t','m','heartbeat')
+   self.assertEqual(len(calls),0)
+   with patch.object(runner.time,'time',return_value=1300):runner.notify_scheduled(self.project,c,'t','m','heartbeat')
+   self.assertEqual(len(calls),1)
+   with patch.object(runner.time,'time',return_value=1301):runner.notify_scheduled(self.project,c,'t','m','checkpoint')
+   self.assertEqual(len(calls),1)
+   with patch.object(runner.time,'time',return_value=1302):runner.notify_scheduled(self.project,c,'t','m','checkpoint',complete=True)
+   self.assertEqual(len(calls),2)
+  finally:clock.unlink(missing_ok=True)
  def test_invalid_slug_and_sequence(self):
   with self.assertRaises(ValueError):runner.project_path('../escape')
   with self.assertRaises(ValueError):runner.update(self.project,'checkpoint','Skipped step',2)

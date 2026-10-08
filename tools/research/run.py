@@ -23,6 +23,19 @@ def notify(config,title,message):
         return True
     except Exception as exc:print(f'Notification failed: {exc}',file=sys.stderr,flush=True);return False
 
+def notify_scheduled(project,c,title,message,kind,complete=False):
+    """Independent page and notification cadence; checkpoint policy is explicit."""
+    interval=c.get('notification_seconds',300)
+    if not isinstance(interval,int) or interval<1:raise ValueError('notification_seconds must be positive')
+    stamp=Path('/tmp')/('oodlabs-research-'+project.name+'-notification.json')
+    last=json.loads(stamp.read_text()).get('last_sent',time.time()) if stamp.exists() else time.time()
+    if not stamp.exists():stamp.write_text(json.dumps({'last_sent':last}))
+    forced=(complete and c.get('notify_on_complete',True)) or (kind!='heartbeat' and c.get('notify_on_checkpoint',True))
+    if not forced and (kind!='heartbeat' or time.time()-last<interval):return True
+    ok=notify(c,title,message)
+    if ok:stamp.write_text(json.dumps({'last_sent':time.time()}))
+    return ok
+
 def render(project,c,s,published_only=False):
     e=html.escape;steps=c['steps'];done=s['step']==len(steps)
     stamp=dt.datetime.fromisoformat(s['updated_at']).astimezone(ZoneInfo(c.get('timezone','America/Los_Angeles'))).strftime('%b %d, %Y · %H:%M %Z')
@@ -86,7 +99,7 @@ def update(project,kind,summary=None,step=None,extra=()):
             notify(c,'OOD Labs · publishing error',str(exc)+'\n'+c['progress_url'])
             raise
         label='Research complete' if s['step']==len(c['steps']) else f'Research {s["step"]}/{len(c["steps"])}'
-        if not notify(c,'OOD Labs · '+label,('Heartbeat: ' if kind=='heartbeat' else 'Checkpoint: ')+s['summary']+'\n'+c['progress_url']):raise RuntimeError('Published, but ntfy delivery failed')
+        if not notify_scheduled(project,c,'OOD Labs · '+label,('Heartbeat: ' if kind=='heartbeat' else 'Checkpoint: ')+s['summary']+'\n'+c['progress_url'],kind,complete=s['step']==len(c['steps'])):raise RuntimeError('Published, but ntfy delivery failed')
         return True
 
 def heartbeat(project,interval):
@@ -114,7 +127,7 @@ def stop(project):
 def initialize(project,title,topic):
     if (project/'research.json').exists():raise ValueError('Project already configured')
     project.mkdir(parents=True,exist_ok=True)
-    c={'id':project.name,'title':title,'subtitle':'A research white paper by Out of Distribution Labs.','steps':DEFAULT_STEPS,'timezone':'America/Los_Angeles','ntfy_topic':topic,'heartbeat_seconds':120,'remote':'origin','branch':'main','progress_url':f'https://outofdistributionlabs.github.io/research/{project.name}/progress.html','evidence_note':'A structured primary-source review. Proposals and evaluation results are explicitly distinguished from prior work.','resources':[{'path':p,'label':label} for p,label in [('research-plan.md','Research protocol'),('sources.md','Literature map'),('design.md','Theory and architecture'),('evaluation/report.md','Evaluation'),('white-paper.pdf','Read the white paper'),('white-paper.tex','LaTeX source'),('references.bib','Bibliography')]]}
+    c={'id':project.name,'title':title,'subtitle':'A research white paper by Out of Distribution Labs.','steps':DEFAULT_STEPS,'timezone':'America/Los_Angeles','ntfy_topic':topic,'heartbeat_seconds':60,'notification_seconds':300,'notify_on_checkpoint':False,'notify_on_complete':True,'remote':'origin','branch':'main','progress_url':f'https://outofdistributionlabs.github.io/research/{project.name}/progress.html','evidence_note':'A structured primary-source review. Proposals and evaluation results are explicitly distinguished from prior work.','resources':[{'path':p,'label':label} for p,label in [('research-plan.md','Research protocol'),('sources.md','Literature map'),('design.md','Theory and architecture'),('evaluation/report.md','Evaluation'),('white-paper.pdf','Read the white paper'),('white-paper.tex','LaTeX source'),('references.bib','Bibliography')]]}
     (project/'research.json').write_text(json.dumps(c,indent=2)+'\n')
     (project/'research-plan.md').write_text((ROOT/'tools/research/protocol-template.md').read_text().replace('{{TITLE}}',title))
     (project/'.gitignore').write_text('*.aux\n*.bbl\n*.blg\n*.fdb_latexmk\n*.fls\n*.log\n*.out\n*.toc\n__pycache__/\n')
