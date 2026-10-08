@@ -27,13 +27,13 @@ def run(row,image,arm,output,wall_seconds=300):
     out=Path(output);out.mkdir(parents=True,exist_ok=False);log=out/'trusted-setup.log'
     cm=ContainerManager()
     image_bytes=cm.client.images.get(image).attrs['Size']
-    free_bytes=shutil.disk_usage('/workspace').free
+    free_bytes=shutil.disk_usage(os.environ.get('OOD_DISK_PATH',str(ROOT))).free
     required_bytes=(2*image_bytes if cm.client.info()['Driver']=='vfs' else 0)+2_000_000_000
     if free_bytes<required_bytes:raise RuntimeError('Insufficient storage for VFS clone plus safety margin; no agent executed')
     net=prepare_network();container=None
     credential_home=Path(os.environ.get('CODEX_HOME',str(Path.home()/'.codex')))
     ca=Path('/etc/ssl/certs/ca-certificates.crt')
-    volumes=net.docker_volume()|{str(ca):{'bind':'/run/ood-ca.pem','mode':'ro'},'/opt/codex/bin/codex':{'bind':'/usr/local/bin/codex','mode':'ro'},str(credential_home/'auth.json'):{'bind':'/tmp/ood-codex-home/auth.json','mode':'rw'}}
+    volumes=net.docker_volume()|{str(ca):{'bind':'/run/ood-ca.pem','mode':'ro'},str(Path(os.environ.get('OOD_CODEX_BINARY',shutil.which('codex') or '/opt/codex/bin/codex')).resolve()):{'bind':'/usr/local/bin/codex','mode':'ro'},str(credential_home/'auth.json'):{'bind':'/tmp/ood-codex-home/auth.json','mode':'rw'}}
     env={k:os.environ[k] for k in ['HTTP_PROXY','HTTPS_PROXY','NO_PROXY'] if k in os.environ}
     env.update({'SSL_CERT_FILE':'/run/ood-ca.pem','REQUESTS_CA_BUNDLE':'/run/ood-ca.pem','PIP_CERT':'/run/ood-ca.pem','CODEX_HOME':'/tmp/ood-codex-home','PYTHONPATH':'/installed-agent/engine'})
     begin=time.perf_counter()

@@ -6,12 +6,15 @@ small development task counts cannot establish effectiveness.
 import argparse,hashlib,json,random,time
 from pathlib import Path
 
-def run(task,image,output,qualification,seed=20261007):
-    from harnesses.featurebench_container import run as infer
-    from benchmarks.featurebench_qualify import evaluate
+def validate_controls(task,qualification):
     controls=[x for x in json.loads(Path(qualification).read_text()) if x['instance_id']==task['instance_id']]
     if not any(x['control']=='gold' and x.get('classification')=='qualified_control' and x.get('resolved') is True for x in controls):raise ValueError('Official gold qualification required before inference')
     if not any(x['control']=='empty' and x.get('classification')=='qualified_control' and x.get('resolved') is False for x in controls):raise ValueError('Official negative control qualification required before inference')
+
+def run(task,image,output,qualification,seed=20261007):
+    from harnesses.featurebench_container import run as infer
+    from benchmarks.featurebench_qualify import evaluate
+    validate_controls(task,qualification)
     out=Path(output);out.mkdir(parents=True,exist_ok=False);arms=['A','B','C'];random.Random(seed).shuffle(arms)
     records=[]
     for arm in arms:

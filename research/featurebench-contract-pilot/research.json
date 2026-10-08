@@ -1,7 +1,7 @@
 {
   "id": "featurebench-contract-pilot",
   "title": "Feature-level contracts: paired engine pilot",
-  "subtitle": "Official feature-level scoring, fresh Codex sessions and matched local MCP arms.",
+  "subtitle": "Feasibility study paused during evaluator setup; no agent benchmark scores.",
   "steps": [
     "Protocol and authenticated harness",
     "Pinned assets and official evaluator qualification",
@@ -56,6 +56,10 @@
     {
       "path": "harness-readiness.json",
       "label": "Authenticated model readiness"
+    },
+    {
+      "path": "README.md",
+      "label": "Recovery requirements and resume commands"
     }
   ],
   "notify_on_error": false

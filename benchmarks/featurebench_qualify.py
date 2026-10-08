@@ -3,7 +3,7 @@
 This entry point never supplies reference data to an agent. Image names may be
 replaced by a provenance-recorded flattened image; report that deviation.
 """
-import argparse,json,hashlib,shutil
+import argparse,json,hashlib,shutil,os
 from pathlib import Path
 
 def evaluate(row,patch,output,image,timeout=600):
@@ -11,7 +11,7 @@ def evaluate(row,patch,output,image,timeout=600):
     import docker
     client=docker.from_env();image_bytes=client.images.get(image).attrs['Size']
     needed=(2*image_bytes if client.info()['Driver']=='vfs' else 0)+2_000_000_000
-    if shutil.disk_usage('/workspace').free<needed:raise RuntimeError('Insufficient storage for evaluator VFS copies; scoring not attempted')
+    if shutil.disk_usage(os.environ.get('OOD_DISK_PATH',str(Path(__file__).resolve().parents[1]))).free<needed:raise RuntimeError('Insufficient storage for evaluator VFS copies; scoring not attempted')
     from featurebench.harness.run_evaluation import run_instance
     instance=dict(row);instance['level']=int(row['instance_id'].rsplit('lv',1)[-1]);instance['image_name']=image
     return run_instance(pd.Series(instance),{'instance_id':row['instance_id'],'model_patch':patch,'n_attempt':1},Path(output),timeout=timeout)
