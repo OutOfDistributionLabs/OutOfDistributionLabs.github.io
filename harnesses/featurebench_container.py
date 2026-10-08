@@ -3,7 +3,7 @@
 Never run this in an evaluator container. Gold and task metadata remain host-only;
 only the masked repository and public problem statement reach inference.
 """
-import argparse,hashlib,json,logging,os,shlex,socket,subprocess,time
+import argparse,hashlib,json,logging,os,shlex,socket,subprocess,time,shutil
 from pathlib import Path
 from urllib.parse import urlsplit
 
@@ -25,7 +25,11 @@ def run(row,image,arm,output,wall_seconds=300):
     from featurebench.infer.models import TaskInstance
     if arm not in {'A','B','C'}:raise ValueError('Invalid arm')
     out=Path(output);out.mkdir(parents=True,exist_ok=False);log=out/'trusted-setup.log'
-    cm=ContainerManager();net=prepare_network();container=None
+    cm=ContainerManager()
+    image_bytes=cm.client.images.get(image).attrs['Size']
+    free_bytes=shutil.disk_usage('/workspace').free
+    if free_bytes<image_bytes+1_000_000_000:raise RuntimeError('Insufficient storage for VFS clone plus safety margin; no agent executed')
+    net=prepare_network();container=None
     credential_home=Path(os.environ.get('CODEX_HOME',str(Path.home()/'.codex')))
     ca=Path('/etc/ssl/certs/ca-certificates.crt')
     volumes=net.docker_volume()|{str(ca):{'bind':'/run/ood-ca.pem','mode':'ro'},'/opt/codex/bin/codex':{'bind':'/usr/local/bin/codex','mode':'ro'},str(credential_home/'auth.json'):{'bind':'/tmp/ood-codex-home/auth.json','mode':'rw'}}
@@ -56,7 +60,7 @@ def run(row,image,arm,output,wall_seconds=300):
         if rc:raise RuntimeError('Non-model network denial probe failed')
         container.reload();receipt={'fresh_container':True,'hidden_assets_not_visible':True,'no_docker_socket':True,'non_model_download_denied':True,'attached_networks':list(container.attrs['NetworkSettings']['Networks']),'auth_file_content_recorded':False}
         (out/'isolation.json').write_text(json.dumps(receipt,indent=2)+'\n')
-        # Verify actual pinned CLI/model availability within isolated environment, before task.
+        # Run the pinned CLI/model in the isolated environment; readiness is established by the actual outcome.
         setup='source /installed-agent/setup-env.sh; source /opt/miniconda3/etc/profile.d/conda.sh; conda activate testbed; export PYTHONPATH=/installed-agent/engine; '
         args=['codex','exec','--ignore-user-config','--ephemeral','--skip-git-repo-check','--json','--sandbox','danger-full-access','--model',MODEL,'-c','model_reasoning_effort="medium"','-C','/testbed']
         if arm!='A':
