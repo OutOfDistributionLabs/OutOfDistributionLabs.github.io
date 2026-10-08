@@ -1,0 +1,38 @@
+{
+  "id": "intuition-engine-pilot",
+  "title": "Intuition engine: implementation and benchmark pilot",
+  "subtitle": "Building a local MCP and measuring isolated baseline/flat/graph comparisons on existing tasks.",
+  "steps": [
+    "Benchmark and execution qualification",
+    "Engine and MCP implementation",
+    "Harness isolation and accounting",
+    "Paired development pilot",
+    "Analysis and sentinel review",
+    "Publication and reproducibility"
+  ],
+  "timezone": "America/Los_Angeles",
+  "ntfy_topic": "oodlabs",
+  "heartbeat_seconds": 120,
+  "remote": "origin",
+  "branch": "main",
+  "progress_url": "https://outofdistributionlabs.github.io/research/intuition-engine-pilot/progress.html",
+  "evidence_note": "Development pilot. Confirmatory and multi-harness claims require separate powered frozen studies. No measurements are claimed until actual traces and scorer outputs exist.",
+  "resources": [
+    {
+      "path": "research-plan.md",
+      "label": "Pilot protocol"
+    },
+    {
+      "path": "qualification.md",
+      "label": "Qualification and limits"
+    },
+    {
+      "path": "report.md",
+      "label": "Measured results"
+    },
+    {
+      "path": "README.md",
+      "label": "Run the engine and benchmark"
+    }
+  ]
+}
