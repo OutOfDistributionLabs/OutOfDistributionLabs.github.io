@@ -160,6 +160,27 @@ For the intended repair thesis, restore authenticated isolated inference, qualif
 
 The complete reusable process, gate records, Python entry points and sanitised measurements are published. Periodic status and notification intervals are independently configurable; they indicate activity, not scientific progress. The scientific claim must remain no broader than the measured intervention.
 
+
+\section{Selecting problems that exercise abstraction}
+\subsection{Cross-module features as the primary problem}
+A hard benchmark is not automatically a suitable benchmark. The useful target is a feature whose public interface, dependencies and state transitions must agree while prior behaviour remains intact. The proposed abstraction chain is requirement $\rightarrow$ observable contract $\rightarrow$ implementation dependency $\rightarrow$ verification obligation. The decision is which obligations and dependent components a patch must address, rather than merely which function matches a description.
+
+FeatureBench is a strong primary candidate because its feature-level evaluation requires new functionality and preserved regressions \citep{featurebench}. A secondary candidate is behaviour-preserving API change/refactoring on SWE-PolyBench; its multilingual repositories provide an external test of change-impact reasoning \citep{polybench}. Newly reported issues on SWE-bench-Live could later test revision-bound evidence under weaker repository familiarity. Multi-agent interference is a separate problem requiring direct fixed-aggregate-budget experiments; single-agent repair cannot validate hundred-agent scaling.
+
+\subsection{A documented gap, not an assumed frontier ceiling}
+In the official FeatureBench v1.1 Fast snapshot inspected on October 8, 2026 UTC, the best of eight reported entries is Mini-SWE-Agent with Claude Opus 5, high effort: 40\% resolved on 100 tasks \citep{featureleader}. The page specifies unlimited cost, a 3,600-second timeout and unlimited steps. Its 67.2\% ``passed'' metric averages fail-to-pass test fractions; resolution requires both fail-to-pass success and pass-to-pass preservation. Dataset version v1.1 resolves to immutable revision \texttt{76b4a4566e04f4bcc13c35125d4f301791efa736}.
+
+The inspected SWE-PolyBench Verified table reports HMigBot (Claude Opus 4.8) at 51.31\% resolution, submitted August 5, 2026 \citep{polyleader}. This is a different population and setup; its percentage must not be pooled or directly ranked against FeatureBench. The source snapshots, SHA256 hashes, version and metric definitions are retained in the public frontier audit. Official runtime/scorer qualification for these new targets is not yet complete.
+
+A proposed deployment reliability target is 90\% complete feature success under a declared budget. Forty percent is unsatisfactory against that target; 90\% is a research criterion, not an established industry standard. These entries establish a reported gap, not an upper bound on unsubmitted systems or proof that abstraction is the missing ingredient. Older incompatible leaderboard versions and unverified search summaries are excluded. Failure mechanisms require a separate trace audit.
+
+\subsection{The next falsifiable thesis and gates}
+The proposed next thesis is a five-percentage-point improvement in official FeatureBench v1.1 Fast resolution over an information- and budget-matched flat tool, using paired fresh sessions of the same model/harness. The new engine would expose revision-grounded contracts, dependencies, invariant obligations and missing evidence; the existing lexical MCP does not implement that richer mechanism. This requires a new development cycle and freeze, preserving the completed negative assay.
+
+Use native, strong flat and relation-aware arms with the same permitted facts, API/output cap and aggregate resource ceilings. Evaluate all 100 Fast tasks in an estimation study, not only published failures. A hundred cases is generally insufficient for a precise five-point claim; subsequent powered studies require pilot-based discordance, repository-sensitive precision and separately registered replication. No hidden test or gold patch is an engine input.
+
+Before building the new mechanism, inspect fixed development traces using a calibrated rubric for missing obligations, localization, implementation and infrastructure failures, retaining unknown and multiple causes. Reviewer identity and disagreement must be recorded; unavailable independent reviewers must not be invented. Advance only if failure evidence supports the mechanism. Then qualify official assets, gold/empty grading and evaluator isolation; build and test abstractions; verify authenticated fresh harnesses and cost accounting; freeze paired execution; publish all outcomes. A sentinel after each stage advances, requests revision or holds execution. The current decision advances problem design only: FeatureBench agent effectiveness remains unmeasured.
+
 \clearpage\begingroup\small\setlength{\bibsep}{3pt}
 \bibliographystyle{plainnat}\bibliography{references}
 \endgroup

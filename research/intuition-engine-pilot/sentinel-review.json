@@ -58,7 +58,19 @@
       "artifact_sha256": {
         "evaluation/analysis.json": "cd74e25d04b285aed57a648b124d68eb147539a1ad6691b475c412a90aba0645",
         "report.md": "794f8ef15041994072a0f57b7c05db9ef120676cd528a65d02a0421a90a70eaf",
-        "white-paper.pdf": "05c508a2ea33412ac16ae6790f39dac597e1a0327de75231f4524f6b98782300"
+        "white-paper.pdf": "d9dc08acd8f9a852ac8ad3111cfa0f6242aceda2b8b345088313e50e458ba8cc"
+      }
+    },
+    {
+      "step": 6,
+      "decision": "advance_bounded_publication_hold_featurebench_execution",
+      "reviewer": "Codex, study author",
+      "independent_review": false,
+      "limits_and_next_action": "Problem fit and official frontier snapshots audited; primary proposed task is cross-module feature implementation. No FeatureBench agents ran. Engine redesign, official runtime qualification, failure attribution, authenticated fresh harnesses and budgets remain held. Existing real-data null results retained.",
+      "artifact_sha256": {
+        "problem-fit.md": "c70ca8b21afe361d64b4bc120874a72fe5b5726d22e98a1b21eb3a32dfe88590",
+        "frontier-audit.json": "8a8d01116427064d71621e15886c1199b6a3399ebef108ed35b730357cdef7ae",
+        "white-paper.pdf": "d9dc08acd8f9a852ac8ad3111cfa0f6242aceda2b8b345088313e50e458ba8cc"
       }
     }
   ]

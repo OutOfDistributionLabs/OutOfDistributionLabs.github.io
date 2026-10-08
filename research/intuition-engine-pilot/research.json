@@ -1,12 +1,12 @@
 {
   "id": "intuition-engine-pilot",
   "title": "Intuition engine: implementation and benchmark pilot",
-  "subtitle": "Building a local MCP and measuring isolated baseline/flat/graph comparisons on existing tasks.",
+  "subtitle": "A local MCP and a frozen real-data retrieval assay; agent repair evaluation pending.",
   "steps": [
-    "Benchmark and execution qualification",
+    "RepoQA qualification and execution audit",
     "Engine and MCP implementation",
-    "Harness isolation and accounting",
-    "Paired development pilot",
+    "Harness adapter and readiness checks",
+    "Paired non-LLM retrieval assay",
     "Analysis and sentinel review",
     "Results white paper and publication"
   ],
@@ -16,8 +16,16 @@
   "remote": "origin",
   "branch": "main",
   "progress_url": "https://outofdistributionlabs.github.io/research/intuition-engine-pilot/progress.html",
-  "evidence_note": "Development pilot. Confirmatory and multi-harness claims require separate powered frozen studies. No measurements are claimed until actual traces and scorer outputs exist.",
+  "evidence_note": "Measured development study: deterministic retrieval and MCP transport tested on real data. Codex repair, other harnesses and hundred-agent effectiveness were not tested. Null results and blocked scientific gates are retained.",
   "resources": [
+    {
+      "path": "problem-fit.md",
+      "label": "Problem selection and testable thesis"
+    },
+    {
+      "path": "frontier-audit.json",
+      "label": "Reported frontier evidence audit"
+    },
     {
       "path": "research-plan.md",
       "label": "Pilot protocol"

@@ -1,0 +1,51 @@
+# Choosing problems that need hierarchical abstraction
+
+Out of Distribution Labs · Evidence audit: October 8, 2026 UTC
+
+The best primary target is **cross-module feature implementation with interacting contracts**. The important distinction is not simply that a task is hard: the engine must supply a decision the harness needs, and the benchmark must measure whether that decision helps. Our completed retrieval assay found no convincing graph benefit over a flat control. It is evidence against treating single-function lookup as sufficient validation of the proposed theory.
+
+## Concrete problem statements
+
+| Priority | Problem statement | Why hierarchy could help | Existing test and measurable endpoint |
+|---|---|---|---|
+| Primary | Implement a feature whose public interface, internal dependencies and state transitions must agree, while preserving prior behavior. | Represent requirement → observable contract → implementation dependency → verification obligation. Explicit relations could prevent a locally plausible patch that omits a downstream obligation. | FeatureBench v1.1 Fast: whole-instance resolution requiring both fail-to-pass and pass-to-pass tests. |
+| Secondary | Change a shared API or refactor behavior across modules without breaking dependent call sites. | Change-impact closure and contract propagation could identify dependent responsibilities across package boundaries. | SWE-PolyBench Verified; official resolution plus predeclared change-complexity strata. Dataset/scorer qualification is still required. |
+| Replication | Solve a newly reported repository issue when prior repository familiarity is unreliable. | Revision-bound evidence and explicit unknowns could reduce unsupported assumptions about the current implementation. | SWE-bench-Live, pinned rolling release. No numerical frontier claim is made here; assets and current leaderboard still need qualification. |
+| Later, not yet benchmark-qualified | Coordinate many agents changing a shared repository while contracts and revisions evolve. | Shared abstractions, ownership and stale-evidence invalidation may reduce conflicting decisions. | A separately specified interference experiment with fixed aggregate budget; single-agent scores cannot establish hundred-agent scaling. |
+
+Poor primary targets are isolated syntax fixes, single-function retrieval, generic trivia, and tasks dominated by missing external credentials. They may be useful controls but do not exercise dependency/contract reasoning. Pure numerical difficulty is not a fit criterion.
+
+## What the reported frontier leaves unresolved
+
+The official FeatureBench **v1.1 Fast** snapshot contains eight listed entries on 100 tasks. Its best reported entry is Mini-SWE-Agent with Claude Opus 5, high effort: **40% resolved**, leaving 60% unresolved. The page specifies unlimited cost, a 3,600-second timeout and unlimited steps. Its 67.2% “passed” value is a mean fail-to-pass test fraction, not complete feature success. The audited harness defines resolution as fail-to-pass success **and** pass-to-pass preservation. Dataset v1.1 resolves to immutable revision `76b4a4566e04f4bcc13c35125d4f301791efa736`; harness source is pinned in the audit.
+
+The inspected SWE-PolyBench **Verified** table reports HMigBot (Claude Opus 4.8) at **51.31%** resolved, submitted August 5, 2026. This is a different population and evaluation setup; do not average or directly rank these percentages against FeatureBench. We retain the official HTML snapshot and its hash. Before execution, qualify the actual release, image availability, official scorer, task counts and licensing.
+
+For a concrete reliability criterion, **90% complete feature success under a declared deployment budget** is a proposed research target. Forty percent is unsatisfactory against that target, even under the reported generous settings. Ninety percent is a normative target, not a claim about an industry standard. An acceptable threshold depends on failure consequences and review cost. Public leaderboard entries do not bound unsubmitted systems, and “best inspected entry” is more precise than claiming every current state-of-the-art system fails. The aggregate scores also do not establish which failures are caused by poor abstraction; that needs a failure audit.
+
+We exclude older SWE-bench Pro V1 results from a current-SOTA claim because version/task counts differ from newer releases. We also avoid using unverified search summaries as benchmark evidence. Sources, snapshots, hashes, dates, versions, and score definitions are in [frontier-audit.json](frontier-audit.json).
+
+## A testable thesis and intervention
+
+**Primary thesis:** On a frozen FeatureBench v1.1 Fast population, a contract-and-dependency engine increases official whole-feature resolution by at least five percentage points over an information- and budget-matched flat decision-support tool, in paired fresh sessions of the same model/harness. Report the effect and uncertainty whether positive, null or negative. This is a proposed thesis, not a conclusion from the retrieval assay.
+
+The proposed engine returns revision-bound evidence for public contracts, implementation dependencies, state/invariant obligations and missing evidence. Every abstraction must trace to permitted source or public task text. Hidden tests, gold patches and evaluator labels are never engine inputs. The current lexical MCP is an infrastructure prototype; it does **not** yet implement this richer mechanism. The new mechanism needs a separately versioned development cycle and freeze.
+
+Use three arms: A native harness; B strong flat evidence tool with the same extracted facts, API and output cap; C the relation-aware engine. Match aggregate model/engine time, tokens and dollar ceilings, including construction and consultation. A tests usefulness; C versus B tests the relational contribution. Supply the same public task information and starting revision; keep evaluator assets in a separate inaccessible process. Pin model, effort, prompt, harness, tools, images, scorer and data. Randomize paired arm order; isolate workspaces, caches and memories. Log actual MCP calls. Scoring may inspect hidden tests only after patches are sealed.
+
+Run all 100 Fast cases in a complete estimation study rather than choosing only published failures. A 100-task study is generally too small to confirm a five-point effect: the earlier rough independent-pair calculation was about 785 tasks at discordance 0.25; repository dependence can worsen precision. Use pilot discordance and cluster structure for the next power calculation. A broader full split or another benchmark is a separate registered replication; do not pool incompatible endpoints or repeatedly test until significant.
+
+## Elaborate stages and sentinels
+
+1. **Problem fit and frontier audit — deep.** Map mechanism to decisions; define acceptable reliability; audit primary leaderboard settings and versions; archive source snapshots. **Sentinel:** advance problem design only if the task genuinely exercises the mechanism and the gap is stated against an explicit criterion. Current decision: advance design, not execution.
+2. **Dataset/scorer qualification — very deep.** Resolve immutable dataset revision; inspect fields; inventory repositories/images/licenses; map overlaps; demonstrate gold and empty-patch grading in evaluator-only sandboxes; verify agent cannot read grading assets; estimate costs. **Sentinel:** redo until scoring and boundaries are verified. Current decision: held for runtime qualification.
+3. **Failure-mechanism study — very deep.** Obtain permitted public trajectories or run a fixed development sample with authenticated isolated agents. Blindly code missing obligations, wrong localization, faulty implementation and infrastructure failures, allowing multiple causes and “unknown.” Have two reviewers calibrate a rubric and record disagreement; do not invent independent reviewers. **Sentinel:** revise mechanism if failures are mostly unrelated, or if attribution cannot be supported. Aggregate leaderboard scores alone do not pass this gate.
+4. **New engine development — very deep.** Build contract/dependency abstractions from permitted inputs; check provenance, revision invalidation, dynamic-language uncertainty, bounded output and flat-arm parity. Tune only on a separate development set with repository/instance overlap disclosed. **Sentinel:** redo unverifiable abstractions; retain the original negative retrieval study.
+5. **Pilot, preregistration and paired experiment — very deep.** Verify fresh harness identity/authentication, real MCP consultation and all-cost accounting; use development pilot for feasibility and precision, then freeze an untouched manifest and analysis. Primary endpoint: official resolution; secondary: regression preservation, time/cost per resolved case, contract-omission rubric and engine overhead. Use paired differences with repository-sensitive intervals, prespecified retries and complete failure accounting. **Sentinel:** hold missing authentication/isolation/budgets; never count an interactive continuation as a fresh control.
+6. **Analysis, replication and paper — deep.** Publish all arms, uncertainty, adverse effects and failures; assess mechanism with blinded traces, not outcome-selected anecdotes; separately replicate on another harness and dataset. **Sentinel:** the evidence must support the exact claim. Hundred-agent claims require a later direct fixed-budget scaling test.
+
+The reusable [benchmark process](../../tools/research/benchmark-process.md) now requires this problem-fit and frontier audit before benchmark selection. Page heartbeat is 60 seconds and ntfy heartbeat 300 seconds, independently configurable. Cadence is activity reporting, not a scientific gate.
+
+## Current status
+
+The benchmark/problem selection is ready for review. We have **not run FeatureBench agents** and have **not demonstrated an advantage** for this engine. The fresh Codex CLI probe remains unauthenticated; official scorer/image isolation and resource budgets remain qualification gates. These limits do not stop literature, design or reproducibility work, but they prevent a valid with/without-agent effectiveness claim.

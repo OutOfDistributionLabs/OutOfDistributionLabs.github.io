@@ -1,0 +1,74 @@
+{
+  "retrieved_at_utc": "2026-10-08T00:42:50.618215+00:00",
+  "scope": "Best reported entries in inspected official snapshots; not a universal frontier upper bound or our own agent experiment.",
+  "sources": [
+    {
+      "url": "https://libercoders.github.io/FeatureBench/leaderboard/data/v1.1/fast.json",
+      "snapshot": "sources/feature-v1.1-fast.json",
+      "sha256": "7075a0856284f7f17faa4d3388c507bbeef8afe71368e2369e5cdbff49ce5781"
+    },
+    {
+      "url": "https://libercoders.github.io/FeatureBench/leaderboard/",
+      "snapshot": "sources/featureleader.txt",
+      "sha256": "6d9b8d2e265bc3db5f7348ba9fdbfbea0713c8e92f6922dc9893d4f134d54974"
+    },
+    {
+      "url": "https://amazon-science.github.io/SWE-PolyBench/",
+      "snapshot": "sources/poly-leaderboard.txt.gz",
+      "sha256": "b35d7f9be5d646df9e85e931e8b88edcc66e407afe3ee3d1836fb999a2c8b702",
+      "uncompressed_sha256": "a48f0e75a75e57b1f39d5df86561ac4cac3d25ffa1d6215b4b0d3da7b2345c3c",
+      "encoding": "gzip; exact source bytes retained"
+    },
+    {
+      "url": "https://huggingface.co/api/datasets/LiberCoders/FeatureBench/revision/v1.1",
+      "snapshot": "sources/feature-v1.1-metadata.json",
+      "sha256": "36b9b47aa2f309247d182f4bb71e8347ef9cb00b1b5563b94162d88effac8b20"
+    }
+  ],
+  "featurebench": {
+    "version": "v1.1",
+    "split": "fast",
+    "tasks": 100,
+    "dataset_revision": "76b4a4566e04f4bcc13c35125d4f301791efa736",
+    "harness_commit": "8d4e347ec57546685c5a87e8676bf575db022ea6",
+    "best_reported": {
+      "agent": "Mini-SWE-Agent",
+      "model": "Claude Opus 5",
+      "effort": "high",
+      "passed": 67.2,
+      "resolved": 40,
+      "harness_org": "-",
+      "model_org": "Anthropic",
+      "model_release": "2026-07-24",
+      "filter_1": [
+        "Open Scaffold",
+        "Close Weights"
+      ],
+      "filter_2": [
+        "Model: Claude Opus 5",
+        "Scaffold: Mini-SWE-Agent",
+        "Model Org: Anthropic"
+      ]
+    },
+    "listed_entries": 8,
+    "settings": {
+      "cost": "unlimited",
+      "timeout_seconds": 3600,
+      "max_steps": "unlimited"
+    },
+    "resolved_definition": "All required fail-to-pass tests and pass-to-pass regressions succeed.",
+    "passed_definition": "Mean per-instance fail-to-pass fraction, not whole-feature reliability."
+  },
+  "swe_polybench": {
+    "split": "Verified",
+    "best_reported_agent": "HMigBot (Claude Opus 4.8)",
+    "resolved_percent": 51.31,
+    "submission_date": "2026-08-05",
+    "qualification": "Leaderboard snapshot only; actual dataset size, scorer and runtime assets not yet qualified for execution."
+  },
+  "scientific_gate": {
+    "decision": "advance_problem_design_only",
+    "review": "Author self-review, not independent",
+    "held": "Agent execution, powered confirmation and engine superiority claims remain unqualified."
+  }
+}
