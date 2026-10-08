@@ -119,11 +119,14 @@ def infer(row,view,image,arm,output,wall_seconds=300,probe_only=False):
  from featurebench.infer.network import AgentNetworkIsolation,ApiEndpoint
  from featurebench.infer.container import ContainerManager
  out=Path(output);out.mkdir(parents=True,exist_ok=False);client=docker_client();net=AgentNetworkIsolation('codex',MODEL,{'OPENAI_BASE_URL':'https://chatgpt.com'});net.endpoints=(ApiEndpoint('chatgpt.com',443),ApiEndpoint('auth.openai.com',443));net.start();up=urlsplit(os.environ.get('HTTPS_PROXY') or os.environ['HTTP_PROXY']);net.proxy.upstream_proxy=(up.hostname,up.port or 8080);c=None
- home=Path(os.environ.get('CODEX_HOME',str(Path.home()/'.codex')));volumes=net.docker_volume()|{str(Path(view).resolve()):{'bind':'/work','mode':'ro'},'/opt/codex/bin/codex':{'bind':'/usr/local/bin/codex','mode':'ro'},str(home/'auth.json'):{'bind':'/tmp/codex-home/auth.json','mode':'rw'},'/etc/ssl/certs/ca-certificates.crt':{'bind':'/etc/ssl/certs/ca-certificates.crt','mode':'ro'}}
+ home=Path(os.environ.get('CODEX_HOME',str(Path.home()/'.codex')));volumes=net.docker_volume()|{str(Path(view).resolve()):{'bind':'/work','mode':'ro'},'/opt/codex/bin/codex':{'bind':'/usr/local/bin/codex','mode':'ro'},'/opt/codex/bin/codex-code-mode-host':{'bind':'/usr/local/bin/codex-code-mode-host','mode':'ro'},str(home/'auth.json'):{'bind':'/tmp/codex-home/auth.json','mode':'rw'},'/etc/ssl/certs/ca-certificates.crt':{'bind':'/etc/ssl/certs/ca-certificates.crt','mode':'ro'}}
  begin=time.perf_counter()
  try:
   c=client.containers.run(image,detach=True,working_dir='/work',volumes=volumes,cap_add=['DAC_OVERRIDE'],environment={'CODEX_HOME':'/tmp/codex-home','SSL_CERT_FILE':'/etc/ssl/certs/ca-certificates.crt','PYTHONPATH':'/engine'},cap_drop=['ALL'],security_opt=['no-new-privileges:true'],labels={'oodlabs.study':'repoclassbench-small-pilot','oodlabs.arm':arm})
   put(c,'/installed-agent/setup-env.sh',b'');c.exec_run(['mkdir','-p','/agent-logs','/answer'])
+  if arm!='A':
+   put(c,'/installed-agent/mcp_cli.py',(ROOT/'harnesses/mcp_cli.py').read_bytes())
+   put(c,'/usr/local/bin/intuition',b'#!/bin/sh\nexec python /installed-agent/mcp_cli.py "$@"\n');c.exec_run(['chmod','755','/usr/local/bin/intuition'])
   if not net.isolate(c,ContainerManager(),out/'isolation-setup.log'):raise RuntimeError('API-only network setup failed')
   rc,probe=execute(c,['bash','-lc',"source /installed-agent/setup-env.sh; python -c \"import urllib.request,urllib.error; urllib.request.urlopen('https://huggingface.co',timeout=5)\""],seconds=10)
   if b'403' not in probe:raise RuntimeError('Benchmark download denial not demonstrated')
@@ -132,10 +135,12 @@ def infer(row,view,image,arm,output,wall_seconds=300,probe_only=False):
   (out/'isolation.json').write_text(json.dumps(receipt,indent=2)+'\n')
   relative=Path(row['file']).relative_to(row['repo_metadata']['issue_id']).as_posix()
   prompt=f"Implement the class {row['class_name']} for {relative}. The repository under /work is read-only and the target class is missing. Inspect dependencies with repository tools and, if available, intuition tools. Write only the Python class definition (and imports it needs) to /answer/class.py; this file replaces the class placeholder. Do not edit repository files. Do not seek external reference solutions.\n\n"+row['detailed_description']
-  if probe_only:prompt='This is a readiness check, not a benchmark attempt. Do not implement the missing class. If intuition MCP tools are available, call intuition_status once. Write READY to /answer/class.py and reply READY.'
-  args=['codex','exec','--ignore-user-config','--ephemeral','--skip-git-repo-check','--json','--sandbox','danger-full-access','--model',MODEL,'-c','model_reasoning_effort="medium"','-C','/work']
+  if arm!='A':prompt += "\nThe real stdio MCP is available through the shell adapter: intuition status; intuition query 'natural-language query'; intuition evidence '[\"entity_id\"]'. Consult status and at least one query before writing the class, then use evidence when useful."
+  if probe_only:prompt='This is a readiness check, not a benchmark attempt. Do not implement the missing class. Run the shell command intuition status, which calls the real MCP. If it fails, report the failure. Write READY to /answer/class.py and reply READY.'
+  args=['codex','exec','--ephemeral','--skip-git-repo-check','--json','--sandbox','danger-full-access','--model',MODEL,'-c','model_reasoning_effort="medium"','-C','/work']
+  if arm!='A':args+=['-c','mcp_servers.intuition.env.PYTHONPATH="/engine"']
   if arm!='A':args+=['-c','mcp_servers.intuition.command="/usr/local/bin/python"','-c','mcp_servers.intuition.args='+json.dumps(['-m','intuition_engine.server','--root','/work','--mode','flat' if arm=='B' else 'graph'])]
-  cmd='source /installed-agent/setup-env.sh; timeout -k 10 '+str(wall_seconds)+'s '+shlex.join(args+[prompt])+' > /agent-logs/events.jsonl 2>/agent-logs/stderr.log'
+  cmd='source /installed-agent/setup-env.sh; export INTUITION_MODE='+('flat' if arm=='B' else 'graph')+'; timeout -k 10 '+str(wall_seconds)+'s '+shlex.join(args+[prompt])+' > /agent-logs/events.jsonl 2>/agent-logs/stderr.log'
   start=time.perf_counter();rc,raw=execute(c,['bash','-lc',cmd],seconds=wall_seconds+30);elapsed=time.perf_counter()-start
   events_raw=get(c,'/agent-logs/events.jsonl');(out/'events.jsonl').write_bytes(events_raw);(out/'stderr.log').write_bytes(get(c,'/agent-logs/stderr.log'));events=[]
   for line in events_raw.decode(errors='replace').splitlines():
@@ -144,8 +149,10 @@ def infer(row,view,image,arm,output,wall_seconds=300,probe_only=False):
   try:answer=get(c,'/answer/class.py').decode()
   except Exception:answer=''
   (out/'answer.py').write_text(answer)
+  try:mcp_log=get(c,'/agent-logs/mcp-calls.jsonl');(out/'mcp-calls.jsonl').write_bytes(mcp_log)
+  except Exception:mcp_log=b''
   errors=[e.get('message') or e.get('error') for e in events if e.get('type') in {'error','turn.failed'}]
-  result={'task_id':row['task_id'],'arm':arm,'model':MODEL,'reasoning_effort':'medium','exit_code':rc,'turn_completed':any(e.get('type')=='turn.completed' for e in events),'usage':[e.get('usage') for e in events if e.get('type')=='turn.completed'],'mcp_calls':sum(e.get('type')=='item.completed' and e.get('item',{}).get('type')=='mcp_tool_call' for e in events),'wall_seconds':elapsed,'wall_ceiling_seconds':wall_seconds,'errors':errors,'source_sha256':receipt['source_sha256'],'answer_sha256':hashlib.sha256(answer.encode()).hexdigest(),'provider_cost_usd':None}
+  result={'task_id':row['task_id'],'arm':arm,'model':MODEL,'reasoning_effort':'medium','exit_code':rc,'turn_completed':any(e.get('type')=='turn.completed' for e in events),'usage':[e.get('usage') for e in events if e.get('type')=='turn.completed'],'mcp_calls':len(mcp_log.splitlines())+sum(e.get('type')=='item.completed' and e.get('item',{}).get('type')=='mcp_tool_call' for e in events),'wall_seconds':elapsed,'wall_ceiling_seconds':wall_seconds,'errors':errors,'source_sha256':receipt['source_sha256'],'answer_sha256':hashlib.sha256(answer.encode()).hexdigest(),'provider_cost_usd':None}
   (out/'run.json').write_text(json.dumps(result,indent=2)+'\n');return result,answer
  finally:
   if c:c.remove(force=True)

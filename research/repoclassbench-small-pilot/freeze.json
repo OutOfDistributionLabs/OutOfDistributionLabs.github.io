@@ -1,0 +1,41 @@
+{
+  "schedule": [
+    {
+      "task_ordinal": 0,
+      "arm": "C"
+    },
+    {
+      "task_ordinal": 0,
+      "arm": "B"
+    },
+    {
+      "task_ordinal": 0,
+      "arm": "A"
+    },
+    {
+      "task_ordinal": 1,
+      "arm": "C"
+    },
+    {
+      "task_ordinal": 1,
+      "arm": "A"
+    },
+    {
+      "task_ordinal": 1,
+      "arm": "B"
+    }
+  ],
+  "seed": 20261007,
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "medium",
+  "wall_seconds": 300,
+  "artifacts": {
+    "intuition_engine/core.py": "5ae6653e7adabbf7b6e59d37854aa77415a460cb4ec6a7629e5e4571eb5f1dde",
+    "intuition_engine/server.py": "d5287ea8850f9035d24bd923e2c19c93b286f6eef499b9ee93389fbd3b8e72b4",
+    "harnesses/small_repository.py": "bc0b7438caa103327e0b0c3dd13fe57e70762f8564a4da8c33b69104cc6c36d3",
+    "harnesses/mcp_cli.py": "768b9eb55b4a53f640dbb7c597adee23470367499365630c706fe968fd4f161e",
+    "benchmarks/repoclassbench_small.py": "46d233dd04b7ce54becb2d24375180ce75f02c4ce72c711b19739d85277df621"
+  },
+  "cli_sha256": "981ade7b03926534c654fd718ced3a9f378b7b2841271e29156f939462d176e9",
+  "code_host_sha256": "1a2c8954cd4f991036c01af3950d206a937d45765329d187c24fd31a74c00664"
+}

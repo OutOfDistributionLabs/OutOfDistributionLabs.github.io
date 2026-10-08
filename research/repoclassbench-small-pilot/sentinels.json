@@ -10,6 +10,11 @@
       "step": 2,
       "decision": "advance_isolation_checks",
       "evidence": "Both gold classes pass all expected tests; both empty classes fail whole-task resolution. qualification.json, runtime.json, fixtures.json."
+    },
+    {
+      "step": 3,
+      "decision": "advance_frozen_execution",
+      "evidence": "Fresh Codex writes READY and makes one logged actual MCP call. API-only proxy denies benchmark downloads; hidden tests/gold and host Docker socket unmounted. Seven engine/adapter unittest checks pass."
     }
   ]
 }

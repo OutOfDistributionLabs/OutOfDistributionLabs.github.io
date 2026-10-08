@@ -1,0 +1,8 @@
+{
+  "source_sha256": "fb6152385b6a048c76de97ab608bf4aef39ea7f4812e917c25635113ad6154d3",
+  "networks": [],
+  "benchmark_download_denied": true,
+  "hidden_tests_and_answer_not_mounted": true,
+  "docker_socket_not_mounted": true,
+  "workspace_readonly": true
+}

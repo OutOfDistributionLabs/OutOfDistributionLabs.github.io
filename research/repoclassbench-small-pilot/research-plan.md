@@ -13,3 +13,5 @@ This tests tool integration and functional outcomes for an existing prototype. T
 Separate evaluator containers hold hidden tests/reference metadata; inference containers expose only masked source/public description and installed engine. No host evaluator or Docker socket mount. API-only network proxy prevents benchmark/reference downloads. Actual MCP calls, input/output/cached tokens, source snapshot hashes, deadline and result are recorded.
 
 Every stage has an author self-review sentinel. Pages update every 60 seconds while active; ntfy uses 300 seconds, independently configurable.
+
+Transport adaptation: Codex native MCP registration did not demonstrate tool use in readiness checks. Both tool arms therefore expose the same portable shell adapter, which starts the actual stdio MCP and makes SDK calls. Consultation of status and at least one query is instructed; native does not receive those instructions. This evaluates the complete tool-plus-instruction treatment, not the isolated effect of graph structure. Tool calls are independently logged. Only graph versus flat holds those instructions constant.

@@ -1,0 +1,24 @@
+{
+  "task_id": "psf__requests-6028_rEQueSt",
+  "arm": "C",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "medium",
+  "exit_code": 0,
+  "turn_completed": true,
+  "usage": [
+    {
+      "input_tokens": 43667,
+      "cached_input_tokens": 40832,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 103,
+      "reasoning_output_tokens": 0
+    }
+  ],
+  "mcp_calls": 1,
+  "wall_seconds": 9.81565941599547,
+  "wall_ceiling_seconds": 90,
+  "errors": [],
+  "source_sha256": "fb6152385b6a048c76de97ab608bf4aef39ea7f4812e917c25635113ad6154d3",
+  "answer_sha256": "3dfa3fb239f56c778a1e9b33eb31328349edd155a95806dac4378904e88527e5",
+  "provider_cost_usd": null
+}
