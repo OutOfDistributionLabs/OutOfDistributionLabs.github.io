@@ -1,7 +1,7 @@
 {
   "step": 2,
   "running": true,
-  "updated_at": "2026-10-08T00:15:53+00:00",
+  "updated_at": "2026-10-08T00:16:55+00:00",
   "summary": "Implemented scan/flat/graph engines and a real read-only stdio MCP with source evidence and revision checks. Five engine tests pass, including real SDK initialize/list/call round trips, six-language parsing, stale/forged evidence and budget/path bounds. Sentinel: transport works; no agent effectiveness claim.",
   "events": [
     {
