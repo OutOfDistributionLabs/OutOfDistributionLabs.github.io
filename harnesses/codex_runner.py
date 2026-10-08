@@ -38,6 +38,9 @@ def run(task,workspace,model,arm,output,wall_seconds,isolation_receipt):
     receipt=json.loads(Path(isolation_receipt).read_text())
     checks=['fresh_workspace','hidden_assets_not_visible','network_scoped','no_prior_arm_memory']
     if any(receipt.get(k) is not True for k in checks):raise ValueError('External sandbox qualification receipt required')
+    if wall_seconds<1:raise ValueError('Wall ceiling must be positive')
+    actual_base=subprocess.check_output(['git','rev-parse','HEAD'],cwd=workspace,text=True).strip()
+    if actual_base!=task['base_commit']:raise ValueError('Workspace does not match declared base revision')
     out=Path(output)
     if out.exists():raise ValueError('Use a fresh output directory for every run')
     out.mkdir(parents=True)
@@ -54,7 +57,8 @@ def run(task,workspace,model,arm,output,wall_seconds,isolation_receipt):
     # Costs remain null without a qualified billing meter; this cannot satisfy confirmatory cost gates.
     record={'instance_id':task['instance_id'],'arm':arm,'model_id':model,'exit_code':returncode,'stopping_reason':stopped,'wall_seconds':time.perf_counter()-begin,'token_usage_events':tokens,'mcp_tool_calls':len(tools),'provider_cost_usd':None,'confirmatory_accounting_qualified':False,'independent_grading_pending':True}
     (out/'events.jsonl').write_text(stdout);(out/'run.json').write_text(json.dumps(record,indent=2)+'\n')
-    patch=subprocess.run(['git','diff','--no-ext-diff'],cwd=workspace,capture_output=True,text=True,check=True).stdout;(out/'model.patch').write_text(patch)
+    subprocess.run(['git','add','-N','.'],cwd=workspace,check=True,capture_output=True)
+    patch=subprocess.run(['git','diff','--no-ext-diff','--binary'],cwd=workspace,capture_output=True,text=True,check=True).stdout;(out/'model.patch').write_text(patch)
     return record
 
 def main():

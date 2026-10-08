@@ -41,6 +41,22 @@
     {
       "path": "white-paper.tex",
       "label": "LaTeX source"
+    },
+    {
+      "path": "sentinel-review.json",
+      "label": "Scientific sentinel decisions"
+    },
+    {
+      "path": "evaluation/results.json",
+      "label": "Results data"
+    },
+    {
+      "path": "evaluation/raw-results.csv",
+      "label": "All task outcomes"
+    },
+    {
+      "path": "evaluation/analysis.json",
+      "label": "Paired analysis"
     }
   ],
   "notification_seconds": 300,

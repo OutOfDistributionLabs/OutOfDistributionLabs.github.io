@@ -1,0 +1,65 @@
+{
+  "scope": "Author self-review; engineering readiness and scientific effectiveness distinguished",
+  "measured_agent_repair_trials": 0,
+  "codex_agent_ready": false,
+  "mcp_transport_ready": true,
+  "decisions": [
+    {
+      "step": 1,
+      "decision": "advance_assay_only",
+      "reviewer": "Codex, implementation/study author",
+      "independent_review": false,
+      "limits_and_next_action": "RepoQA assets/scorer qualified; untrusted-agent sandbox and SWE-bench repair qualification remain held.",
+      "artifact_sha256": {
+        "asset-register.json": "7a6ea2fd1d2ec23d06c4c12fd9bef33a6a8002510b83177a6f1a35cc7d7a6b3e",
+        "qualification.md": "e19e6da65e2152c556401bb7a30ceee49ae2f54de9ae6451d5e92bde761e9c45"
+      }
+    },
+    {
+      "step": 2,
+      "decision": "advance_transport_only",
+      "reviewer": "Codex, implementation/study author",
+      "independent_review": false,
+      "limits_and_next_action": "MCP round trips and engine tests pass; no proof of semantic soundness or agent utility.",
+      "artifact_sha256": {
+        "mcp-probes.json": "1bcf68e13f5c7a3f220fca9387b274ff085e5cb3ef9ea2a208748cde5ac73bad",
+        "README.md": "e7c07eac27e1ad360cd30be3a932d78d06f3171287557063c1870f176a8b4503"
+      }
+    },
+    {
+      "step": 3,
+      "decision": "hold_codex_trials",
+      "reviewer": "Codex, implementation/study author",
+      "independent_review": false,
+      "limits_and_next_action": "Fresh Codex authentication fails before inference; unknown provider spend and external isolation remain unresolved.",
+      "artifact_sha256": {
+        "harness-readiness.json": "44bdce1133f1b6e3382d25c33fc08e4233e841fece0af6f71b0498618043dfa1"
+      }
+    },
+    {
+      "step": 4,
+      "decision": "advance_reporting",
+      "reviewer": "Codex, implementation/study author",
+      "independent_review": false,
+      "limits_and_next_action": "All 1,800 real outcomes accounted for; frozen settings retained; no post-outcome tuning.",
+      "artifact_sha256": {
+        "evaluation/assay-freeze.json": "1ba965be52afe626106d08e96b5946911a98861f2f951eb03e6474b7e9c0fe91",
+        "evaluation/raw-results.csv": "01349a710ccd239b80702872cde34bb2704d6e82143847357c928cdaea33abc9",
+        "evaluation/build-results.csv": "49698a076f068a5a6b89beaf7e17938f3beb565cfc859066ac6d4b3ca39e047d",
+        "evaluation/results.json": "0eafa2a08939b56f50143f55b5082c2b50eedcb168252263d22d3c11a21cdf7a"
+      }
+    },
+    {
+      "step": 5,
+      "decision": "redo_mechanism_before_effectiveness_claim",
+      "reviewer": "Codex, implementation/study author",
+      "independent_review": false,
+      "limits_and_next_action": "Graph/flat difference is a net one task with an interval spanning zero; scan is more accurate. Preserve negative study, develop any revision on a new split/protocol.",
+      "artifact_sha256": {
+        "evaluation/analysis.json": "cd74e25d04b285aed57a648b124d68eb147539a1ad6691b475c412a90aba0645",
+        "report.md": "794f8ef15041994072a0f57b7c05db9ef120676cd528a65d02a0421a90a70eaf",
+        "white-paper.pdf": "05c508a2ea33412ac16ae6790f39dac597e1a0327de75231f4524f6b98782300"
+      }
+    }
+  ]
+}

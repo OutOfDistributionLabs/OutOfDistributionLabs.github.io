@@ -1,8 +1,8 @@
 {
-  "step": 4,
+  "step": 5,
   "running": true,
-  "updated_at": "2026-10-08T00:31:14+00:00",
-  "summary": "Measured all 1,800 frozen task/arm outcomes on 600 real RepoQA cases; 480 tasks held out by repository. Graph 38.33%, flat 38.13%, lexical scan 46.04%. Sentinel retains the null/negative outcome and distinguishes this non-LLM corpus assay from agent repair performance.",
+  "updated_at": "2026-10-08T00:32:13+00:00",
+  "summary": "Compiled and reviewed a branded 12-page results white paper. All measured outcomes and pre-query code hashes agree; 9 engine/adapter/analysis tests, 4 publisher tests and 6 methodology tests pass. Sentinel: graph advantage unsupported; preserve study and hold agent-repair claims behind authentication/isolation/accounting gates.",
   "events": [
     {
       "at": "2026-10-08T00:04:55+00:00",
@@ -23,6 +23,10 @@
     {
       "at": "2026-10-08T00:22:25+00:00",
       "summary": "Measured all 1,800 frozen task/arm outcomes on 600 real RepoQA cases; 480 tasks held out by repository. Graph 38.33%, flat 38.13%, lexical scan 46.04%. Sentinel retains the null/negative outcome and distinguishes this non-LLM corpus assay from agent repair performance."
+    },
+    {
+      "at": "2026-10-08T00:32:13+00:00",
+      "summary": "Compiled and reviewed a branded 12-page results white paper. All measured outcomes and pre-query code hashes agree; 9 engine/adapter/analysis tests, 4 publisher tests and 6 methodology tests pass. Sentinel: graph advantage unsupported; preserve study and hold agent-repair claims behind authentication/isolation/accounting gates."
     }
   ]
 }

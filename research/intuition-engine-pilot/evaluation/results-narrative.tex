@@ -1,0 +1,5 @@
+Graph achieves 184/480 successes (38.33\%) against flat retrieval's 183/480 (38.13\%): a net one task. Graph wins 11 paired cases and loses 10. The paired difference is +0.21 percentage points; the exploratory repository-cluster 95\% interval is [-1.67, +1.88] points. The exact McNemar $p$-value is 1.00. This result supplies no convincing evidence of an advantage for the frozen graph mechanism.
+
+Graph trails scan by 7.71 points. Graph query CPU is 1.76 times flat query CPU, while mean build CPU is about 3.2\% higher. Flat and graph are faster than scanning per query, but that saving comes with lower observed accuracy. Accuracy, latency and construction cost must be reported together.
+
+The entire three-arm assay took about 79 seconds in this container. That aggregate includes extraction, ranking and scoring, but excludes model inference because no model was used. Provider cost and agent repair effect are unmeasured, not zero.
