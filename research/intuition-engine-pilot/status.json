@@ -1,7 +1,7 @@
 {
   "step": 3,
   "running": true,
-  "updated_at": "2026-10-08T00:17:55+00:00",
+  "updated_at": "2026-10-08T00:17:56+00:00",
   "summary": "Added a reusable MCP client and fresh-session Codex adapter with permitted-field and isolation guards. Readiness probe still fails before inference because CLI authentication cannot refresh. Sentinel: deterministic assay can proceed; Codex agent comparisons and confirmatory monetary accounting remain held.",
   "events": [
     {
