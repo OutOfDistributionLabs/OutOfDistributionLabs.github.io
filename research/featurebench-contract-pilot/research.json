@@ -1,0 +1,41 @@
+{
+  "id": "featurebench-contract-pilot",
+  "title": "Feature-level contracts: paired engine pilot",
+  "subtitle": "Official feature-level scoring, fresh Codex sessions and matched local MCP arms.",
+  "steps": [
+    "Protocol and authenticated harness",
+    "Pinned assets and official evaluator qualification",
+    "Permitted-input isolation and MCP design",
+    "Frozen small paired pilot",
+    "Analysis and sentinel review",
+    "Results publication"
+  ],
+  "timezone": "America/Los_Angeles",
+  "ntfy_topic": "oodlabs",
+  "heartbeat_seconds": 60,
+  "notification_seconds": 300,
+  "notify_on_checkpoint": false,
+  "notify_on_complete": true,
+  "remote": "origin",
+  "branch": "main",
+  "progress_url": "https://outofdistributionlabs.github.io/research/featurebench-contract-pilot/progress.html",
+  "evidence_note": "Development pilot, not SOTA or confirmatory evidence. Official scoring and fresh paired runs are required; failures and blocked gates are reported.",
+  "resources": [
+    {
+      "path": "research-plan.md",
+      "label": "Protocol and budget"
+    },
+    {
+      "path": "qualification.md",
+      "label": "Asset and isolation audit"
+    },
+    {
+      "path": "sentinels.json",
+      "label": "Scientific gate records"
+    },
+    {
+      "path": "evaluation/report.md",
+      "label": "Pilot outcomes"
+    }
+  ]
+}
