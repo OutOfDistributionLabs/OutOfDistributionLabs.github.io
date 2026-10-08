@@ -1,0 +1,176 @@
+[
+  {
+    "purpose": "ood-rcb-readiness-v2",
+    "run": {
+      "task_id": "psf__requests-6028_rEQueSt",
+      "arm": "C",
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "medium",
+      "exit_code": 0,
+      "turn_completed": true,
+      "usage": [
+        {
+          "input_tokens": 43203,
+          "cached_input_tokens": 40576,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 242,
+          "reasoning_output_tokens": 70
+        }
+      ],
+      "mcp_calls": 0,
+      "wall_seconds": 13.706289909983752,
+      "wall_ceiling_seconds": 90,
+      "errors": [],
+      "source_sha256": "fb6152385b6a048c76de97ab608bf4aef39ea7f4812e917c25635113ad6154d3",
+      "answer_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "provider_cost_usd": null
+    },
+    "raw_run_sha256": "72e2b22e55e7194302e5d8f26d5bfd8f8936418a641c5046945c02878c6b1b8f"
+  },
+  {
+    "purpose": "ood-rcb-readiness-v3",
+    "run": {
+      "task_id": "psf__requests-6028_rEQueSt",
+      "arm": "C",
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "medium",
+      "exit_code": 0,
+      "turn_completed": true,
+      "usage": [
+        {
+          "input_tokens": 28680,
+          "cached_input_tokens": 26368,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 120,
+          "reasoning_output_tokens": 0
+        }
+      ],
+      "mcp_calls": 0,
+      "wall_seconds": 8.507516051002312,
+      "wall_ceiling_seconds": 90,
+      "errors": [],
+      "source_sha256": "fb6152385b6a048c76de97ab608bf4aef39ea7f4812e917c25635113ad6154d3",
+      "answer_sha256": "3dfa3fb239f56c778a1e9b33eb31328349edd155a95806dac4378904e88527e5",
+      "provider_cost_usd": null
+    },
+    "raw_run_sha256": "379c54c253bc849becb4a83be653a305495d4a9b43e5e9acd8b1e503b6407db8"
+  },
+  {
+    "purpose": "ood-rcb-readiness-v4",
+    "run": {
+      "task_id": "psf__requests-6028_rEQueSt",
+      "arm": "C",
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "medium",
+      "exit_code": 0,
+      "turn_completed": true,
+      "usage": [
+        {
+          "input_tokens": 28670,
+          "cached_input_tokens": 24576,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 111,
+          "reasoning_output_tokens": 0
+        }
+      ],
+      "mcp_calls": 0,
+      "wall_seconds": 6.829186792980181,
+      "wall_ceiling_seconds": 90,
+      "errors": [],
+      "source_sha256": "fb6152385b6a048c76de97ab608bf4aef39ea7f4812e917c25635113ad6154d3",
+      "answer_sha256": "3dfa3fb239f56c778a1e9b33eb31328349edd155a95806dac4378904e88527e5",
+      "provider_cost_usd": null
+    },
+    "raw_run_sha256": "84efe99730fedb0ea192d9359522573a863c5c9c7b59dd0901d5683a8cff9e13"
+  },
+  {
+    "purpose": "ood-rcb-readiness-v5",
+    "run": {
+      "task_id": "psf__requests-6028_rEQueSt",
+      "arm": "C",
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "medium",
+      "exit_code": 0,
+      "turn_completed": true,
+      "usage": [
+        {
+          "input_tokens": 44779,
+          "cached_input_tokens": 36864,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 139,
+          "reasoning_output_tokens": 0
+        }
+      ],
+      "mcp_calls": 0,
+      "wall_seconds": 10.043986258009681,
+      "wall_ceiling_seconds": 90,
+      "errors": [],
+      "source_sha256": "fb6152385b6a048c76de97ab608bf4aef39ea7f4812e917c25635113ad6154d3",
+      "answer_sha256": "3dfa3fb239f56c778a1e9b33eb31328349edd155a95806dac4378904e88527e5",
+      "provider_cost_usd": null
+    },
+    "raw_run_sha256": "183908e2960e3686babc1ea47e5582b63dcfc70573af54b1d2345102e2eb3937"
+  },
+  {
+    "purpose": "ood-rcb-readiness-v6",
+    "run": {
+      "task_id": "psf__requests-6028_rEQueSt",
+      "arm": "C",
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "medium",
+      "exit_code": 0,
+      "turn_completed": true,
+      "usage": [
+        {
+          "input_tokens": 43667,
+          "cached_input_tokens": 40832,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 103,
+          "reasoning_output_tokens": 0
+        }
+      ],
+      "mcp_calls": 1,
+      "wall_seconds": 9.81565941599547,
+      "wall_ceiling_seconds": 90,
+      "errors": [],
+      "source_sha256": "fb6152385b6a048c76de97ab608bf4aef39ea7f4812e917c25635113ad6154d3",
+      "answer_sha256": "3dfa3fb239f56c778a1e9b33eb31328349edd155a95806dac4378904e88527e5",
+      "provider_cost_usd": null
+    },
+    "raw_run_sha256": "0d8064eacd5eaf83dfb0d73619ef39573b9b4634375a5249465caf5dad86a415"
+  },
+  {
+    "purpose": "ood-rcb-retry-access",
+    "run": {
+      "task_id": "pydicom__pydicom-1720_Sequence",
+      "arm": "A",
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "medium",
+      "exit_code": 0,
+      "turn_completed": true,
+      "usage": [
+        {
+          "input_tokens": 43167,
+          "cached_input_tokens": 38784,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 130,
+          "reasoning_output_tokens": 0
+        }
+      ],
+      "mcp_calls": 0,
+      "wall_seconds": 11.838523497019196,
+      "wall_ceiling_seconds": 60,
+      "errors": [],
+      "source_sha256": "8ff0f4cfdf1e0b89c9820fbc739b8f9ce788930f1ad6a88b1d2e84f05e155ab3",
+      "answer_sha256": "3dfa3fb239f56c778a1e9b33eb31328349edd155a95806dac4378904e88527e5",
+      "provider_cost_usd": null
+    },
+    "raw_run_sha256": "4888c7235875ad213060f94985133a16228bb349b053ce258a3d2cb74f679bae"
+  },
+  {
+    "purpose": "interrupted-native-quota",
+    "events_sha256": "9ced15267706b2267dbd7e17b10a499c06eef18583bf292b2e823e073aef000f",
+    "classification": "infrastructure_invalid",
+    "scored": false
+  }
+]

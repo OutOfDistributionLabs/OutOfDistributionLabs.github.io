@@ -20,6 +20,11 @@
       "step": 4,
       "decision": "advance_analysis",
       "evidence": "Six complete scored cells; identical task source hashes; actual MCP operations; usage-limit retry disclosed. evaluation/results.json, trace-register.json."
+    },
+    {
+      "step": 5,
+      "decision": "advance_bounded_publication",
+      "evidence": "Six cells paired by source; zero success contrast; incidental message failures reviewed; incomplete, duplicate and source-mismatched analysis rejected; cost unknown and quota retry disclosed. No SOTA/effectiveness/scaling claim."
     }
   ]
 }
