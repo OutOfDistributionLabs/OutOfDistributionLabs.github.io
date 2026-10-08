@@ -1,7 +1,7 @@
 {
   "step": 4,
   "running": true,
-  "updated_at": "2026-10-08T00:22:25+00:00",
+  "updated_at": "2026-10-08T00:23:03+00:00",
   "summary": "Measured all 1,800 frozen task/arm outcomes on 600 real RepoQA cases; 480 tasks held out by repository. Graph 38.33%, flat 38.13%, lexical scan 46.04%. Sentinel retains the null/negative outcome and distinguishes this non-LLM corpus assay from agent repair performance.",
   "events": [
     {
