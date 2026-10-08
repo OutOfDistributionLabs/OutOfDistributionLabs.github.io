@@ -1,0 +1,21 @@
+All six planned scored cells completed. One initial native Pydicom attempt was interrupted by an account usage limit and retried unchanged; it is infrastructure-invalid and excluded from solution scoring.
+\begin{center}\begin{tabular}{lccc}\toprule
+Task & Native & Flat MCP & Graph MCP\\\midrule
+Pydicom Sequence & 10/13; fail & 10/13; fail & 10/13; fail\\
+Requests rEQueSt & 44/44; pass & 44/44; pass & 44/44; pass\\
+Whole tasks resolved & 1/2 & 1/2 & 1/2\\\bottomrule
+\end{tabular}\end{center}
+Both paired resolution contrasts are zero. There is no measured success advantage for the graph engine in this sample.
+\begin{center}\small\begin{tabular}{lrrrrr}\toprule
+Arm & Seconds & Input & Cached input & Output & Operations\\\midrule
+A & 90.00 & 213,202 & 176,384 & 3,327 & 0 \\
+B & 108.53 & 192,451 & 158,848 & 3,822 & 6 \\
+C & 109.26 & 191,729 & 169,088 & 3,503 & 6 \\
+\bottomrule\end{tabular}\end{center}
+A is native, B flat and C graph. Times and token counters are totals over the two valid scored cells per arm. They exclude container setup, readiness probes and the interrupted attempt, whose token spend is unknown. Dollar cost remains null. Input counters accumulate across turns and include caching; they are not unique prompt lengths. Graph and flat take about 21\% longer in total than native here; two task timings do not establish an efficiency effect.
+
+Each tool cell logs status, query and evidence operations. The shell adapter obtains a snapshot through an additional status call for query/evidence: three logged operations correspond to five underlying MCP tool requests. All logged responses succeed. No tool consultation is inferred merely from configuration.
+
+All three Pydicom attempts fail the same three exact exception-message checks, despite raising the requested exception types. This is an incidental error-message contract mismatch, not evidence that the agent cannot reason about deep dependencies. The required tests are not softened after seeing outcomes. All three Requests candidates satisfy all 44 required tests.
+
+The supported result is successful isolated integration and a tied, negative-effectiveness pilot. It does not show current SOTA inadequacy, a graph advantage, or large-agent scaling. The next experiment should identify substantive dependency/invariant failures in a strong baseline, then freeze a broader official-environment evaluation with sufficient precision.

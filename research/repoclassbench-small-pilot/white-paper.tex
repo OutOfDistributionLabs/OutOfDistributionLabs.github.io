@@ -1,0 +1,103 @@
+% Copy to research/PROJECT/white-paper.tex; fill scope, evidence and references.
+\documentclass[11pt]{article}
+\usepackage[margin=1in,headheight=15pt]{geometry}
+\usepackage[T1]{fontenc}\usepackage[utf8]{inputenc}\usepackage{lmodern}
+\usepackage[scaled=.95]{helvet}\renewcommand{\familydefault}{\sfdefault}
+\usepackage[expansion=false]{microtype}
+\usepackage{amsmath,amssymb,amsthm,booktabs,tabularx,graphicx,enumitem,titlesec,fancyhdr,xcolor,tikz,xurl}
+\usetikzlibrary{calc,arrows.meta,positioning}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[colorlinks=true,linkcolor=Ink,citecolor=Blue,urlcolor=Blue]{hyperref}
+\definecolor{Ink}{HTML}{101B23}\definecolor{Blue}{HTML}{4E758E}\definecolor{Amber}{HTML}{B18A50}\definecolor{Champagne}{HTML}{E4BD83}
+\newcommand{\papertitle}{Repository context through a portable intuition MCP}
+\newcommand{\papersubtitle}{A small paired class-generation experiment}
+\newcommand{\papershorttitle}{Repository context / Paired pilot}
+\newcommand{\paperdate}{October 7, 2026}
+\newcommand{\paperid}{Research / 04}
+\newcommand{\paperstatus}{Development study / Adapted RepoClassBench\\Two tasks; measured agent outcomes, not a leaderboard submission.}
+\hypersetup{pdftitle={\papertitle},pdfauthor={Out of Distribution Labs}}
+\urlstyle{same}\color{Ink}
+\setlength{\parindent}{0pt}\setlength{\parskip}{7pt}\setlength{\emergencystretch}{2em}
+\setlist{leftmargin=*,itemsep=3pt}
+\titleformat{\section}{\Large\bfseries}{\textcolor{Amber}{\thesection}}{.7em}{}
+\pagestyle{fancy}\fancyhf{}\fancyhead[L]{\small Out \textcolor{Amber}{of} Distribution Labs}\fancyhead[R]{\small\paperid}\fancyfoot[L]{\scriptsize\papershorttitle}\fancyfoot[R]{\thepage}
+\newtheorem{definition}{Definition}\newtheorem{proposition}{Proposition}
+\begin{document}
+\hypersetup{pageanchor=false}
+\begin{titlepage}
+% Full-width ambient particle field, clipped to the cover band.
+\begin{tikzpicture}[remember picture,overlay]
+\fill[Ink] (current page.north west) rectangle ($(current page.north east)+(0,-10cm)$);
+\begin{scope}
+\clip (current page.north west) rectangle ($(current page.north east)+(0,-10cm)$);
+\foreach \x in {0,...,55}{\foreach \y in {0,...,25}{
+\pgfmathsetmacro{\xx}{.40*\x+.12*sin(\y*19+\x*11)}
+\pgfmathsetmacro{\yy}{.40*\y+.16*sin(\x*13+\y*17)}
+\pgfmathsetmacro{\fade}{.18+.24*(.5+.5*sin(\x*9-\y*14))}
+\fill[Blue,opacity=\fade] ($(current page.north west)+(\xx,-\yy)$) circle (.65pt);
+}}
+\foreach \x/\y in {1.1/8.4,3.8/9.3,6.7/7.9,9.4/8.8,11.8/1.1,13.7/3.2,15.9/6.7,17.3/1.8,19.5/4.4,20.8/8.9}{
+\fill[Champagne,opacity=.65] ($(current page.north west)+(\x,-\y)$) circle (1.1pt);}
+\end{scope}
+\end{tikzpicture}
+\noindent{\color{white}\Large\begin{tabular}{@{}l@{}}Out \textcolor{Champagne}{of} Distribution\\Labs\end{tabular}\par}
+\vspace{1cm}{\color{white}\fontsize{28}{34}\selectfont Repository context through\\a portable intuition MCP\par}
+\vspace{.5cm}{\color{Champagne}\papersubtitle\par}
+\vspace{3cm}{\Large Out of Distribution Labs\par}\paperdate\par
+\vspace{1cm}\paperstatus\par
+\vfill\url{https://outofdistributionlabs.github.io/}
+\end{titlepage}
+\hypersetup{pageanchor=true}
+\begin{abstract}
+We test whether a revision-scoped source-evidence MCP can assist repository-aware class generation. A storage-blocked feature-generation evaluation is replaced by two preselected tasks from RepoClassBench, preserving the earlier infrastructure failures as separate records. Native Codex, Codex with flat lexical retrieval, and Codex with graph-assisted retrieval receive identical masked repositories and a five-minute wall limit per attempt. Hidden tests are evaluated in separate containers; reference and empty-class controls qualify the functional scorer before inference. The contribution is a small, auditable paired experiment with real agent execution. The final section gives measured outcomes. Two convenience-selected tasks cannot establish benchmark-wide improvement, current state-of-the-art inadequacy, or usefulness to hundreds of agents.
+\end{abstract}
+\tableofcontents\clearpage
+\section{Problem and testable claim}
+Repository class generation requires local interfaces to agree with a public specification: constructor defaults, inheritance, validation, mutable behavior, and calls into existing modules. An isolated implementation can look plausible while violating these contracts. The practical decision problem is which repository evidence to inspect before writing the missing class.
+
+Let $Y_{ia}\in\{0,1\}$ denote all-required-tests success for task $i$ under arm $a$. The broader thesis is that bounded abstraction-assisted evidence improves success per available agent budget. Here the observable paired contrasts are
+\[\widehat\Delta_{CA}=\tfrac12\sum_{i=1}^2(Y_{iC}-Y_{iA}),\qquad
+\widehat\Delta_{CB}=\tfrac12\sum_{i=1}^2(Y_{iC}-Y_{iB}).\]
+These are descriptive development outcomes, not estimates precise enough to support a five-percentage-point population claim. A strict feasibility criterion is that isolated inference completes, the tool treatment actually consults the MCP, and a qualified evaluator can score every generated class. Effectiveness remains a separate gate.
+
+\section{Primary sources and problem fit}
+RepoClassBench's primary repository describes 287 class-generation tasks: 130 Java, 97 Python and 60 C\# tasks. Its associated 2024 paper proposes Retrieve-RepoTools-Reflect, already demonstrating that repository tools and iterative reasoning are relevant prior work\citep{rcb}. Our MCP interface and shallow reranker do not establish a new theory of repository reasoning or supersede that work.
+
+We inspected the pinned public task metadata, repository archive, Python masking and evaluator implementation, license, and expected-test scoring logic. Source commit and complete SHA256 values are published in the manifest. The source is MIT licensed; the third-party Pydicom and Requests repository licenses remain applicable. We publish task identifiers and sanitized measurements, not the repository archive or hidden class bodies.
+
+Our earlier RepoQA assay measured source retrieval rather than generation and found no convincing graph advantage\citep{oodretrieval}. That result is retained. FeatureBench is a more direct test of cross-module feature contracts, but its container storage exceeded this workspace. No FeatureBench infrastructure failure is counted as a failed agent solution. The present tasks are smaller and useful for checking functional integration, but do not test large multi-file feature implementation.
+
+Current-SOTA inadequacy on this selected RepoClassBench population has \emph{not} been demonstrated. Historical benchmark claims and a separate FeatureBench leaderboard audit cannot supply that missing comparison. A future study needs a current baseline, adequate task coverage, and a blinded failure taxonomy before making the user's broader SOTA claim.
+
+\section{Selection, runtime and controls}
+The two repository groups were chosen for small, pure-Python runtimes. Within each group we fixed the task with the shortest public detailed description, before agent outcomes. Pydicom's Sequence task has 13 required test IDs; Requests' obfuscated rEQueSt task has 44. The selection favors tractability and is neither random nor representative. The pinned archive contains obfuscated symbols; substituting the public upstream repository would change the task.
+
+The runtime uses a pinned Python 3.11 slim base with 516 MB of installed runtime and search tools. An immutable inventory records direct and transitive dependencies. Pydicom requires extra test data during collection; the evaluator has fixture files downloaded from its published URL register and checked against the published hashes for downloaded fixtures. Setup-time Docker mount and filesystem-permission failures were corrected before agent execution.
+
+Functional qualification is explicit: reference implementations pass 13/13 and 44/44 required tests. Empty classes pass 1/13 and 0/44, resolving neither task. Missing IDs, skipped tests, collection errors and failed tests cannot be treated as passed. We retain imports when masking classes, replace the official Conda environments, withhold iterative hidden-test and linter feedback, and use the official functional all-required-tests-pass rule. These deviations make this an \emph{adapted} pilot, not an official leaderboard run.
+
+\section{Information boundaries and MCP treatment}
+Inference receives only masked repository source and the public detailed class specification. Git history, test paths and the unique reference class body are removed; bytecode is excluded. The source directory is read-only. The agent writes a candidate to a separate answer directory. A separate evaluator copies the original repository and inserts the sealed candidate before running the required tests.
+
+Docker inference containers do not mount the evaluator metadata, hidden tests, host workspace or Docker socket. They mount the selected authentication file, CLI binaries, public CA trust and a restricted proxy socket. The proxy permits only the model's API endpoints; a benchmark-site request must be denied, and all ordinary container networks are detached. Runtime receipts record those checks. Authentication is never packaged into images or public research artifacts. The container retains DAC\_OVERRIDE for access to selected mounted files; this is a practical information boundary, not a proof against every malicious action or model pretraining contamination.
+
+The MCP exposes status, query and bounded evidence. The engine extracts source entities, scores lexical relevance, and in graph mode mixes file/module means and conservative local call-name hints with entity relevance. This is a shallow contextual reranker, not a semantic contract reasoner or an ontology completeness guarantee. The frozen implementation and corpus are identical between flat and graph arms.
+
+Both tool arms use the same portable shell adapter, which starts the real stdio MCP and calls it through the official SDK. Native CLI MCP startup requires explicit Python import-path configuration. Calls through the adapter are independently logged. Tool-arm prompts require status and at least one query, then allow evidence calls. Consequently native versus tool measures the whole tool-plus-instruction treatment; graph versus flat controls that instruction difference. Per-call process startup and repeated indexing belong to the measured wall cost.
+
+\section{Execution and reusable research process}
+Each of six scheduled runs uses a fresh ephemeral Codex session and container, model gpt-6.1-sol at medium reasoning effort, a 300-second inference ceiling, and one attempt. Task order is fixed; arm order is randomized separately with seeds 20261007 and 20261008. Frozen artifact hashes include the engine, server, adapters and runner. No outcome-driven engine tuning or task replacement is allowed. The first native Pydicom attempt was interrupted by an account usage limit before producing a candidate. Following an explicit user request to try again and a successful access probe, that cell was retried unchanged. This is a disclosed post-interruption deviation from the original six-attempt ceiling: six planned scored cells may involve seven inference attempts. The interrupted attempt is not a solution failure.
+
+The reusable process has six stages: protocol/selection; runtime/scorer qualification; hidden-answer isolation and MCP readiness; frozen execution; analysis; paper/publication. The expensive stages split into dependency setup, positive/negative controls, network checks, real tool calls, inference, hidden grading and accounting. Each stage ends in an advance/redo/stop sentinel with evidence. Reviews here are author self-review, not independent review. The longer twelve-stage methodology remains appropriate for a powered confirmatory study\citep{oodmethod}.
+
+Progress pages update every 60 seconds while active; notifications use a separate configurable 300-second cadence. Commits preserve each checkpoint. Results record required-test counts, whole-task success, wall time, input/output/cached token counters, actual tool calls, source hashes and errors. Monetary cost is unknown and reported as null. Caching is observed rather than assumed absent; cumulative input counters are not unique prompt lengths.
+
+\section{Interpretation and next experiment}
+The chosen tasks can expose obvious implementation or integration failures, but two tasks cannot separate chance, task difficulty and treatment effect. A single model, one attempt per cell, convenient selection, retained imports, altered environments and possible prior exposure constrain every comparison. Success on all required tests does not imply full-program correctness or performance on unrelated regressions.
+
+A useful next experiment stratifies tasks by dependency depth, interface ambiguity and invariant burden using blinded source inspection, then reserves repositories for evaluation. Compare the same flat and richer contract-aware engines at matched total budgets, with multiple randomized attempts and honest failure accounting. Use official environments before external leaderboard comparison. The contract engine should justify its added information on failure categories that a strong current baseline actually exhibits, rather than on theoretical appeal alone.
+
+\bibliographystyle{plainnat}\bibliography{references}
+\clearpage\section{Measured results}
+\input{results.tex}
+\end{document}

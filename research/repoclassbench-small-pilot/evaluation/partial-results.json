@@ -1,0 +1,112 @@
+{
+  "valid_completed": [
+    {
+      "run": {
+        "task_id": "pydicom__pydicom-1720_Sequence",
+        "arm": "C",
+        "model": "gpt-6.1-sol",
+        "reasoning_effort": "medium",
+        "exit_code": 0,
+        "turn_completed": true,
+        "usage": [
+          {
+            "input_tokens": 99090,
+            "cached_input_tokens": 86272,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 2328,
+            "reasoning_output_tokens": 258
+          }
+        ],
+        "mcp_calls": 3,
+        "wall_seconds": 71.61745069699828,
+        "wall_ceiling_seconds": 300,
+        "errors": [],
+        "source_sha256": "8ff0f4cfdf1e0b89c9820fbc739b8f9ce788930f1ad6a88b1d2e84f05e155ab3",
+        "answer_sha256": "ac3026cf622af07c79c8a40a3ddc8673c70aba74bc3837cf552541a36bcdcf68",
+        "provider_cost_usd": null
+      },
+      "grade": {
+        "task_id": "pydicom__pydicom-1720_Sequence",
+        "resolved": false,
+        "passed": 10,
+        "required": 13,
+        "missing_or_failed": 3,
+        "pytest_exit_code": 1,
+        "wall_seconds": 5.591545837989543,
+        "grading_rule": "All official expected test IDs must appear as passed; missing/skipped/error count as failure. Adapted runtime, no linter feedback."
+      }
+    },
+    {
+      "run": {
+        "task_id": "pydicom__pydicom-1720_Sequence",
+        "arm": "B",
+        "model": "gpt-6.1-sol",
+        "reasoning_effort": "medium",
+        "exit_code": 0,
+        "turn_completed": true,
+        "usage": [
+          {
+            "input_tokens": 98446,
+            "cached_input_tokens": 81408,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 2346,
+            "reasoning_output_tokens": 319
+          }
+        ],
+        "mcp_calls": 3,
+        "wall_seconds": 62.86247583600925,
+        "wall_ceiling_seconds": 300,
+        "errors": [],
+        "source_sha256": "8ff0f4cfdf1e0b89c9820fbc739b8f9ce788930f1ad6a88b1d2e84f05e155ab3",
+        "answer_sha256": "784b2c671c2eada4125fc5a6c9e3e2abd24db5793b9c6fcaf99294cfe6b23135",
+        "provider_cost_usd": null
+      },
+      "grade": {
+        "task_id": "pydicom__pydicom-1720_Sequence",
+        "resolved": false,
+        "passed": 10,
+        "required": 13,
+        "missing_or_failed": 3,
+        "pytest_exit_code": 1,
+        "wall_seconds": 6.113582419988234,
+        "grading_rule": "All official expected test IDs must appear as passed; missing/skipped/error count as failure. Adapted runtime, no linter feedback."
+      }
+    }
+  ],
+  "interrupted": {
+    "task_id": "pydicom__pydicom-1720_Sequence",
+    "arm": "A",
+    "model": "gpt-6.1-sol",
+    "reasoning_effort": "medium",
+    "exit_code": 1,
+    "turn_completed": false,
+    "usage": [],
+    "mcp_calls": 0,
+    "wall_seconds": 15.739323625020916,
+    "wall_ceiling_seconds": 300,
+    "errors": [
+      "You\u2019ve hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/codex/settings/usage to purchase more credits or try again at 3:14 AM.",
+      {
+        "message": "You\u2019ve hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/codex/settings/usage to purchase more credits or try again at 3:14 AM."
+      }
+    ],
+    "source_sha256": "8ff0f4cfdf1e0b89c9820fbc739b8f9ce788930f1ad6a88b1d2e84f05e155ab3",
+    "answer_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "provider_cost_usd": null
+  },
+  "pending": [
+    {
+      "task_ordinal": 1,
+      "arm": "C"
+    },
+    {
+      "task_ordinal": 1,
+      "arm": "A"
+    },
+    {
+      "task_ordinal": 1,
+      "arm": "B"
+    }
+  ],
+  "comparison_complete": false
+}

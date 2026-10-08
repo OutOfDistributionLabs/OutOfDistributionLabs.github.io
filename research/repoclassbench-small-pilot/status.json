@@ -1,8 +1,8 @@
 {
-  "step": 3,
+  "step": 4,
   "running": true,
-  "updated_at": "2026-10-08T03:22:05+00:00",
-  "summary": "Isolation and real MCP readiness passed. Implementation and six-run randomized schedule frozen.",
+  "updated_at": "2026-10-08T03:22:52+00:00",
+  "summary": "Six scored runs complete: all arms resolve Requests and fail three Pydicom message checks. Quota interruption and retry retained.",
   "events": [
     {
       "at": "2026-10-08T01:39:40+00:00",
@@ -19,6 +19,10 @@
     {
       "at": "2026-10-08T01:55:16+00:00",
       "summary": "Isolation and real MCP readiness passed. Implementation and six-run randomized schedule frozen."
+    },
+    {
+      "at": "2026-10-08T03:22:52+00:00",
+      "summary": "Six scored runs complete: all arms resolve Requests and fail three Pydicom message checks. Quota interruption and retry retained."
     }
   ]
 }

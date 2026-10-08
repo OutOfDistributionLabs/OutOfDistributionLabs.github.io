@@ -1,0 +1,218 @@
+[
+  {
+    "run": {
+      "task_id": "pydicom__pydicom-1720_Sequence",
+      "arm": "C",
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "medium",
+      "exit_code": 0,
+      "turn_completed": true,
+      "usage": [
+        {
+          "input_tokens": 99090,
+          "cached_input_tokens": 86272,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2328,
+          "reasoning_output_tokens": 258
+        }
+      ],
+      "mcp_calls": 3,
+      "wall_seconds": 71.61745069699828,
+      "wall_ceiling_seconds": 300,
+      "errors": [],
+      "source_sha256": "8ff0f4cfdf1e0b89c9820fbc739b8f9ce788930f1ad6a88b1d2e84f05e155ab3",
+      "answer_sha256": "ac3026cf622af07c79c8a40a3ddc8673c70aba74bc3837cf552541a36bcdcf68",
+      "provider_cost_usd": null
+    },
+    "grade": {
+      "task_id": "pydicom__pydicom-1720_Sequence",
+      "resolved": false,
+      "passed": 10,
+      "required": 13,
+      "missing_or_failed": 3,
+      "pytest_exit_code": 1,
+      "wall_seconds": 5.591545837989543,
+      "grading_rule": "All official expected test IDs must appear as passed; missing/skipped/error count as failure. Adapted runtime, no linter feedback."
+    }
+  },
+  {
+    "run": {
+      "task_id": "pydicom__pydicom-1720_Sequence",
+      "arm": "B",
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "medium",
+      "exit_code": 0,
+      "turn_completed": true,
+      "usage": [
+        {
+          "input_tokens": 98446,
+          "cached_input_tokens": 81408,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2346,
+          "reasoning_output_tokens": 319
+        }
+      ],
+      "mcp_calls": 3,
+      "wall_seconds": 62.86247583600925,
+      "wall_ceiling_seconds": 300,
+      "errors": [],
+      "source_sha256": "8ff0f4cfdf1e0b89c9820fbc739b8f9ce788930f1ad6a88b1d2e84f05e155ab3",
+      "answer_sha256": "784b2c671c2eada4125fc5a6c9e3e2abd24db5793b9c6fcaf99294cfe6b23135",
+      "provider_cost_usd": null
+    },
+    "grade": {
+      "task_id": "pydicom__pydicom-1720_Sequence",
+      "resolved": false,
+      "passed": 10,
+      "required": 13,
+      "missing_or_failed": 3,
+      "pytest_exit_code": 1,
+      "wall_seconds": 6.113582419988234,
+      "grading_rule": "All official expected test IDs must appear as passed; missing/skipped/error count as failure. Adapted runtime, no linter feedback."
+    }
+  },
+  {
+    "run": {
+      "task_id": "pydicom__pydicom-1720_Sequence",
+      "arm": "A",
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "medium",
+      "exit_code": 0,
+      "turn_completed": true,
+      "usage": [
+        {
+          "input_tokens": 120404,
+          "cached_input_tokens": 99968,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2164,
+          "reasoning_output_tokens": 214
+        }
+      ],
+      "mcp_calls": 0,
+      "wall_seconds": 59.43558406899683,
+      "wall_ceiling_seconds": 300,
+      "errors": [],
+      "source_sha256": "8ff0f4cfdf1e0b89c9820fbc739b8f9ce788930f1ad6a88b1d2e84f05e155ab3",
+      "answer_sha256": "9ea9d1df42e7fcd91592d2fdbc27239f834a019e2ad68b2e0a60f637eb6a5a2e",
+      "provider_cost_usd": null
+    },
+    "grade": {
+      "task_id": "pydicom__pydicom-1720_Sequence",
+      "resolved": false,
+      "passed": 10,
+      "required": 13,
+      "missing_or_failed": 3,
+      "pytest_exit_code": 1,
+      "wall_seconds": 6.284762764989864,
+      "grading_rule": "All official expected test IDs must appear as passed; missing/skipped/error count as failure. Adapted runtime, no linter feedback."
+    }
+  },
+  {
+    "run": {
+      "task_id": "psf__requests-6028_rEQueSt",
+      "arm": "C",
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "medium",
+      "exit_code": 0,
+      "turn_completed": true,
+      "usage": [
+        {
+          "input_tokens": 92639,
+          "cached_input_tokens": 82816,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 1175,
+          "reasoning_output_tokens": 0
+        }
+      ],
+      "mcp_calls": 3,
+      "wall_seconds": 37.64015894001932,
+      "wall_ceiling_seconds": 300,
+      "errors": [],
+      "source_sha256": "fb6152385b6a048c76de97ab608bf4aef39ea7f4812e917c25635113ad6154d3",
+      "answer_sha256": "237651ca6f681295c1174c787bac58abc486f8a44eb2a546e70e22c3c161dbab",
+      "provider_cost_usd": null
+    },
+    "grade": {
+      "task_id": "psf__requests-6028_rEQueSt",
+      "resolved": true,
+      "passed": 44,
+      "required": 44,
+      "missing_or_failed": 0,
+      "pytest_exit_code": 0,
+      "wall_seconds": 5.153083541983506,
+      "grading_rule": "All official expected test IDs must appear as passed; missing/skipped/error count as failure. Adapted runtime, no linter feedback."
+    }
+  },
+  {
+    "run": {
+      "task_id": "psf__requests-6028_rEQueSt",
+      "arm": "A",
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "medium",
+      "exit_code": 0,
+      "turn_completed": true,
+      "usage": [
+        {
+          "input_tokens": 92798,
+          "cached_input_tokens": 76416,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 1163,
+          "reasoning_output_tokens": 15
+        }
+      ],
+      "mcp_calls": 0,
+      "wall_seconds": 30.568840224994346,
+      "wall_ceiling_seconds": 300,
+      "errors": [],
+      "source_sha256": "fb6152385b6a048c76de97ab608bf4aef39ea7f4812e917c25635113ad6154d3",
+      "answer_sha256": "43b1f883472fd713ad1793c27202e9ffd21e7e308fc63a6b7f6a6771a5c42462",
+      "provider_cost_usd": null
+    },
+    "grade": {
+      "task_id": "psf__requests-6028_rEQueSt",
+      "resolved": true,
+      "passed": 44,
+      "required": 44,
+      "missing_or_failed": 0,
+      "pytest_exit_code": 0,
+      "wall_seconds": 5.703839460009476,
+      "grading_rule": "All official expected test IDs must appear as passed; missing/skipped/error count as failure. Adapted runtime, no linter feedback."
+    }
+  },
+  {
+    "run": {
+      "task_id": "psf__requests-6028_rEQueSt",
+      "arm": "B",
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "medium",
+      "exit_code": 0,
+      "turn_completed": true,
+      "usage": [
+        {
+          "input_tokens": 94005,
+          "cached_input_tokens": 77440,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 1476,
+          "reasoning_output_tokens": 31
+        }
+      ],
+      "mcp_calls": 3,
+      "wall_seconds": 45.67018258199096,
+      "wall_ceiling_seconds": 300,
+      "errors": [],
+      "source_sha256": "fb6152385b6a048c76de97ab608bf4aef39ea7f4812e917c25635113ad6154d3",
+      "answer_sha256": "82db675c1a8b67877a432f7ee6de6a0e9ade805ec26dedc14c5acc6c62544a83",
+      "provider_cost_usd": null
+    },
+    "grade": {
+      "task_id": "psf__requests-6028_rEQueSt",
+      "resolved": true,
+      "passed": 44,
+      "required": 44,
+      "missing_or_failed": 0,
+      "pytest_exit_code": 0,
+      "wall_seconds": 4.537703335983679,
+      "grading_rule": "All official expected test IDs must appear as passed; missing/skipped/error count as failure. Adapted runtime, no linter feedback."
+    }
+  }
+]

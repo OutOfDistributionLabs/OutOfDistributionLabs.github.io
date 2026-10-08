@@ -34,3 +34,9 @@ For `redo`: identify the smallest failed substep and redo it with a new artifact
 ## Publish and repeat
 
 Create `research/PROJECT` with the general publisher. Link to a protocol, benchmark audit, contract, manifest and sentinel history. Checkpoint every material substep and sentinel; independently configured page/ntfy heartbeats indicate activity only (new defaults: 60-second page updates and 300-second notifications). Keep experiment outputs out of public progress until sanitised, and publish methodology and all deviations. When planning ends, stop that heartbeat. Implementation resumes as a distinct project or a deliberately versioned longer programme; never mark unexecuted stages complete.
+
+## Resource-constrained functional pilot
+
+When an official runtime exceeds the workspace budget, preserve the failed study and open a distinct adapted pilot. Freeze the smaller benchmark source, archive, task-selection rule and deviations before agent outcomes. Qualify reference and empty candidates against exact expected test IDs; missing/skipped IDs never pass. Pre-provision verified fixtures in evaluator-only storage. A working model session without an actual MCP call does not qualify the tool treatment. If a portable shell-to-stdio adapter is used, expose the same adapter and instructions to flat and graph arms and count indexing/startup in their wall budget.
+
+The worked implementation is `benchmarks/repoclassbench_small.py`, with isolated runtime/grade/inference helpers in `harnesses/small_repository.py` and official-SDK transport in `harnesses/mcp_cli.py`. Its small two-task result is feasibility evidence, not a replacement for a powered official-environment evaluation. Inspect whether failures are substantive dependency/invariant failures or incidental exact-string checks before choosing the next confirmatory task population. Never infer current SOTA inadequacy from an old benchmark paper or a convenience subset.

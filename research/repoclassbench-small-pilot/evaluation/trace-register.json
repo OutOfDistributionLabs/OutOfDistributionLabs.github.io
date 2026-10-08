@@ -1,0 +1,220 @@
+[
+  {
+    "task_id": "pydicom__pydicom-1720_Sequence",
+    "arm": "C",
+    "hashes": {
+      "grading/grade.json": "e05c77c9da9b33fa7e4093c76be0f10717ace57e8b11f09c1d5e76a326e201b4",
+      "grading/pytest.log": "ccf6c0c2b6811a9a331c354ae94a3e374be0c4e1b1159b8f319f48616f0f01a7",
+      "inference/run.json": "77f5c12b586594a31d5810ae0c1b7084726d50feebad88e3e8917d951657805a",
+      "inference/mcp-calls.jsonl": "b5c846484400899a414c91979f6add2a884fd91683f205315aaa94521dfc3e3e",
+      "inference/answer.py": "ac3026cf622af07c79c8a40a3ddc8673c70aba74bc3837cf552541a36bcdcf68",
+      "inference/stderr.log": "e3ec3a5d6c46221ee96b18bd17506c88c59b3d919ad03667dfec082625eadb94",
+      "inference/events.jsonl": "48bd66f885c81dd2195a166be9934fc7b2dadb767823bdeea3dcd3cd8eba6a0d",
+      "inference/isolation.json": "406b9b5af6ffb70dd9c350a304c692ba53f714e47f5288da8b5765b35856639e",
+      "inference/isolation-setup.log": "b42c0c186504c4ab857b34dbc26ba3a2bed08c56377e672203f42683854ad5ab"
+    },
+    "isolation": {
+      "source_sha256": "8ff0f4cfdf1e0b89c9820fbc739b8f9ce788930f1ad6a88b1d2e84f05e155ab3",
+      "networks": [],
+      "benchmark_download_denied": true,
+      "hidden_tests_and_answer_not_mounted": true,
+      "docker_socket_not_mounted": true,
+      "workspace_readonly": true
+    },
+    "mcp_operations": [
+      {
+        "tool": "intuition_status",
+        "mode": "graph",
+        "is_error": false,
+        "snapshot_id": "sha256:5249ee372f27c2ca80e0a011c3303105e3f1edea91d301d7277896a2f41572d3"
+      },
+      {
+        "tool": "intuition_query",
+        "mode": "graph",
+        "is_error": false,
+        "snapshot_id": "sha256:5249ee372f27c2ca80e0a011c3303105e3f1edea91d301d7277896a2f41572d3"
+      },
+      {
+        "tool": "intuition_evidence",
+        "mode": "graph",
+        "is_error": false,
+        "snapshot_id": "sha256:5249ee372f27c2ca80e0a011c3303105e3f1edea91d301d7277896a2f41572d3"
+      }
+    ]
+  },
+  {
+    "task_id": "pydicom__pydicom-1720_Sequence",
+    "arm": "B",
+    "hashes": {
+      "grading/grade.json": "0b93cd44c169348f6d85ef3ce17190b5f3d7f7fb831433d027e6cba340943188",
+      "grading/pytest.log": "be04d471275fc73204706630755f47c6eb86518e2c39b107c5b2203804fc6ffa",
+      "inference/run.json": "1992605c0dc38c634eded861bc41ea21daa1905cbf278390830d047c9472ebaa",
+      "inference/mcp-calls.jsonl": "7d34ef0a7c704bb1f6c69d70134b45a2b84c2b1c81e05568f724ec650e400744",
+      "inference/answer.py": "784b2c671c2eada4125fc5a6c9e3e2abd24db5793b9c6fcaf99294cfe6b23135",
+      "inference/stderr.log": "e3ec3a5d6c46221ee96b18bd17506c88c59b3d919ad03667dfec082625eadb94",
+      "inference/events.jsonl": "ce3095b59115a09668e8a6bd5094bdfa4c3ae80c7046c1902260f5f92322b012",
+      "inference/isolation.json": "406b9b5af6ffb70dd9c350a304c692ba53f714e47f5288da8b5765b35856639e",
+      "inference/isolation-setup.log": "b42c0c186504c4ab857b34dbc26ba3a2bed08c56377e672203f42683854ad5ab"
+    },
+    "isolation": {
+      "source_sha256": "8ff0f4cfdf1e0b89c9820fbc739b8f9ce788930f1ad6a88b1d2e84f05e155ab3",
+      "networks": [],
+      "benchmark_download_denied": true,
+      "hidden_tests_and_answer_not_mounted": true,
+      "docker_socket_not_mounted": true,
+      "workspace_readonly": true
+    },
+    "mcp_operations": [
+      {
+        "tool": "intuition_status",
+        "mode": "flat",
+        "is_error": false,
+        "snapshot_id": "sha256:5249ee372f27c2ca80e0a011c3303105e3f1edea91d301d7277896a2f41572d3"
+      },
+      {
+        "tool": "intuition_query",
+        "mode": "flat",
+        "is_error": false,
+        "snapshot_id": "sha256:5249ee372f27c2ca80e0a011c3303105e3f1edea91d301d7277896a2f41572d3"
+      },
+      {
+        "tool": "intuition_evidence",
+        "mode": "flat",
+        "is_error": false,
+        "snapshot_id": "sha256:5249ee372f27c2ca80e0a011c3303105e3f1edea91d301d7277896a2f41572d3"
+      }
+    ]
+  },
+  {
+    "task_id": "pydicom__pydicom-1720_Sequence",
+    "arm": "A",
+    "hashes": {
+      "grading/grade.json": "59b1b1b0738e418e4d60d9dc3c23f21357379c303ec8c89274e66caf74cb369e",
+      "grading/pytest.log": "1dcf99e57f4ab13f498e8e25b1a0ad12aa17145e75927c96138970b11ff14b10",
+      "inference/run.json": "1d8842f88f5db6a777d3738c86e470c8ccde516667aa56963cc1d224d2a19a4d",
+      "inference/answer.py": "9ea9d1df42e7fcd91592d2fdbc27239f834a019e2ad68b2e0a60f637eb6a5a2e",
+      "inference/stderr.log": "e3ec3a5d6c46221ee96b18bd17506c88c59b3d919ad03667dfec082625eadb94",
+      "inference/events.jsonl": "f2f333fb96e8777168d5b22d43afb0fbeedd83a05cf0dfd904ad513f52b870e9",
+      "inference/isolation.json": "406b9b5af6ffb70dd9c350a304c692ba53f714e47f5288da8b5765b35856639e",
+      "inference/isolation-setup.log": "b42c0c186504c4ab857b34dbc26ba3a2bed08c56377e672203f42683854ad5ab"
+    },
+    "isolation": {
+      "source_sha256": "8ff0f4cfdf1e0b89c9820fbc739b8f9ce788930f1ad6a88b1d2e84f05e155ab3",
+      "networks": [],
+      "benchmark_download_denied": true,
+      "hidden_tests_and_answer_not_mounted": true,
+      "docker_socket_not_mounted": true,
+      "workspace_readonly": true
+    },
+    "mcp_operations": []
+  },
+  {
+    "task_id": "psf__requests-6028_rEQueSt",
+    "arm": "C",
+    "hashes": {
+      "grading/grade.json": "8d56f17b33b493d43a70d80a763e8e2a7eed1f09731e294edf7ee55807890b4e",
+      "grading/pytest.log": "12eb766f4a2aa6ac7a15aaf327afe150d7b2c739a2e78abd0fc4ed87b9a5ec70",
+      "inference/run.json": "c2989f84f3bc5d44fac4b53a4e378c30a3611d024ff330c36ba416b1da4181b2",
+      "inference/mcp-calls.jsonl": "3cda3ad43d071b11b8d0e5d1b57cb7633b40c1ef3f52c810963bbbaad9ed8f55",
+      "inference/answer.py": "237651ca6f681295c1174c787bac58abc486f8a44eb2a546e70e22c3c161dbab",
+      "inference/stderr.log": "e3ec3a5d6c46221ee96b18bd17506c88c59b3d919ad03667dfec082625eadb94",
+      "inference/events.jsonl": "34aa4e4d5343b15c09532390585f416667248ab13af3b61c8730cbbbc47272b8",
+      "inference/isolation.json": "0489f842b7d7225bc20997f875dd00851c5f8917e1ff7e663949dc2024d78797",
+      "inference/isolation-setup.log": "b42c0c186504c4ab857b34dbc26ba3a2bed08c56377e672203f42683854ad5ab"
+    },
+    "isolation": {
+      "source_sha256": "fb6152385b6a048c76de97ab608bf4aef39ea7f4812e917c25635113ad6154d3",
+      "networks": [],
+      "benchmark_download_denied": true,
+      "hidden_tests_and_answer_not_mounted": true,
+      "docker_socket_not_mounted": true,
+      "workspace_readonly": true
+    },
+    "mcp_operations": [
+      {
+        "tool": "intuition_status",
+        "mode": "graph",
+        "is_error": false,
+        "snapshot_id": "sha256:e447a05743ffc695043e108263464d8392cdad1b0ecbdad0ddedd2f2074a51e6"
+      },
+      {
+        "tool": "intuition_query",
+        "mode": "graph",
+        "is_error": false,
+        "snapshot_id": "sha256:e447a05743ffc695043e108263464d8392cdad1b0ecbdad0ddedd2f2074a51e6"
+      },
+      {
+        "tool": "intuition_evidence",
+        "mode": "graph",
+        "is_error": false,
+        "snapshot_id": "sha256:e447a05743ffc695043e108263464d8392cdad1b0ecbdad0ddedd2f2074a51e6"
+      }
+    ]
+  },
+  {
+    "task_id": "psf__requests-6028_rEQueSt",
+    "arm": "A",
+    "hashes": {
+      "grading/grade.json": "ce2d090631b0c3ff2e197bf7b3d8baa482b702da893f88286066b5c9ef4c9fd0",
+      "grading/pytest.log": "470164274b05c4c9ce2f34b12f5f80eb653dec7608269af94d81ec407744e1fd",
+      "inference/run.json": "24ac60aec484380d92e60234d5b6522fea51b153dceb8bc4e0b83893dd3c2eb5",
+      "inference/answer.py": "43b1f883472fd713ad1793c27202e9ffd21e7e308fc63a6b7f6a6771a5c42462",
+      "inference/stderr.log": "e3ec3a5d6c46221ee96b18bd17506c88c59b3d919ad03667dfec082625eadb94",
+      "inference/events.jsonl": "afd374d0f85d435a652f0417444d86563d2e86bf7af439ac01be2ec17a9d341c",
+      "inference/isolation.json": "0489f842b7d7225bc20997f875dd00851c5f8917e1ff7e663949dc2024d78797",
+      "inference/isolation-setup.log": "b42c0c186504c4ab857b34dbc26ba3a2bed08c56377e672203f42683854ad5ab"
+    },
+    "isolation": {
+      "source_sha256": "fb6152385b6a048c76de97ab608bf4aef39ea7f4812e917c25635113ad6154d3",
+      "networks": [],
+      "benchmark_download_denied": true,
+      "hidden_tests_and_answer_not_mounted": true,
+      "docker_socket_not_mounted": true,
+      "workspace_readonly": true
+    },
+    "mcp_operations": []
+  },
+  {
+    "task_id": "psf__requests-6028_rEQueSt",
+    "arm": "B",
+    "hashes": {
+      "grading/grade.json": "5d40b51fa5555ab51c90f071dea518083e0fbdad97d49a72be9a57a2aaf3f03e",
+      "grading/pytest.log": "24dd36517a1c3c83ac787e089254f279ed0b5c1866ca219f6ab94beecced93ff",
+      "inference/run.json": "43df7e9a81d7ebb27275b6649d22204b2c7ded8f5d2771b3d33a3ac9c3b661da",
+      "inference/mcp-calls.jsonl": "526a613c7d01023b6974693f092326d5b1f700ab64062b081ca68ef544007125",
+      "inference/answer.py": "82db675c1a8b67877a432f7ee6de6a0e9ade805ec26dedc14c5acc6c62544a83",
+      "inference/stderr.log": "e3ec3a5d6c46221ee96b18bd17506c88c59b3d919ad03667dfec082625eadb94",
+      "inference/events.jsonl": "ef081cae83b2a20cbd6352fa16415aa6a2a8d481abfdeef55add838901e04d06",
+      "inference/isolation.json": "0489f842b7d7225bc20997f875dd00851c5f8917e1ff7e663949dc2024d78797",
+      "inference/isolation-setup.log": "b42c0c186504c4ab857b34dbc26ba3a2bed08c56377e672203f42683854ad5ab"
+    },
+    "isolation": {
+      "source_sha256": "fb6152385b6a048c76de97ab608bf4aef39ea7f4812e917c25635113ad6154d3",
+      "networks": [],
+      "benchmark_download_denied": true,
+      "hidden_tests_and_answer_not_mounted": true,
+      "docker_socket_not_mounted": true,
+      "workspace_readonly": true
+    },
+    "mcp_operations": [
+      {
+        "tool": "intuition_status",
+        "mode": "flat",
+        "is_error": false,
+        "snapshot_id": "sha256:e447a05743ffc695043e108263464d8392cdad1b0ecbdad0ddedd2f2074a51e6"
+      },
+      {
+        "tool": "intuition_query",
+        "mode": "flat",
+        "is_error": false,
+        "snapshot_id": "sha256:e447a05743ffc695043e108263464d8392cdad1b0ecbdad0ddedd2f2074a51e6"
+      },
+      {
+        "tool": "intuition_evidence",
+        "mode": "flat",
+        "is_error": false,
+        "snapshot_id": "sha256:e447a05743ffc695043e108263464d8392cdad1b0ecbdad0ddedd2f2074a51e6"
+      }
+    ]
+  }
+]

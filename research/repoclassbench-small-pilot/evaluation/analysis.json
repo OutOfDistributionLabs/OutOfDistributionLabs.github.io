@@ -1,0 +1,38 @@
+{
+  "arms": {
+    "A": {
+      "resolved": 1,
+      "tasks": 2,
+      "inference_seconds": 90.00442429399118,
+      "input_tokens": 213202,
+      "cached_input_tokens": 176384,
+      "output_tokens": 3327,
+      "logged_tool_operations": 0,
+      "provider_cost_usd": null
+    },
+    "B": {
+      "resolved": 1,
+      "tasks": 2,
+      "inference_seconds": 108.53265841800021,
+      "input_tokens": 192451,
+      "cached_input_tokens": 158848,
+      "output_tokens": 3822,
+      "logged_tool_operations": 6,
+      "provider_cost_usd": null
+    },
+    "C": {
+      "resolved": 1,
+      "tasks": 2,
+      "inference_seconds": 109.2576096370176,
+      "input_tokens": 191729,
+      "cached_input_tokens": 169088,
+      "output_tokens": 3503,
+      "logged_tool_operations": 6,
+      "provider_cost_usd": null
+    }
+  },
+  "graph_minus_native_resolution": 0.0,
+  "graph_minus_flat_resolution": 0.0,
+  "inference_accounting_scope": "Valid scored cells only. Setup, readiness and interrupted attempt excluded; unknown interrupted token spend and provider price prevent total-cost claims.",
+  "powered_or_representative": false
+}
