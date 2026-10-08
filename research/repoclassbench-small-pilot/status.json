@@ -1,8 +1,8 @@
 {
-  "step": 5,
-  "running": true,
-  "updated_at": "2026-10-08T03:24:08+00:00",
-  "summary": "Analysis reviewed: all arms 1/2, zero success contrast, tool arms about 21 percent slower. No SOTA or population claim.",
+  "step": 6,
+  "running": false,
+  "updated_at": "2026-10-08T03:25:09+00:00",
+  "summary": "Published seven-page results paper: six scored runs, real MCP calls, all arms 1/2; no effectiveness gain demonstrated. Visual and button checks passed.",
   "events": [
     {
       "at": "2026-10-08T01:39:40+00:00",
@@ -27,6 +27,10 @@
     {
       "at": "2026-10-08T03:23:39+00:00",
       "summary": "Analysis reviewed: all arms 1/2, zero success contrast, tool arms about 21 percent slower. No SOTA or population claim."
+    },
+    {
+      "at": "2026-10-08T03:25:09+00:00",
+      "summary": "Published seven-page results paper: six scored runs, real MCP calls, all arms 1/2; no effectiveness gain demonstrated. Visual and button checks passed."
     }
   ]
 }

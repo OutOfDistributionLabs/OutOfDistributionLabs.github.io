@@ -1,7 +1,7 @@
 {
   "id": "repoclassbench-small-pilot",
   "title": "Small repository-class benchmark: paired MCP pilot",
-  "subtitle": "Small cross-file class-generation pilot; reference qualification before fresh paired Codex sessions.",
+  "subtitle": "Completed small cross-file class-generation pilot: six scored agent runs, real MCP calls and a tied result.",
   "steps": [
     "Protocol and small-task selection",
     "Lightweight environment and functional scorer qualification",
@@ -22,6 +22,10 @@
   "evidence_note": "Adapted RepoClassBench feasibility subset, not an official leaderboard run, current-SOTA comparison or powered effectiveness result.",
   "resources": [
     {
+      "path": "white-paper.pdf",
+      "label": "Results white paper \u00b7 PDF"
+    },
+    {
       "path": "research-plan.md",
       "label": "Protocol and deviations"
     },
@@ -40,6 +44,22 @@
     {
       "path": "evaluation/report.md",
       "label": "Measured outcomes"
+    },
+    {
+      "path": "REPRODUCING.md",
+      "label": "Reproduction instructions"
+    },
+    {
+      "path": "evaluation/results.json",
+      "label": "Six measured agent outcomes"
+    },
+    {
+      "path": "evaluation/analysis.json",
+      "label": "Descriptive analysis"
+    },
+    {
+      "path": "evaluation/trace-register.json",
+      "label": "Trace hashes and isolation receipts"
     }
   ],
   "notify_on_error": false

@@ -25,6 +25,11 @@
       "step": 5,
       "decision": "advance_bounded_publication",
       "evidence": "Six cells paired by source; zero success contrast; incidental message failures reviewed; incomplete, duplicate and source-mismatched analysis rejected; cost unknown and quota retry disclosed. No SOTA/effectiveness/scaling claim."
+    },
+    {
+      "step": 6,
+      "decision": "publish_completed_development_pilot",
+      "evidence": "verification.md; seven-page compiled PDF visually checked; responsive browser/button/focus/reduced-motion checks pass; all links exist; frozen code hashes unchanged. Live deployment checked after push."
     }
   ]
 }
