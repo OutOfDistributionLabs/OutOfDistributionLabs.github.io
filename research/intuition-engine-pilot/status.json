@@ -1,8 +1,8 @@
 {
-  "step": 1,
+  "step": 2,
   "running": true,
-  "updated_at": "2026-10-08T00:14:51+00:00",
-  "summary": "Qualified a pinned real RepoQA release: 600 tasks, six languages, 60 repositories, verified source/license hashes and upstream gold/empty scorer checks. Sentinel advances a bounded non-LLM retrieval assay; fresh Codex trials remain held by an authentication failure.",
+  "updated_at": "2026-10-08T00:15:52+00:00",
+  "summary": "Implemented scan/flat/graph engines and a real read-only stdio MCP with source evidence and revision checks. Five engine tests pass, including real SDK initialize/list/call round trips, six-language parsing, stale/forged evidence and budget/path bounds. Sentinel: transport works; no agent effectiveness claim.",
   "events": [
     {
       "at": "2026-10-08T00:04:55+00:00",
@@ -11,6 +11,10 @@
     {
       "at": "2026-10-08T00:13:52+00:00",
       "summary": "Qualified a pinned real RepoQA release: 600 tasks, six languages, 60 repositories, verified source/license hashes and upstream gold/empty scorer checks. Sentinel advances a bounded non-LLM retrieval assay; fresh Codex trials remain held by an authentication failure."
+    },
+    {
+      "at": "2026-10-08T00:15:52+00:00",
+      "summary": "Implemented scan/flat/graph engines and a real read-only stdio MCP with source evidence and revision checks. Five engine tests pass, including real SDK initialize/list/call round trips, six-language parsing, stale/forged evidence and budget/path bounds. Sentinel: transport works; no agent effectiveness claim."
     }
   ]
 }

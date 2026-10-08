@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "oodlabs-intuition-engine"
+version = "0.1.0"
+description = "Evidence-grounded repository advice over MCP, with benchmark controls"
+requires-python = ">=3.10"
+dependencies = ["mcp==1.29.0", "tree-sitter==0.21.3", "tree-sitter-languages==1.10.2", "nltk==3.9.1"]
+
+[project.scripts]
+oodlabs-intuition = "intuition_engine.server:main"
+
+[tool.setuptools.packages.find]
+include = ["intuition_engine*"]
