@@ -1,0 +1,24 @@
+[
+  {
+    "instance_id": "Netflix__metaflow.b390a8d4.test_stub_generator.7bf08c98.lv1",
+    "control": "gold",
+    "classification": "infrastructure_invalid",
+    "scoring_reached": false,
+    "resolved": null,
+    "error": "500 Server Error for http+docker://localhost/v1.51/containers/create?name=fb-eval-Netflix__metaflow-b390a8d4-test_stub_generator-7bf08c98-lv1-attempt-1-20261008-011808-344119: Internal Server Error (\"no space left on device\")",
+    "upstream_completed_flag": true,
+    "upstream_false_resolved_flag_is_not_a_score": true,
+    "patch_sha256": "0c69653facf361b4e949846508bce36d9cd4ba87d248fcf6c62400543f925231"
+  },
+  {
+    "instance_id": "Netflix__metaflow.b390a8d4.test_stub_generator.7bf08c98.lv1",
+    "control": "empty",
+    "classification": "infrastructure_invalid",
+    "scoring_reached": false,
+    "resolved": null,
+    "error": "500 Server Error for http+docker://localhost/v1.51/containers/create?name=fb-eval-Netflix__metaflow-b390a8d4-test_stub_generator-7bf08c98-lv1-attempt-1-20261008-011847-268448: Internal Server Error (\"mkdir /var/lib/docker/vfs/dir/1fc34a47f11a659c940a5b9b359077336345f2826ec9909b83828b451823de76-init/boot: no space left on device\")",
+    "upstream_completed_flag": true,
+    "upstream_false_resolved_flag_is_not_a_score": true,
+    "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

@@ -9,3 +9,5 @@ Agent preparation uses upstream masking, removal of pristine `/root/my_repo`, re
 Sentinel: runtime qualification incomplete. Authentication is now working, but reference scoring and isolation checks must pass before agents execute.
 
 The complete merged Metaflow image finished at 17.7 GB, exceeding the practical image-plus-VFS-container envelope. It was removed after recording provenance. A second derived import excludes only `/opt/miniconda3/pkgs`, `/root/.cache` and original `/root/my_repo/.git`; active environments/source/tests remain. Retained links into removed caches are checked, and official gold grading decides runtime validity. This additional deviation precludes exact leaderboard infrastructure parity.
+
+Final runtime gate: HOLD. The compact import completed, but both official control containers failed to create due to storage exhaustion. Tests never ran; normalized resolution is null. No agents ran. See the qualification results and report. Authentication is working. Registered task images/containers were removed; managed environment recovery and more storage are required.

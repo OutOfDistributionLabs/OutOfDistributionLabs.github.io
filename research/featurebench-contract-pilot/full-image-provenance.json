@@ -1,0 +1,190 @@
+{
+  "source": "libercoders/featurebench-specs_metaflow-instance_87a4ffa7",
+  "source_digest": "sha256:b319caebd869643983a3302839c3604cd885b4b2fe6dafb79686564bfcd52654",
+  "derived_tag": "ood-feature-metaflow:qualified",
+  "derived_image_id": "sha256:12d73c89918f2c2022cd4115775ed2b6a69bc97a1cb812bbe1de34b91b40eef1",
+  "source_image_config": {
+    "architecture": "amd64",
+    "config": {
+      "Env": [
+        "PATH=/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+        "TZ=Etc/UTC"
+      ],
+      "Cmd": [
+        "/bin/bash"
+      ],
+      "WorkingDir": "/testbed/",
+      "Labels": {
+        "org.opencontainers.image.ref.name": "ubuntu",
+        "org.opencontainers.image.version": "22.04"
+      }
+    },
+    "created": "2025-11-16T21:59:01.191348169+08:00",
+    "history": [
+      {
+        "created": "2025-08-19T17:17:08.102078738Z",
+        "created_by": "/bin/sh -c #(nop)  ARG RELEASE",
+        "empty_layer": true
+      },
+      {
+        "created": "2025-08-19T17:17:08.131655844Z",
+        "created_by": "/bin/sh -c #(nop)  ARG LAUNCHPAD_BUILD_ARCH",
+        "empty_layer": true
+      },
+      {
+        "created": "2025-08-19T17:17:08.162798176Z",
+        "created_by": "/bin/sh -c #(nop)  LABEL org.opencontainers.image.ref.name=ubuntu",
+        "empty_layer": true
+      },
+      {
+        "created": "2025-08-19T17:17:08.19230591Z",
+        "created_by": "/bin/sh -c #(nop)  LABEL org.opencontainers.image.version=22.04",
+        "empty_layer": true
+      },
+      {
+        "created": "2025-08-19T17:17:10.427314207Z",
+        "created_by": "/bin/sh -c #(nop) ADD file:9303cc1f788d2a9a8f909b154339f7c637b2a53c75c0e7f3da62eb1fefe371b1 in / "
+      },
+      {
+        "created": "2025-08-19T17:17:10.793759467Z",
+        "created_by": "/bin/sh -c #(nop)  CMD [\"/bin/bash\"]",
+        "empty_layer": true
+      },
+      {
+        "created": "2025-11-13T09:40:55.127151642+08:00",
+        "created_by": "ARG DEBIAN_FRONTEND=noninteractive",
+        "comment": "buildkit.dockerfile.v0",
+        "empty_layer": true
+      },
+      {
+        "created": "2025-11-13T09:40:55.127151642+08:00",
+        "created_by": "ENV TZ=Etc/UTC",
+        "comment": "buildkit.dockerfile.v0",
+        "empty_layer": true
+      },
+      {
+        "created": "2025-11-13T09:40:55.127151642+08:00",
+        "created_by": "RUN |1 DEBIAN_FRONTEND=noninteractive /bin/sh -c sed -i 's@//.*archive.ubuntu.com@//mirrors.aliyun.com@g' /etc/apt/sources.list &&     sed -i 's@//.*security.ubuntu.com@//mirrors.aliyun.com@g' /etc/apt/sources.list # buildkit",
+        "comment": "buildkit.dockerfile.v0"
+      },
+      {
+        "created": "2025-11-13T09:46:18.185527135+08:00",
+        "created_by": "RUN |1 DEBIAN_FRONTEND=noninteractive /bin/sh -c apt update && apt install -y wget git build-essential gcc g++ pkg-config cmake meson ninja-build libffi-dev libtiff-dev libpng-dev libfreetype6-dev libjpeg-dev libopenjp2-7-dev zlib1g-dev liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python3 python3-dev python3-pip python-is-python3 libssl-dev libcurl4-openssl-dev libxml2-dev libxslt1-dev libblas-dev liblapack-dev libatlas-base-dev gfortran imagemagick ffmpeg texlive texlive-latex-extra texlive-fonts-recommended texlive-xetex texlive-luatex cm-super dvipng jq curl locales locales-all tzdata openssh-client && rm -rf /var/lib/apt/lists/* # buildkit",
+        "comment": "buildkit.dockerfile.v0"
+      },
+      {
+        "created": "2025-11-13T09:46:18.802236393+08:00",
+        "created_by": "RUN |1 DEBIAN_FRONTEND=noninteractive /bin/sh -c mkdir -p /root/.pip &&     echo \"[global]\" > /root/.pip/pip.conf &&     echo \"index-url = https://pypi.tuna.tsinghua.edu.cn/simple\" >> /root/.pip/pip.conf &&     echo \"trusted-host = pypi.tuna.tsinghua.edu.cn\" >> /root/.pip/pip.conf # buildkit",
+        "comment": "buildkit.dockerfile.v0"
+      },
+      {
+        "created": "2025-11-13T09:46:46.049334092+08:00",
+        "created_by": "RUN |1 DEBIAN_FRONTEND=noninteractive /bin/sh -c wget 'https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-py311_23.11.0-2-Linux-x86_64.sh' -O miniconda.sh     && bash miniconda.sh -b -p /opt/miniconda3     && rm miniconda.sh # buildkit",
+        "comment": "buildkit.dockerfile.v0"
+      },
+      {
+        "created": "2025-11-13T09:46:46.049334092+08:00",
+        "created_by": "ENV PATH=/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+        "comment": "buildkit.dockerfile.v0",
+        "empty_layer": true
+      },
+      {
+        "created": "2025-11-13T09:46:47.049722458+08:00",
+        "created_by": "RUN |1 DEBIAN_FRONTEND=noninteractive /bin/sh -c conda init --all # buildkit",
+        "comment": "buildkit.dockerfile.v0"
+      },
+      {
+        "created": "2025-11-13T09:46:49.197946811+08:00",
+        "created_by": "RUN |1 DEBIAN_FRONTEND=noninteractive /bin/sh -c conda config --remove channels defaults || true # buildkit",
+        "comment": "buildkit.dockerfile.v0"
+      },
+      {
+        "created": "2025-11-13T09:46:52.154769366+08:00",
+        "created_by": "RUN |1 DEBIAN_FRONTEND=noninteractive /bin/sh -c conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/ &&     conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/ &&     conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/ &&     conda config --set show_channel_urls yes # buildkit",
+        "comment": "buildkit.dockerfile.v0"
+      },
+      {
+        "created": "2025-11-13T10:01:42.349164993+08:00",
+        "created_by": "RUN |1 DEBIAN_FRONTEND=noninteractive /bin/sh -c /bin/bash -c \"source /opt/miniconda3/etc/profile.d/conda.sh &&     conda create -n pytorch_base python=3.11 -y &&     conda activate pytorch_base &&     pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 --index-url https://mirrors.nju.edu.cn/pytorch/whl/cu121\" # buildkit",
+        "comment": "buildkit.dockerfile.v0"
+      },
+      {
+        "created": "2025-11-13T10:01:42.827855577+08:00",
+        "created_by": "RUN |1 DEBIAN_FRONTEND=noninteractive /bin/sh -c adduser --disabled-password --gecos 'dog' nonroot # buildkit",
+        "comment": "buildkit.dockerfile.v0"
+      },
+      {
+        "created": "2025-11-13T10:01:43.639224474+08:00",
+        "created_by": "RUN |1 DEBIAN_FRONTEND=noninteractive /bin/sh -c echo \"source /opt/miniconda3/etc/profile.d/conda.sh && conda activate pytorch_base\" >> /root/.bashrc # buildkit",
+        "comment": "buildkit.dockerfile.v0"
+      },
+      {
+        "created": "2025-11-16T21:54:39.408460622+08:00",
+        "created_by": "COPY ./setup_env.sh /root/ # buildkit",
+        "comment": "buildkit.dockerfile.v0"
+      },
+      {
+        "created": "2025-11-16T21:54:40.995951878+08:00",
+        "created_by": "COPY ./project_code/ /testbed/ # buildkit",
+        "comment": "buildkit.dockerfile.v0"
+      },
+      {
+        "created": "2025-11-16T21:54:42.012084952+08:00",
+        "created_by": "RUN /bin/sh -c sed -i -e 's/\r$//' /root/setup_env.sh # buildkit",
+        "comment": "buildkit.dockerfile.v0"
+      },
+      {
+        "created": "2025-11-16T21:54:45.612389746+08:00",
+        "created_by": "RUN /bin/sh -c chmod +x /root/setup_env.sh # buildkit",
+        "comment": "buildkit.dockerfile.v0"
+      },
+      {
+        "created": "2025-11-16T21:58:40.94852119+08:00",
+        "created_by": "RUN /bin/sh -c /bin/bash -c \"source ~/.bashrc && /root/setup_env.sh\" # buildkit",
+        "comment": "buildkit.dockerfile.v0"
+      },
+      {
+        "created": "2025-11-16T21:58:55.326500128+08:00",
+        "created_by": "RUN /bin/sh -c cp -r /testbed/ /root/my_repo/ # buildkit",
+        "comment": "buildkit.dockerfile.v0"
+      },
+      {
+        "created": "2025-11-16T21:58:55.504032947+08:00",
+        "created_by": "WORKDIR /testbed/",
+        "comment": "buildkit.dockerfile.v0"
+      },
+      {
+        "created": "2025-11-16T21:59:01.191348169+08:00",
+        "created_by": "RUN /bin/sh -c echo \"source /opt/miniconda3/etc/profile.d/conda.sh && conda activate testbed\" > ~/.bashrc # buildkit",
+        "comment": "buildkit.dockerfile.v0"
+      }
+    ],
+    "os": "linux",
+    "rootfs": {
+      "type": "layers",
+      "diff_ids": [
+        "sha256:dc6eb6dad5f9e332f00af553440e857b1467db1be43dd910cdb6830ba0898d50",
+        "sha256:a0fc46cb7fbb09b0746a87ea664517f62e0682ffb85d58611ae07311162c7a89",
+        "sha256:ba4e3890d6e105defb24ba6b93cc7c5e019c2d97de76ba1396ac7d1fa9f369b3",
+        "sha256:8eb3f2dbc0cc37043ca0f15e8865fe08e84b4ffe6574b9653455b607d16038ee",
+        "sha256:2b4545600fb03c959cb294ba55dd5f1565dc90be739ff27a42404642059af87a",
+        "sha256:67f266d52f05bab1f57008951c665d771db3db6f65db85946ae9c0b167ef23e6",
+        "sha256:a92597218cbe25229d2571103ad0033a5c6ba22c4ed74c5527b64ac63c412ada",
+        "sha256:db5ed2d36b4bb2486eea9dcf3c793ca904cebf9e245673ad2359d0becd9c3420",
+        "sha256:d8c4095c3a18655839033178d049b3f9e1f14b7817003a7fd408e15e1473155a",
+        "sha256:e538a0d8e5d57659e1a03e562b940e5c832f0e6f270b2d1028e24602161f9c9a",
+        "sha256:e6695a20938547aaccf349aa82c3f04548377b9fee5f4cab31aaaee359e18bac",
+        "sha256:71f6368b1b4a53e6b369d26d3156f4c59193d82a94d73c52e0b102d3a3a1ede9",
+        "sha256:5c28666cf99b041c974804b8a01a8befc09f9c66dc26a2a5ff2fc30d0031b5dc",
+        "sha256:9c128b3eb7bcf067485bf94d06026c52bc0e953d3e7a001d58604e2976687f57",
+        "sha256:4cc1b67719d10f84d0e9aeaf2b6ea157e358e5506705009e306f46c4f15d22ec",
+        "sha256:d396451161eb1f6be1a109ea3f354d10bcaceaf6b312d55622b8f2de44eec9ca",
+        "sha256:f0c88ab55a8c23e031ee4fa31e4a170f55c63392bdd7383cbfc3ab9e54df8fb2",
+        "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+        "sha256:78e3bb4d7972529fa7f7e8c6eece8f84f94a4f60a46c12195f895458527524bd"
+      ]
+    }
+  },
+  "derivation": "crane export merged filesystem streamed to single-layer docker import; Env/User/WorkingDir/Entrypoint/Cmd retained",
+  "qualification": "Source image layers were flattened to fit VFS storage. Official gold/empty scoring still required; not identity-equivalent leaderboard infrastructure."
+}

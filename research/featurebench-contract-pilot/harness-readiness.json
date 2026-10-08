@@ -1,0 +1,8 @@
+{
+  "kind": "pinned_model_readiness_not_benchmark",
+  "model": "gpt-6.1-sol",
+  "effort": "medium",
+  "ready": true,
+  "elapsed_seconds": 3.920989912992809,
+  "errors": []
+}

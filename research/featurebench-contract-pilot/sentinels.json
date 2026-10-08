@@ -15,6 +15,18 @@
       "decision": "hold_runtime_qualification",
       "evidence": "Data and harness pinned; full VFS image 17.7 GB does not fit with working clone. Preparing cache-stripped derived image. No reference score or agent trial yet.",
       "independent_review": false
+    },
+    {
+      "step": 2,
+      "decision": "hold_and_recover_environment",
+      "independent_review": false,
+      "evidence": "Both official controls failed before tests at Docker container creation with no space left on device. Resolution normalized to null. No agent attempts. Authentication works.",
+      "required_remediation": "Fresh 128GB workspace for serial derived images, or supported copy-on-write Docker; repeat official gold/empty and isolation qualification.",
+      "artifact_sha256": {
+        "evaluation/qualification-results.json": "d03ed2fc74db5cc1d620054826210552ad57f7fa8efc7b19bd02bc8f51db5900",
+        "evaluation/report.md": "7e1f9d7c9de2e87bfdd34b6e5c673cb797be3a00e2b8f73040f6bcce4535b184",
+        "compact-image-provenance.json": "69c310c14a7126c5833fa05f06c4af260d606b714bd7f1c3095c45900697a96e"
+      }
     }
   ]
 }

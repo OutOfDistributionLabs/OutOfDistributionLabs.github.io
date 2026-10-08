@@ -26,7 +26,10 @@ def flatten(source,tag,crane,output,drop_caches=False):
     try:
         imported=subprocess.run(['docker','--host=unix:///var/run/docker.sock','import',*changes,'-',tag],stdin=stream,capture_output=True,text=True)
         stream.close();filter_code=filtered.wait() if filtered else 0;export_code=export.wait()
-        if export_code or filter_code or imported.returncode:raise RuntimeError('Image export/import failed: '+imported.stderr[-1000:])
+        if export_code or filter_code or imported.returncode:
+            if imported.returncode==0 and imported.stdout.strip().startswith('sha256:'):
+                subprocess.run(['docker','--host=unix:///var/run/docker.sock','image','rm',imported.stdout.strip()],check=False,capture_output=True)
+            raise RuntimeError('Image export/import failed: '+imported.stderr[-1000:])
     finally:
         if export.poll() is None:export.terminate();export.wait()
     record={'source':source,'source_digest':digest,'derived_tag':tag,'derived_image_id':imported.stdout.strip(),'source_image_config':config,'derivation':'crane export merged filesystem streamed to single-layer docker import; Env/User/WorkingDir/Entrypoint/Cmd retained','cache_filter':drop_caches,'qualification':'Source image layers were flattened to fit VFS storage. Official gold/empty scoring still required; not identity-equivalent leaderboard infrastructure.'}

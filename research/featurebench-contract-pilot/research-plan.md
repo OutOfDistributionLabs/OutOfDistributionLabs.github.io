@@ -11,3 +11,5 @@ The existing lexical engine is a transport/decision-support baseline, not yet th
 Sentinel after every checkpoint: author self-review, artifact hashes, advance/redo/hold decision. Failures are retained; no outcome-based task replacement. Pages every 60 seconds, ntfy every 300 seconds.
 
 Storage deviation: derive single-layer images from immutable official filesystem exports to fit VFS. Preserve runtime configuration, record source/derived digests, qualify with unchanged official scorer. This is not an official leaderboard run.
+
+Arm order: `random.Random(20261007 + task_index).shuffle([A,B,C])`, repository blocks in manifest order, one attempt. Separate task blocks can be executed with separate prepared images to fit storage; no inference outcome changes selection. Baseline Git tree hashes must agree within each task.

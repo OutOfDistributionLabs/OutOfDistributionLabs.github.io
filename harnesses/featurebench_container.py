@@ -28,7 +28,8 @@ def run(row,image,arm,output,wall_seconds=300):
     cm=ContainerManager()
     image_bytes=cm.client.images.get(image).attrs['Size']
     free_bytes=shutil.disk_usage('/workspace').free
-    if free_bytes<image_bytes+1_000_000_000:raise RuntimeError('Insufficient storage for VFS clone plus safety margin; no agent executed')
+    required_bytes=(2*image_bytes if cm.client.info()['Driver']=='vfs' else 0)+2_000_000_000
+    if free_bytes<required_bytes:raise RuntimeError('Insufficient storage for VFS clone plus safety margin; no agent executed')
     net=prepare_network();container=None
     credential_home=Path(os.environ.get('CODEX_HOME',str(Path.home()/'.codex')))
     ca=Path('/etc/ssl/certs/ca-certificates.crt')
@@ -42,6 +43,8 @@ def run(row,image,arm,output,wall_seconds=300):
         cm.exec_command(container,'mkdir -p /installed-agent/engine /agent-logs; touch /installed-agent/setup-env.sh',log_file=log)
         task=TaskInstance.from_dict(row)
         if not RuntimeHandler(cm)._initialize_level1(container,task,log,white_box=False):raise RuntimeError('Official source masking failed')
+        rc_tree,baseline_tree=cm.exec_command(container,'cd /testbed && git rev-parse HEAD^{tree}',log_file=log)
+        if rc_tree:raise RuntimeError('Baseline tree capture failed')
         cm.copy_to_container(container,ROOT/'intuition_engine','/installed-agent/engine/intuition_engine')
         install='timeout -k 10 180s /opt/miniconda3/envs/testbed/bin/python -m venv /installed-agent/venv && timeout -k 10 180s /installed-agent/venv/bin/pip install mcp==1.29.0 tree-sitter==0.21.3 tree-sitter-languages==1.10.2 nltk==3.9.1'
         rc,_=cm.exec_command(container,install,log_file=log,timeout=180)
@@ -77,7 +80,7 @@ def run(row,image,arm,output,wall_seconds=300):
         if rc_patch:raise RuntimeError('Patch capture failed')
         (out/'model.patch').write_text(patch)
         calls=[e['item'] for e in events if e.get('type')=='item.completed' and e.get('item',{}).get('type')=='mcp_tool_call']
-        record={'instance_id':row['instance_id'],'arm':arm,'model':MODEL,'reasoning_effort':'medium','cli_version':subprocess.check_output(['codex','--version'],text=True).strip(),'wall_ceiling_seconds':wall_seconds,'agent_wall_seconds':agent_wall,'setup_and_agent_wall_seconds':time.perf_counter()-begin,'exit_code':rc,'turn_completed':any(e.get('type')=='turn.completed' for e in events),'usage':[e.get('usage') for e in events if e.get('type')=='turn.completed'],'mcp_calls':len(calls),'patch_sha256':hashlib.sha256(patch.encode()).hexdigest(),'provider_cost_usd':None,'confirmatory_qualified':False}
+        record={'instance_id':row['instance_id'],'baseline_tree':baseline_tree.strip(),'arm':arm,'model':MODEL,'reasoning_effort':'medium','cli_version':subprocess.check_output(['codex','--version'],text=True).strip(),'wall_ceiling_seconds':wall_seconds,'agent_wall_seconds':agent_wall,'setup_and_agent_wall_seconds':time.perf_counter()-begin,'exit_code':rc,'turn_completed':any(e.get('type')=='turn.completed' for e in events),'usage':[e.get('usage') for e in events if e.get('type')=='turn.completed'],'mcp_calls':len(calls),'patch_sha256':hashlib.sha256(patch.encode()).hexdigest(),'provider_cost_usd':None,'confirmatory_qualified':False}
         (out/'run.json').write_text(json.dumps(record,indent=2)+'\n');return record
     finally:
         if container is not None:container.remove(force=True)

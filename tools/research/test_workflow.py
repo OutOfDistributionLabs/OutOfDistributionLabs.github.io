@@ -47,4 +47,25 @@ class Workflow(unittest.TestCase):
  def test_invalid_slug_and_sequence(self):
   with self.assertRaises(ValueError):runner.project_path('../escape')
   with self.assertRaises(ValueError):runner.update(self.project,'checkpoint','Skipped step',2)
+ def test_error_notifications_use_configured_interval(self):
+  c,_=runner.load(self.project);c.update(notification_seconds=300,notify_on_checkpoint=False,notify_on_error=False)
+  calls=[];runner.notify=lambda *args:calls.append(args) or True
+  clock=runner.Path('/tmp')/('oodlabs-research-'+self.project.name+'-notification.json');clock.unlink(missing_ok=True)
+  try:
+   for stamp in [1000,1060,1300]:
+    with patch.object(runner.time,'time',return_value=stamp):runner.notify_scheduled(self.project,c,'error','failed','error')
+   self.assertEqual(len(calls),1)
+   c['notify_on_error']=True
+   with patch.object(runner.time,'time',return_value=1301):runner.notify_scheduled(self.project,c,'error','failed','error')
+   self.assertEqual(len(calls),2)
+  finally:clock.unlink(missing_ok=True)
+ def test_disk_full_does_not_leave_partial_status(self):
+  c,s=runner.load(self.project);original=(self.project/'status.json').read_text();write=runner.Path.write_text
+  def fail(path,*args,**kwargs):
+   if path.name=='status.json.tmp':
+    write(path,'partial');raise OSError('no space left on device')
+   return write(path,*args,**kwargs)
+  with patch.object(runner.Path,'write_text',fail),self.assertRaises(OSError):runner.save(self.project,c,s)
+  self.assertFalse((self.project/'status.json.tmp').exists())
+  self.assertEqual((self.project/'status.json').read_text(),original)
 if __name__=='__main__':unittest.main()

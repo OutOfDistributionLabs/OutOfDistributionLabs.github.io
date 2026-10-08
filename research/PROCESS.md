@@ -43,3 +43,5 @@ Copy `tools/research/white-paper-template.tex` to the project folder as `white-p
 ## Agent-engine benchmarking
 
 Use [benchmark-process.md](../tools/research/benchmark-process.md) for the reusable 12-stage experimental programme, workload depth, substeps and mandatory sentinel gates. The local Python planning and gate scaffold is [tools/benchmarking/methodology.py](../tools/benchmarking/methodology.py); the [intuition-engine methodology](intuition-engine-benchmarking/README.md) is the first worked protocol. Planning completion does not imply engine or benchmark completion.
+
+Runtime errors use the same `notification_seconds` interval by default; `notify_on_error: true` opts into immediate error notices. Page cadence remains independent. Failed status writes remove their temporary file and preserve the previous status.

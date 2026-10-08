@@ -30,8 +30,8 @@ def notify_scheduled(project,c,title,message,kind,complete=False):
     stamp=Path('/tmp')/('oodlabs-research-'+project.name+'-notification.json')
     last=json.loads(stamp.read_text()).get('last_sent',time.time()) if stamp.exists() else time.time()
     if not stamp.exists():stamp.write_text(json.dumps({'last_sent':last}))
-    forced=(complete and c.get('notify_on_complete',True)) or (kind!='heartbeat' and c.get('notify_on_checkpoint',True))
-    if not forced and (kind!='heartbeat' or time.time()-last<interval):return True
+    forced=(complete and c.get('notify_on_complete',True)) or (kind not in {'heartbeat','error'} and c.get('notify_on_checkpoint',True)) or (kind=='error' and c.get('notify_on_error',False))
+    if not forced and (kind not in {'heartbeat','error'} or time.time()-last<interval):return True
     ok=notify(c,title,message)
     if ok:stamp.write_text(json.dumps({'last_sent':time.time()}))
     return ok
@@ -52,7 +52,12 @@ def render(project,c,s,published_only=False):
     page+=f'<h1>{e(c["title"])}</h1><p class="lead">{e(c["subtitle"])}</p><p class="meta">{phase} · {s["step"]}/{len(steps)} steps complete · Updated {stamp}</p><div class="progress"><span style="width:{s["step"]/len(steps)*100:.1f}%"></span></div><p>{e(s["summary"])}</p><h2>Research process</h2><ol class="steps">'+''.join(items)+'</ol><h2>Research materials</h2><div class="resources">'+resources+'</div><h2>Checkpoint log</h2><ol class="events">'+events+f'</ol><p class="note">{e(c["evidence_note"])}</p><p class="note"><a href="../PROCESS.md">Reusable research process</a></p></main></body></html>'
     (project/'progress.html').write_text(page)
 def save(project,c,s,published_only=False):
-    target=project/'status.json';temporary=project/'status.json.tmp';temporary.write_text(json.dumps(s,indent=2)+'\n');temporary.replace(target);render(project,c,s,published_only)
+    target=project/'status.json';temporary=project/'status.json.tmp'
+    try:
+        temporary.write_text(json.dumps(s,indent=2)+'\n');temporary.replace(target)
+    finally:
+        temporary.unlink(missing_ok=True)
+    render(project,c,s,published_only)
 def git(*args,check=True):return subprocess.run(['git',*args],cwd=ROOT,check=check)
 def publish(c,paths,message):
     git('add','--',*paths)
@@ -96,7 +101,7 @@ def update(project,kind,summary=None,step=None,extra=()):
                 # Failed validation/commit: do not advance a checkpoint just in local state.
                 save(project,c,previous,published_only=True)
                 git('add','--',relative+'/status.json',relative+'/progress.html')
-            notify(c,'OOD Labs · publishing error',str(exc)+'\n'+c['progress_url'])
+            notify_scheduled(project,c,'OOD Labs · publishing error',str(exc)+'\n'+c['progress_url'],'error')
             raise
         label='Research complete' if s['step']==len(c['steps']) else f'Research {s["step"]}/{len(c["steps"])}'
         if not notify_scheduled(project,c,'OOD Labs · '+label,('Heartbeat: ' if kind=='heartbeat' else 'Checkpoint: ')+s['summary']+'\n'+c['progress_url'],kind,complete=s['step']==len(c['steps'])):raise RuntimeError('Published, but ntfy delivery failed')
@@ -109,7 +114,7 @@ def heartbeat(project,interval):
             if not update(project,'heartbeat'):break
         except Exception as exc:
             print(f'{now()} Heartbeat error: {exc}',file=sys.stderr,flush=True)
-            c,_=load(project);notify(c,'OOD Labs · publishing error',str(exc)+'\n'+c['progress_url'])
+            c,_=load(project);notify_scheduled(project,c,'OOD Labs · publishing error',str(exc)+'\n'+c['progress_url'],'error')
 def spawn(project):
     pidpath=Path('/tmp')/('oodlabs-research-'+project.name+'.pid')
     if pidpath.exists():

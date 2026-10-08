@@ -15,8 +15,10 @@ class CacheFilterTests(unittest.TestCase):
             out=io.BytesIO();filter_stream(self.archive(),out,Path(d)/'stats.json');out.seek(0)
             with tarfile.open(fileobj=out) as t:
                 self.assertEqual(t.extractfile('opt/miniconda3/envs/testbed/code.py').read(),b'active');self.assertEqual(t.extractfile('root/my_repo/source.py').read(),b'source');self.assertNotIn('opt/miniconda3/pkgs/cache',t.getnames())
-    def test_hardlink_to_removed_cache_rejected(self):
-        with tempfile.TemporaryDirectory() as d,self.assertRaises(ValueError):filter_stream(self.archive(tarfile.LNKTYPE),io.BytesIO(),Path(d)/'stats.json')
+    def test_hardlink_payload_preserved(self):
+        with tempfile.TemporaryDirectory() as d:
+            out=io.BytesIO();filter_stream(self.archive(tarfile.LNKTYPE),out,Path(d)/'stats.json');out.seek(0)
+            with tarfile.open(fileobj=out) as t:self.assertEqual(t.extractfile('usr/bin/broken').read(),b'cached')
     def test_symlink_to_removed_cache_rejected(self):
         with tempfile.TemporaryDirectory() as d,self.assertRaises(ValueError):filter_stream(self.archive(tarfile.SYMTYPE),io.BytesIO(),Path(d)/'stats.json')
 if __name__=='__main__':unittest.main()

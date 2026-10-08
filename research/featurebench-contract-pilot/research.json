@@ -40,6 +40,23 @@
     {
       "path": "manifest.json",
       "label": "Predetermined task manifest"
+    },
+    {
+      "path": "design.md",
+      "label": "Actual intervention and limits"
+    },
+    {
+      "path": "evaluation/qualification-results.json",
+      "label": "Control failures, not task scores"
+    },
+    {
+      "path": "compact-image-provenance.json",
+      "label": "Derived-image provenance"
+    },
+    {
+      "path": "harness-readiness.json",
+      "label": "Authenticated model readiness"
     }
-  ]
+  ],
+  "notify_on_error": false
 }
