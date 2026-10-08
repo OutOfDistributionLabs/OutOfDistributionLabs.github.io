@@ -1,0 +1,15 @@
+{
+  "kind": "fresh_codex_readiness_not_benchmark",
+  "cli_version": "codex-cli 0.159.0-alpha.3",
+  "ready": false,
+  "exit_code": 1,
+  "elapsed_seconds": 1.5207488219894003,
+  "errors": [
+    "Your access token could not be refreshed because you have since logged out or signed in to another account. Please sign in again.",
+    "Your access token could not be refreshed because you have since logged out or signed in to another account. Please sign in again."
+  ],
+  "provider_cost_usd": null,
+  "mcp_agent_calls": 0,
+  "benchmark_attempts": 0,
+  "credential_values_recorded": false
+}

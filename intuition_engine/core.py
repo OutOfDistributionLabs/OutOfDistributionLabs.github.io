@@ -11,7 +11,7 @@ import time
 from nltk.stem import PorterStemmer
 from tree_sitter_languages import get_parser
 
-LANG_EXT={'.py':'python','.cpp':'cpp','.cc':'cpp','.cxx':'cpp','.h':'cpp','.hpp':'cpp','.java':'java','.ts':'typescript','.tsx':'tsx','.rs':'rust','.go':'go','.js':'javascript'}
+LANG_EXT={'.py':'python','.cpp':'cpp','.cc':'cpp','.cxx':'cpp','.h':'cpp','.hpp':'cpp','.hh':'cpp','.c':'cpp','.java':'java','.ts':'typescript','.tsx':'tsx','.rs':'rust','.go':'go','.js':'javascript'}
 FUNCTION_TYPES={'function_definition','method_declaration','constructor_declaration','function_declaration','function_item','method_declaration','method_definition','arrow_function'}
 STOP=set('a an the this that these those and or of to in on at by for with from as is are be it its which what how function method returns return given provided input output implementation code does can will you'.split())
 STEM=PorterStemmer()
