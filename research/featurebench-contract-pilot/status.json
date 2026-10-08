@@ -1,12 +1,16 @@
 {
-  "step": 0,
+  "step": 1,
   "running": true,
-  "updated_at": "2026-10-08T00:58:16+00:00",
-  "summary": "Fresh Codex authentication verified. Beginning pinned dataset, official reference/empty scoring and hidden-asset isolation checks.",
+  "updated_at": "2026-10-08T00:58:56+00:00",
+  "summary": "Authenticated Codex verified. Frozen feasibility scope: two predetermined tasks, native/flat/graph arms, one attempt and 300-second agent ceiling per arm; no paid API added.",
   "events": [
     {
       "at": "2026-10-08T00:58:16+00:00",
       "summary": "Fresh Codex authentication verified. Beginning pinned dataset, official reference/empty scoring and hidden-asset isolation checks."
+    },
+    {
+      "at": "2026-10-08T00:58:56+00:00",
+      "summary": "Authenticated Codex verified. Frozen feasibility scope: two predetermined tasks, native/flat/graph arms, one attempt and 300-second agent ceiling per arm; no paid API added."
     }
   ]
 }
