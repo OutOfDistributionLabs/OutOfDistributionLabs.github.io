@@ -1,0 +1,113 @@
+{
+  "run_kind": "non_llm_retrieval_assay",
+  "tasks": 600,
+  "task_arm_outcomes": 1800,
+  "evaluation_tasks": 480,
+  "development_tasks": 120,
+  "elapsed_seconds": 79.02838782098843,
+  "engine_model_calls": 0,
+  "agent_model_calls": 0,
+  "agent_repair_trials": 0,
+  "arms": {
+    "development": {
+      "scan": {
+        "n": 120,
+        "upstream_success_08": 0.425,
+        "exact_top1": 0.4166666666666667,
+        "recall_at_10": 0.7833333333333333,
+        "mrr_at_10": 0.5431580687830687,
+        "target_extractable": 0.9916666666666667,
+        "query_cpu_ms_mean": 6.464958183333894,
+        "query_wall_ms_mean": 6.470660126069561,
+        "build_cpu_ms_per_repo_mean": 224.10872775000075,
+        "build_wall_ms_per_repo_mean": 224.2360769159859,
+        "build_cpu_ms_total": 2689.304733000009,
+        "query_cpu_ms_total": 775.7949820000673,
+        "source_bytes": 8917848,
+        "max_response_bytes": 4127
+      },
+      "flat": {
+        "n": 120,
+        "upstream_success_08": 0.4583333333333333,
+        "exact_top1": 0.45,
+        "recall_at_10": 0.7583333333333333,
+        "mrr_at_10": 0.5484755291005291,
+        "target_extractable": 0.9916666666666667,
+        "query_cpu_ms_mean": 1.2256652083333042,
+        "query_wall_ms_mean": 1.2363456412761782,
+        "build_cpu_ms_per_repo_mean": 246.00681041666576,
+        "build_wall_ms_per_repo_mean": 246.12099099855791,
+        "build_cpu_ms_total": 2952.081724999989,
+        "query_cpu_ms_total": 147.0798249999965,
+        "source_bytes": 8917848,
+        "max_response_bytes": 4175
+      },
+      "graph": {
+        "n": 120,
+        "upstream_success_08": 0.44166666666666665,
+        "exact_top1": 0.44166666666666665,
+        "recall_at_10": 0.75,
+        "mrr_at_10": 0.5489318783068783,
+        "target_extractable": 0.9916666666666667,
+        "query_cpu_ms_mean": 2.0304696333336203,
+        "query_wall_ms_mean": 2.0359303739193515,
+        "build_cpu_ms_per_repo_mean": 253.80559616666616,
+        "build_wall_ms_per_repo_mean": 253.9600598368755,
+        "build_cpu_ms_total": 3045.667153999994,
+        "query_cpu_ms_total": 243.65635600003444,
+        "source_bytes": 8917848,
+        "max_response_bytes": 8054
+      }
+    },
+    "evaluation": {
+      "scan": {
+        "n": 480,
+        "upstream_success_08": 0.46041666666666664,
+        "exact_top1": 0.4625,
+        "recall_at_10": 0.7375,
+        "mrr_at_10": 0.554599041005291,
+        "target_extractable": 1.0,
+        "query_cpu_ms_mean": 8.987943035417167,
+        "query_wall_ms_mean": 8.997035057897543,
+        "build_cpu_ms_per_repo_mean": 285.4452929791661,
+        "build_wall_ms_per_repo_mean": 285.5893712070004,
+        "build_cpu_ms_total": 13701.374062999972,
+        "query_cpu_ms_total": 4314.21265700024,
+        "source_bytes": 46290389,
+        "max_response_bytes": 4343
+      },
+      "flat": {
+        "n": 480,
+        "upstream_success_08": 0.38125,
+        "exact_top1": 0.38333333333333336,
+        "recall_at_10": 0.7208333333333333,
+        "mrr_at_10": 0.4877786044973545,
+        "target_extractable": 1.0,
+        "query_cpu_ms_mean": 1.7455298750002013,
+        "query_wall_ms_mean": 1.749631630688479,
+        "build_cpu_ms_per_repo_mean": 304.45223693749995,
+        "build_wall_ms_per_repo_mean": 304.60088733464846,
+        "build_cpu_ms_total": 14613.707372999997,
+        "query_cpu_ms_total": 837.8543400000966,
+        "source_bytes": 46290389,
+        "max_response_bytes": 4357
+      },
+      "graph": {
+        "n": 480,
+        "upstream_success_08": 0.38333333333333336,
+        "exact_top1": 0.3854166666666667,
+        "recall_at_10": 0.7229166666666667,
+        "mrr_at_10": 0.4939756944444444,
+        "target_extractable": 1.0,
+        "query_cpu_ms_mean": 3.0756864437498974,
+        "query_wall_ms_mean": 3.0815549832065394,
+        "build_cpu_ms_per_repo_mean": 314.2759925416664,
+        "build_wall_ms_per_repo_mean": 314.41900426943903,
+        "build_cpu_ms_total": 15085.24764199999,
+        "query_cpu_ms_total": 1476.3294929999508,
+        "source_bytes": 46290389,
+        "max_response_bytes": 8566
+      }
+    }
+  }
+}

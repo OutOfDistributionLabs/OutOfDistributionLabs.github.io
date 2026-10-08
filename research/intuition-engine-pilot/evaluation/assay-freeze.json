@@ -1,0 +1,42 @@
+{
+  "setting": "adapted_full_release_repository_non_llm_retrieval",
+  "dataset_sha256": "bd3f7cab47283cdeccee20daea31af587b680cf8f9db192ab4da1037730cd6e2",
+  "scorer_commit": "ae876deb1365dbf5a15b0533723c8ed123eee586",
+  "max_candidates": 10,
+  "response_token_budget": 16000,
+  "bm25_k1": 1.5,
+  "bm25_b": 0.75,
+  "graph_weights": {
+    "entity": 0.8,
+    "file_mean": 0.1,
+    "module_mean": 0.05,
+    "call_hint_mean": 0.05
+  },
+  "development_repositories_per_language": 2,
+  "split_rule": "first two repository IDs in lexical order per language are development",
+  "order_seed": 20261007,
+  "tuning": "none after freeze",
+  "primary_assay_endpoint": "upstream closest-needle similarity >= .8 at top one; not software repair success",
+  "source_fields_to_index": [
+    "content"
+  ],
+  "query_fields": [
+    "current needle description"
+  ],
+  "engine_model_calls": 0,
+  "frozen_before_queries": true,
+  "frozen_at_utc": "2026-10-08T00:17:58Z",
+  "code_sha256": {
+    "intuition_engine/core.py": "5ae6653e7adabbf7b6e59d37854aa77415a460cb4ec6a7629e5e4571eb5f1dde",
+    "benchmarks/repoqa_run.py": "c104a46cd1f0b06a781071b6c2252a90d1eff1d53bb7f6b09c27ff7cd0146e31",
+    "benchmarks/repoqa_assets.py": "3755c74a3ec08fc4be326d10a5dac635efc9216c419d4cf893fa83132f1cddf8"
+  },
+  "git_commit": "05efe01d085f9177c6f6e8d35e1b441ef7b0eecc",
+  "dependencies": {
+    "mcp": "1.29.0",
+    "tree-sitter": "0.21.3",
+    "tree-sitter-languages": "1.10.2",
+    "nltk": "3.9.1"
+  },
+  "manifest_sha256": "3fc4a0e1c7721104956adc34792892259ecbaa9e9c72d71ff8541e89dccf7bdd"
+}
