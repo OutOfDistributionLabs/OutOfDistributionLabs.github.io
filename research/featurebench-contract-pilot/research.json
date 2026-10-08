@@ -36,6 +36,10 @@
     {
       "path": "evaluation/report.md",
       "label": "Pilot outcomes"
+    },
+    {
+      "path": "manifest.json",
+      "label": "Predetermined task manifest"
     }
   ]
 }

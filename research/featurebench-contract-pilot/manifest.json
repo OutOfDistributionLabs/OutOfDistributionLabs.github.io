@@ -1,0 +1,20 @@
+{
+  "dataset_revision": "76b4a4566e04f4bcc13c35125d4f301791efa736",
+  "harness_commit": "8d4e347ec57546685c5a87e8676bf575db022ea6",
+  "selection_rule": "First lexicographic lv1 instance per distinct repository; first two repositories. Selected before agent outcomes.",
+  "dataset_jsonl_sha256": "4ee4065ad1802a766f7087e3da971982b9a3599be6ce3762e5eef6f3d784ec0f",
+  "tasks": [
+    {
+      "instance_id": "Netflix__metaflow.b390a8d4.test_stub_generator.7bf08c98.lv1",
+      "repo": "Netflix/metaflow",
+      "image_name": "libercoders/featurebench-specs_metaflow-instance_87a4ffa7",
+      "base_commit": "b390a8d4459fed4c5e13271a434f9d77e756164c"
+    },
+    {
+      "instance_id": "astropy__astropy.b0db0daa.test_basic_rgb.067e927c.lv1",
+      "repo": "astropy/astropy",
+      "image_name": "libercoders/featurebench-specs_astropy-instance_493bb78b",
+      "base_commit": "b0db0daac6b851596851cb43e5456fb6c916c071"
+    }
+  ]
+}
