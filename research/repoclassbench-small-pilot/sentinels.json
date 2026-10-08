@@ -1,0 +1,10 @@
+{
+  "review": "Author self-review; no independent reviewers claimed",
+  "gates": [
+    {
+      "step": 1,
+      "decision": "advance_runtime_qualification",
+      "evidence": "Public-spec selection frozen; archive and dataset pinned; functional dependencies and Docker size still require qualification."
+    }
+  ]
+}

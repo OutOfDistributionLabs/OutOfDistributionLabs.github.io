@@ -1,0 +1,25 @@
+{
+  "benchmark": "RepoClassBench Python, adapted functional development subset",
+  "source_commit": "a347b55cd750ebbddc5923869ac7326fc4e72d0f",
+  "data_sha256": "0a29878b1123eb04254bc59fc5c0fba46a630917e3d95d6db797bbc562bbf5f6",
+  "archive_sha256": "44907c55efe265fc47623ffef4d0c2954e01a03be043f159010bb049f5784b54",
+  "selection_rule": "Two small pure-Python repository groups (Pydicom and Requests); shortest public detailed description per group; fixed before any agent outcomes. Not representative or powered.",
+  "tasks": [
+    {
+      "task_id": "pydicom__pydicom-1720_Sequence",
+      "class_name": "Sequence",
+      "file": "pydicom__pydicom-1720/pydicom/sequence.py",
+      "repository_commit": "c135a33a0fce343e6918390290db760c504739c9",
+      "required_tests": 13,
+      "public_description_sha256": "64be1ac9ba1e6b346658e8fc7ae237c4ddb66fdd9a7c3c3307609b35778d634f"
+    },
+    {
+      "task_id": "psf__requests-6028_rEQueSt",
+      "class_name": "rEQueSt",
+      "file": "psf__requests-6028/requests/models.py",
+      "repository_commit": "603dbf4f811856f81b0176c94d2eeac8aa898d8d",
+      "required_tests": 44,
+      "public_description_sha256": "94001e6a3035a85d2447fc10fdcae0371eaa2afee1a2dca2b4d6efc64020e4b5"
+    }
+  ]
+}

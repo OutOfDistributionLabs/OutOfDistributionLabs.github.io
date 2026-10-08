@@ -1,0 +1,46 @@
+{
+  "id": "repoclassbench-small-pilot",
+  "title": "Small repository-class benchmark: paired MCP pilot",
+  "subtitle": "Small cross-file class-generation pilot; reference qualification before fresh paired Codex sessions.",
+  "steps": [
+    "Protocol and small-task selection",
+    "Lightweight environment and functional scorer qualification",
+    "Hidden-answer isolation and MCP checks",
+    "Frozen paired agent execution",
+    "Analysis and sentinel review",
+    "Results white paper and publication"
+  ],
+  "timezone": "America/Los_Angeles",
+  "ntfy_topic": "oodlabs",
+  "heartbeat_seconds": 60,
+  "notification_seconds": 300,
+  "notify_on_checkpoint": false,
+  "notify_on_complete": true,
+  "remote": "origin",
+  "branch": "main",
+  "progress_url": "https://outofdistributionlabs.github.io/research/repoclassbench-small-pilot/progress.html",
+  "evidence_note": "Adapted RepoClassBench feasibility subset, not an official leaderboard run, current-SOTA comparison or powered effectiveness result.",
+  "resources": [
+    {
+      "path": "research-plan.md",
+      "label": "Protocol and deviations"
+    },
+    {
+      "path": "manifest.json",
+      "label": "Preselected task manifest"
+    },
+    {
+      "path": "qualification.md",
+      "label": "Reference, empty and isolation checks"
+    },
+    {
+      "path": "sentinels.json",
+      "label": "Scientific gate decisions"
+    },
+    {
+      "path": "evaluation/report.md",
+      "label": "Measured outcomes"
+    }
+  ],
+  "notify_on_error": false
+}
