@@ -4,7 +4,17 @@
     {
       "step": 1,
       "decision": "advance_asset_qualification",
-      "evidence": "Fresh Codex readiness completed after device login; no paid API configured. Fixed small feasibility budget; effectiveness unmeasured."
+      "evidence": "Fresh Codex readiness completed after device login; no paid API configured. Fixed small feasibility budget; effectiveness unmeasured.",
+      "artifact_sha256": {
+        "research-plan.md": "52dfa2473f5ed32b0e76c5ab5d36e49f8d7d84cdf12f53c176b9569b47d24fa9",
+        "manifest.json": "61df1ce65721f5bace3bbda48a5e541da2a612887c9063b8c68e36a0124542a2"
+      }
+    },
+    {
+      "step": 2,
+      "decision": "hold_runtime_qualification",
+      "evidence": "Data and harness pinned; full VFS image 17.7 GB does not fit with working clone. Preparing cache-stripped derived image. No reference score or agent trial yet.",
+      "independent_review": false
     }
   ]
 }

@@ -1,8 +1,8 @@
 {
   "step": 1,
   "running": true,
-  "updated_at": "2026-10-08T01:09:32+00:00",
-  "summary": "Pinned 100-task v1.1 Fast release and two predetermined lv1 tasks. Original VFS image pulls exceeded storage; preparing provenance-recorded single-layer filesystems before official gold/empty grading.",
+  "updated_at": "2026-10-08T01:10:04+00:00",
+  "summary": "Full derived Metaflow filesystem was 17.7 GB: too large for image plus VFS working clone. Preparing cache-stripped derived image, retaining active environments and source; official gold/empty grading remains the gate.",
   "events": [
     {
       "at": "2026-10-08T00:58:16+00:00",
@@ -15,6 +15,10 @@
     {
       "at": "2026-10-08T01:06:03+00:00",
       "summary": "Pinned 100-task v1.1 Fast release and two predetermined lv1 tasks. Original VFS image pulls exceeded storage; preparing provenance-recorded single-layer filesystems before official gold/empty grading."
+    },
+    {
+      "at": "2026-10-08T01:10:04+00:00",
+      "summary": "Full derived Metaflow filesystem was 17.7 GB: too large for image plus VFS working clone. Preparing cache-stripped derived image, retaining active environments and source; official gold/empty grading remains the gate."
     }
   ]
 }
