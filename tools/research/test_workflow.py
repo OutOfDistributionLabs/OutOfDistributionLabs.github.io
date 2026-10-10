@@ -22,6 +22,19 @@ class Workflow(unittest.TestCase):
   for step in range(2,7):runner.update(self.project,'checkpoint',f'Step {step}',step)
   self.assertFalse(runner.update(self.project,'heartbeat'));self.assertFalse(runner.load(self.project)[1]['running'])
   with self.assertRaises(ValueError):runner.update(self.project,'resume')
+ def test_parent_hub_updates_and_is_published_with_task(self):
+  import shutil
+  for name in ['build_hub.py','hub-template.html']:
+   shutil.copy(Path(__file__).with_name(name),self.root/'tools/research'/name)
+  parent=self.root/'research/programme';parent.mkdir()
+  (parent/'project.json').write_text(json.dumps({'title':'Programme','description':'Description','papers':[],'tasks':[{'id':'test-project','title':'Task','description':'Protocol','complete_label':'Complete'}]}))
+  c,s=runner.load(self.project);c['parent_project']='programme';runner.save(self.project,c,s)
+  (self.project/'research.json').write_text(json.dumps(c))
+  runner.update(self.project,'checkpoint','Protocol complete',1)
+  page=(parent/'index.html').read_text();self.assertIn('1/6 steps',page)
+  self.assertIn('../programme/',(self.project/'progress.html').read_text())
+  tracked=subprocess.check_output(['git','show','HEAD:research/programme/index.html'],cwd=self.root,text=True)
+  self.assertIn('1/6 steps',tracked)
  def test_failed_publish_rolls_back_step(self):
   runner.update(self.project,'resume');original=runner.publish
   try:

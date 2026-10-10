@@ -62,5 +62,6 @@
       "label": "Trace hashes and isolation receipts"
     }
   ],
-  "notify_on_error": false
+  "notify_on_error": false,
+  "parent_project": "ontology-intuition"
 }

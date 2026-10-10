@@ -48,6 +48,10 @@ def render(project,c,s,published_only=False):
     page='''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#080b0d"><title>Research progress · Out of Distribution Labs</title><style>
 :root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#080b0d;color:#b4c0cc;font:15px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,Helvetica,sans-serif}main{max-width:1050px;padding:48px 32px 80px;margin:auto}a{color:inherit;text-decoration:none}a:hover{color:#e4bd83}a:focus-visible{outline:2px solid #e4bd83;outline-offset:4px}.brand{font-size:22px;line-height:1.3;letter-spacing:.04em;opacity:.7}.amber{color:#e4bd83}.labs{display:block}nav{display:flex;justify-content:space-between;gap:24px;align-items:start}.back{font-size:12px;min-height:44px;padding:8px 0}h1{font-size:clamp(28px,5vw,48px);line-height:1.2;font-weight:400;max-width:800px;margin:64px 0 24px}h2{font-size:18px;font-weight:400;margin:40px 0 16px}.meta{color:#8d9eaa;font-size:12px}.lead{max-width:720px}.progress{height:2px;background:#23303a;margin:32px 0}.progress span{display:block;height:100%;background:#e4bd83}ol{list-style:none;padding:0;margin:0}.steps li{display:grid;grid-template-columns:32px 1fr auto;gap:16px;padding:18px 0;border-top:1px solid #b1c6d51c}.number,small{font-size:12px;color:#8d9eaa}.resources{display:flex;flex-wrap:wrap;gap:16px 28px}.resources a{min-height:44px;padding:8px 0;color:#e4bd83}.events li{border-top:1px solid #b1c6d51c;padding:16px 0}.events time{font-size:11px;color:#8d9eaa}.events p{margin:6px 0}.note{font-size:12px;color:#8d9eaa;max-width:760px}@media(max-width:600px){main{padding:24px 24px 56px}h1{margin-top:48px}.steps li{grid-template-columns:24px 1fr}.steps small{grid-column:2}.brand{font-size:18px}}
 </style></head><body><main><nav><a class="brand" href="../../">Out <span class="amber">of</span> Distribution<span class="labs">Labs</span></a><a class="back" href="../../">Home</a></nav>'''
+    parent=c.get('parent_project')
+    if parent:
+        project_path(parent)
+        page=page.replace('<a class="back" href="../../">Home</a>',f'<a class="back" href="../{html.escape(parent,quote=True)}/">Research</a>')
     phase='Published · research complete' if done else ('Research in progress' if s['running'] else 'Paused')
     page+=f'<h1>{e(c["title"])}</h1><p class="lead">{e(c["subtitle"])}</p><p class="meta">{phase} · {s["step"]}/{len(steps)} steps complete · Updated {stamp}</p><div class="progress"><span style="width:{s["step"]/len(steps)*100:.1f}%"></span></div><p>{e(s["summary"])}</p><h2>Research process</h2><ol class="steps">'+''.join(items)+'</ol><h2>Research materials</h2><div class="resources">'+resources+'</div><h2>Checkpoint log</h2><ol class="events">'+events+f'</ol><p class="note">{e(c["evidence_note"])}</p><p class="note"><a href="../PROCESS.md">Reusable research process</a></p></main></body></html>'
     (project/'progress.html').write_text(page)
@@ -58,6 +62,9 @@ def save(project,c,s,published_only=False):
     finally:
         temporary.unlink(missing_ok=True)
     render(project,c,s,published_only)
+    if c.get('parent_project'):
+        project_path(c['parent_project'])
+        subprocess.run([sys.executable,str(ROOT/'tools/research/build_hub.py'),'--project',c['parent_project']],check=True)
 def git(*args,check=True):return subprocess.run(['git',*args],cwd=ROOT,check=check)
 def publish(c,paths,message):
     git('add','--',*paths)
@@ -88,6 +95,8 @@ def update(project,kind,summary=None,step=None,extra=()):
         save(project,c,s,published_only=kind=='heartbeat')
         relative=str(project.relative_to(ROOT))
         paths=[relative+'/status.json',relative+'/progress.html'] if kind=='heartbeat' else [relative]
+        if c.get('parent_project'):
+            paths.append(str((project_path(c['parent_project'])/'index.html').relative_to(ROOT)))
         for value in extra:
             resolved=(ROOT/value).resolve()
             if not resolved.is_relative_to(ROOT):raise ValueError('Extra files must be in repository')

@@ -1,0 +1,17 @@
+{
+  "id": "ontology-intuition",
+  "title": "Hierarchical abstractions & agent intuition",
+  "description": "Ontology graphs for software agents. A continuing research programme, from theoretical foundations to an intuition engine and measured evaluations.",
+  "papers": [
+    {"task": "hierarchical-abstractions", "title": "Hierarchical abstractions as a basis for ontology graphs", "meta": "Theoretical foundations · 20 pages", "summary": "A formal basis for shared abstractions and coordinated micro-agents."},
+    {"task": "intuition-engine-pilot", "title": "Testing an intuition engine for repository decisions", "meta": "Retrieval study · 13 pages", "summary": "A working MCP and a real-data study of source-evidence retrieval."},
+    {"task": "repoclassbench-small-pilot", "title": "Repository context through a portable intuition MCP", "meta": "Agent evaluation · 7 pages", "summary": "Six scored agent runs comparing native, flat and graph-assisted tools."}
+  ],
+  "tasks": [
+    {"id": "hierarchical-abstractions", "title": "Theoretical foundations", "description": "Hierarchical abstractions and ontology graphs", "complete_label": "Paper published"},
+    {"id": "intuition-engine-benchmarking", "title": "Benchmarking methodology", "description": "Testable thesis, evaluation protocol and sentinel gates", "complete_label": "Protocol complete"},
+    {"id": "intuition-engine-pilot", "title": "Retrieval & MCP pilot", "description": "Implementation and real-data retrieval measurements", "complete_label": "Study complete"},
+    {"id": "repoclassbench-small-pilot", "title": "Repository class pilot", "description": "Paired agent trials on the smaller benchmark", "complete_label": "Study complete"},
+    {"id": "featurebench-contract-pilot", "title": "Feature-level contracts", "description": "Runtime qualification · paused at the workspace storage limit", "complete_label": "Study complete"}
+  ]
+}

@@ -69,5 +69,6 @@
   ],
   "notification_seconds": 300,
   "notify_on_checkpoint": false,
-  "notify_on_complete": true
+  "notify_on_complete": true,
+  "parent_project": "ontology-intuition"
 }
